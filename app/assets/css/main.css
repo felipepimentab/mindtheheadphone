@@ -5,8 +5,8 @@
   --font-lexend:
     "Lexend", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-lexend-deca:
-    "Lexend Deca", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+  --font-lato:
+    "Lato", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Light Theme */
@@ -15,10 +15,16 @@
   --color-primary: oklch(71.31% 0.137 55.23);
   --color-secondary: oklch(75.56% 0.021 200.57);
   --color-accent: oklch(51.17% 0.043 281.45);
+
   /* Dark Theme */
   --color-text-dark: oklch(94.16% 0.005 67.76);
   --color-background-dark: oklch(16.07% 0.005 67.43);
   --color-primary-dark: oklch(58.73% 0.138 52.63);
   --color-secondary-dark: oklch(46.29% 0.023 200.34);
   --color-accent-dark: oklch(61.45% 0.041 281.79);
+}
+
+.side-padding {
+  padding-left: max(1rem, 50% - 36rem);
+  padding-right: max(1rem, 50% - 36rem);
 }

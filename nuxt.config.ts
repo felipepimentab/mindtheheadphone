@@ -6,11 +6,11 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/eslint',
-    '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/color-mode',
-    '@nuxtjs/seo'
+    '@nuxtjs/seo',
+    '@nuxtjs/google-fonts',
   ],
 
   vite: {
@@ -25,10 +25,15 @@ export default defineNuxtConfig({
     port: 8080,
   },
 
+  site: {
+    name: 'Mind the Headphone',
+    url: 'https://www.mindtheheadphone.com.br',
+  },
+
   googleFonts: {
     families: {
-      'Lexend': true,
-      'Lexend Deca': true,
+      Lexend: true,
+      Lato: ['100', '400', '700'],
     },
   },
 
