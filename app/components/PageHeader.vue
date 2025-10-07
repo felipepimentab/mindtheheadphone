@@ -1,7 +1,12 @@
 <template>
   <header class=" flex justify-between items-center">
     <RouterLink to="/" class="text-2xl font-bold">
-      <img src="/img/mth-logo.png" alt="Mind the Headphone">
+      <!-- <img src="/img/mth-logo.png" alt="Mind the Headphone"> -->
+      <span class="font-sans p-1.5 border border-text dark:border-text-dark">
+        <span class="font-bold tracking-wider">MIND</span>
+        <span class="font-thin tracking-wider">THE</span>
+        <span class="font-bold tracking-wider">HEADPHONE</span>
+      </span>
     </RouterLink>
     <nav>
       <RouterLink to="/" class="text-lg font-bold">

@@ -5,6 +5,10 @@
   --font-lexend:
     "Lexend", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-lexend-deca:
+    "Lexend Deca", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   /* Light Theme */
   --color-text: oklch(19.37% 0.008 67.35);
   --color-background: oklch(96.21% 0.003 67.78);

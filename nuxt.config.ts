@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       'Lexend': true,
+      'Lexend Deca': true,
     },
   },
 
