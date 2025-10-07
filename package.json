@@ -10,16 +10,24 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.9.0",
     "@nuxt/fonts": "0.11.4",
     "@nuxt/icon": "2.0.0",
     "@nuxt/image": "1.11.0",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/seo": "3.2.2",
-    "@nuxtjs/tailwindcss": "6.14.0",
     "eslint": "^9.37.0",
     "nuxt": "^4.1.2",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "1.9.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "eslint-plugin-format": "^1.0.2",
+    "eslint-plugin-tailwind": "^0.2.1",
+    "eslint-plugin-tailwindcss": "^3.18.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   }
 }
