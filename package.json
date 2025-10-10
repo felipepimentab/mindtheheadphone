@@ -1,33 +1,30 @@
 {
   "name": "mindtheheadphone",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@nuxt/icon": "2.0.0",
+    "@iconify-json/lucide": "^1.2.68",
+    "@iconify-json/simple-icons": "^1.2.54",
     "@nuxt/image": "1.11.0",
-    "@nuxtjs/color-mode": "3.5.2",
-    "@nuxtjs/google-fonts": "3.2.0",
-    "@nuxtjs/seo": "3.2.2",
-    "eslint": "^9.37.0",
-    "nuxt": "^4.1.2",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "@nuxt/ui": "^4.0.1",
+    "nuxt": "^4.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint": "1.9.0",
-    "@tailwindcss/vite": "^4.1.14",
-    "eslint-plugin-format": "^1.0.2",
-    "eslint-plugin-tailwind": "^0.2.1",
-    "eslint-plugin-tailwindcss": "^3.18.2",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.14",
-    "typescript": "^5.9.3"
-  }
+    "@nuxt/eslint": "^1.9.0",
+    "eslint": "^9.37.0",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.1.0"
+  },
+  "resolutions": {
+    "unimport": "4.1.1"
+  },
+  "packageManager": "pnpm@10.18.0"
 }
