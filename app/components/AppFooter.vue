@@ -2,7 +2,7 @@
   <UFooter>
     <template #left>
       <p class="text-sm text-muted">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+        Mind the Headphone - Todos os direitos reservados
       </p>
     </template>
 
