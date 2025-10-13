@@ -2,17 +2,33 @@
 @import "@nuxt/ui";
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+	--color-brand-50: oklch(97.59% 0.02 82.1deg);
+	--color-brand-100: oklch(94.58% 0.05 78.41deg);
+	--color-brand-200: oklch(88.77% 0.1 77.24deg);
+	--color-brand-300: oklch(83.05% 0.15 74.17deg);
+	--color-brand-400: oklch(78.4% 0.17 68.09deg);
+	--color-brand-500: oklch(76.03% 0.18 61.07deg);
+	--color-brand-600: oklch(68.18% 0.17 53.75deg);
+	--color-brand-700: oklch(55.54% 0.14 53.4deg);
+	--color-brand-800: oklch(49.21% 0.12 54.74deg);
+	--color-brand-900: oklch(42.13% 0.1 55.55deg);
+	--color-brand-950: oklch(28.61% 0.07 53.24deg);
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+	--color-dove-50: oklch(98.51% 0 none);
+	--color-dove-100: oklch(97.02% 0 none);
+	--color-dove-200: oklch(92.19% 0 none);
+	--color-dove-300: oklch(86.99% 0 none);
+	--color-dove-400: oklch(70.9% 0 none);
+	--color-dove-500: oklch(55.55% 0 none);
+	--color-dove-600: oklch(43.86% 0 none);
+	--color-dove-700: oklch(37.15% 0 none);
+	--color-dove-800: oklch(26.86% 0 none);
+	--color-dove-900: oklch(20.46% 0 none);
+	--color-dove-950: oklch(14.48% 0 none);
+
+	--font-heading: "Lexend Deca", sans-serif;
+	--font-sans: "Lexend", sans-serif;
+  --font-lato: "Lato", sans-serif;
+
+	--radius: 1rem;
 }
