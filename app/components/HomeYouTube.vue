@@ -1,60 +1,37 @@
 <script setup lang="ts">
 import type { BlogPostProps } from '@nuxt/ui'
 
-const posts: BlogPostProps[] = [
-  {
-    title: 'O Fone Que Eu Sempre Quis Criar:',
-    image: 'https://i.ytimg.com/vi/fAgUFxRt76M/maxresdefault.jpg',
-    date: '2025-10-13',
-    to: 'https://youtu.be/fAgUFxRt76M?si=tbYjlLZNGmNMDQUx',
+interface YouTubeVideo {
+  id: string
+  title: string
+  description: string
+  publishedAt: string
+  thumbnail: string
+  url: string
+}
+
+// Fetch YouTube videos from RSS feed
+const { data: videos } = await useFetch<YouTubeVideo[]>('/api/youtube/feed')
+
+// Transform YouTube videos to BlogPostProps format
+const posts = computed<BlogPostProps[]>(() => {
+  if (!videos.value) return []
+
+  return videos.value.map((video, index) => ({
+    title: video.title,
+    image: video.thumbnail,
+    date: new Date(video.publishedAt).toLocaleDateString('pt-BR'),
+    to: video.url,
     target: '_blank',
-    badge: {
-      label: 'Novo',
-      color: 'primary',
-      variant: 'soft'
-    }
-  },
-  {
-    title: 'Nuxt 3.14',
-    description: 'Nuxt 3.14 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.14.png',
-    date: '2025-10-13',
-    to: 'https://youtu.be/fAgUFxRt76M?si=tbYjlLZNGmNMDQUx',
-    target: '_blank'
-  },
-  {
-    title: 'Nuxt 3.13',
-    description: 'Nuxt 3.13 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.13.png',
-    date: '2024-08-22',
-    to: 'https://youtu.be/KUugRv49Zjs?si=dNePOzYFwZFIYs8a',
-    target: '_blank'
-  },
-  {
-    title: 'Nuxt Icon v1',
-    description: 'Discover Nuxt Icon v1!',
-    image: 'https://nuxt.com/assets/blog/nuxt-icon/cover.png',
-    date: '2024-11-25',
-    to: 'https://youtu.be/KUugRv49Zjs?si=dNePOzYFwZFIYs8a',
-    target: '_blank'
-  },
-  {
-    title: 'Nuxt 3.14',
-    description: 'Nuxt 3.14 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.14.png',
-    date: '2024-11-04',
-    to: 'https://youtu.be/KUugRv49Zjs?si=dNePOzYFwZFIYs8a',
-    target: '_blank'
-  },
-  {
-    title: 'Nuxt 3.13',
-    description: 'Nuxt 3.13 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.13.png',
-    date: '2024-08-22',
-    to: 'https://youtu.be/KUugRv49Zjs?si=dNePOzYFwZFIYs8a',
-    target: '_blank'
-  }
-]
+    badge: index === 0
+      ? {
+          label: 'Novo',
+          color: 'primary',
+          variant: 'soft'
+        }
+      : undefined
+  }))
+})
 </script>
 
 <template>
