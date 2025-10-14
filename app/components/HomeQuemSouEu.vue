@@ -22,18 +22,32 @@ const features = [
 </script>
 
 <template>
-  <UContainer class="py-16 sm:py-24 lg:py-32 bg-[url('/image/bg-2.png')] bg-cover bg-center bg-blend-darken">
-    <UPageCTA
-      title="Quem sou eu"
-      description="Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio"
-      orientation="horizontal"
-      variant="subtle"
-      :features="features"
-      reverse
-      class="bg-default/75 backdrop-blur"
-    >
-      <!-- <div class="bg-[url('/image/bg-2.png')] bg-cover bg-center bg-blend-darken p-0"> -->
-      <div>
+  <UCard
+    variant="subtle"
+    class="backdrop-blur col-span-3"
+  >
+    <div class="lg:flex flex-row-reverse align-bottom justify-center gap-x-4">
+      <UCard>
+        <h2 class="text-3xl sm:text-4xl text-pretty tracking-tight font-bold text-highlighted">
+          Quem sou eu
+        </h2>
+        <p class="text-base sm:text-lg text-pretty text-toned mt-6">
+          Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio.
+        </p>
+        <div class="flex flex-col justify-center items-center">
+          <UPageFeature
+            v-for="feature in features"
+            :key="feature.title"
+            :title="feature.title"
+            :description="feature.description"
+            :icon="feature.icon"
+            :to="feature.to"
+            target="_blank"
+            class="mt-5"
+          />
+        </div>
+      </UCard>
+      <div class="lg:w-1/2 shrink-0 flex flex-col justify-center">
         <img
           src="/image/ama.png"
           width="352"
@@ -42,18 +56,6 @@ const features = [
           class="w-full rounded-lg"
         >
       </div>
-      <template #body>
-        <UPageFeature
-          v-for="feature in features"
-          :key="feature.title"
-          :title="feature.title"
-          :description="feature.description"
-          :icon="feature.icon"
-          :to="feature.to"
-          target="_blank"
-          class="my-4"
-        />
-      </template>
-    </UPageCTA>
-  </UContainer>
+    </div>
+  </UCard>
 </template>
