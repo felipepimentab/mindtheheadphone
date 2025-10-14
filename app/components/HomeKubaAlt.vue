@@ -1,6 +1,6 @@
 <template>
-  <UCard>
-    <div class="flex flex-col justify-center items-center gap-y-5">
+  <UCard variant="soft">
+    <div class="flex flex-col justify-center items-center gap-y-5 lg:gap-y-12">
       <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-muted">
         Conheça minha marca de fones
       </h2>
@@ -16,6 +16,8 @@
       <UButton
         variant="subtle"
         color="success"
+        to="https://kuba.audio"
+        target="_blank"
       >
         Acesse o site
       </UButton>

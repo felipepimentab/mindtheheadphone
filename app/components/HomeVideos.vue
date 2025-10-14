@@ -52,7 +52,7 @@ const videos = [
 </script>
 
 <template>
-  <UContainer class="mt-16">
+  <UContainer class="py-16 bg-elevated bg-[url('/image/bg-2.png')]">
     <ui-text
       type="h2"
       class="pb-8 text-center"
@@ -63,9 +63,8 @@ const videos = [
       <UCard
         v-for="item in videos"
         :key="item.title"
-        variant="soft"
+        variant="outline"
         class="bg-cover bg-center bg-blend-darken light:bg-blend-lighten"
-        style="background-image: url('/image/bg-2.png');"
       >
         <div
           class="flex flex-col items-center justify-center gap-4"

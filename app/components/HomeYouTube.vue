@@ -20,9 +20,10 @@ const posts = computed<BlogPostProps[]>(() => {
   return videos.value.map((video, index) => ({
     title: video.title,
     image: video.thumbnail,
-    date: new Date(video.publishedAt).toLocaleDateString('pt-BR'),
+    date: new Date(video.publishedAt),
     to: video.url,
     target: '_blank',
+    variant: 'soft',
     badge: index === 0
       ? {
           label: 'Novo',
