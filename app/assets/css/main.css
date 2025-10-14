@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
 @import "@nuxt/ui";
 
@@ -14,21 +15,7 @@
 	--color-brand-900: oklch(42.13% 0.1 55.55deg);
 	--color-brand-950: oklch(28.61% 0.07 53.24deg);
 
-	--color-dove-50: oklch(98.51% 0 none);
-	--color-dove-100: oklch(97.02% 0 none);
-	--color-dove-200: oklch(92.19% 0 none);
-	--color-dove-300: oklch(86.99% 0 none);
-	--color-dove-400: oklch(70.9% 0 none);
-	--color-dove-500: oklch(55.55% 0 none);
-	--color-dove-600: oklch(43.86% 0 none);
-	--color-dove-700: oklch(37.15% 0 none);
-	--color-dove-800: oklch(26.86% 0 none);
-	--color-dove-900: oklch(20.46% 0 none);
-	--color-dove-950: oklch(14.48% 0 none);
-
-	--font-heading: "Lexend Deca", sans-serif;
-	--font-sans: "Lexend", sans-serif;
-  --font-lato: "Lato", sans-serif;
+	--font-sans: "Lato", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 	--radius: 1rem;
 }

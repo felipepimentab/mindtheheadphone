@@ -11,8 +11,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
-    <!-- Hero Section -->
+  <UPage>
     <HomeHero />
-  </div>
+    <HomeVideos />
+    <HomeParcerias />
+  </UPage>
 </template>
