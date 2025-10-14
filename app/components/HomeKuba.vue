@@ -1,0 +1,100 @@
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+
+const links: ButtonProps[] = [
+  {
+    label: 'Conheça',
+    to: 'https://kuba.audio',
+    color: 'success',
+    variant: 'subtle',
+    target: '_blank'
+  }
+]
+
+const items = [
+  '/image/kuba/disco-2-bt.jpg',
+  '/image/kuba/disco-2-classico.jpg',
+  '/image/kuba/disco-2-pro.jpg',
+  '/image/kuba/nia.jpg',
+  '/image/kuba/uni.jpg',
+  '/image/kuba/mali-2.jpg'
+]
+
+const carousel = useTemplateRef('carousel')
+const activeIndex = ref(0)
+
+function onClickPrev() {
+  activeIndex.value--
+}
+function onClickNext() {
+  activeIndex.value++
+}
+function onSelect(index: number) {
+  activeIndex.value = index
+}
+
+function select(index: number) {
+  activeIndex.value = index
+
+  carousel.value?.emblaApi?.scrollTo(index)
+}
+</script>
+
+<template>
+  <UPageSection
+    title="Kuba Audio: Minha marca de fones"
+    orientation="horizontal"
+    :links="links"
+  >
+    <UCarousel
+      ref="carousel"
+      v-slot="{ item }"
+      :items="items"
+      :prev="{ onClick: onClickPrev }"
+      :next="{ onClick: onClickNext }"
+      class="w-full mx-auto"
+      @select="onSelect"
+    >
+      <img
+        :src="item"
+        width="640"
+        height="640"
+        class="rounded-lg"
+      >
+    </UCarousel>
+
+    <template #description>
+      <h4 class="my-3 text-2xl font-bold">
+        A Primeira Marca Brasileira de Headphones
+      </h4>
+      <p class="my-3">
+        A Kuba Audio é uma marca criada por mim e pela minha sócia, a Eduarda, em 2016.
+        <span class="font-black">
+          Desenvolvemos fones de ouvido de alta fidelidade, totalmente modulares e feitos para durar.
+        </span>
+      </p>
+      <p class="my-3">
+        Até hoje, já ultrapassamos 40.000 unidades vendidas, conquistando não só o público geral como o profissional e o entusiasta.
+      </p>
+    </template>
+
+    <template #body>
+      <div class="flex gap-1 justify-start gap-2 pt-4">
+        <div
+          v-for="(item, index) in items"
+          :key="index"
+          class="size-16 opacity-25 hover:opacity-100 transition-opacity"
+          :class="{ 'opacity-100': activeIndex === index }"
+          @click="select(index)"
+        >
+          <img
+            :src="item"
+            width="64"
+            height="64"
+            class="rounded-lg cursor-pointer"
+          >
+        </div>
+      </div>
+    </template>
+  </UPageSection>
+</template>

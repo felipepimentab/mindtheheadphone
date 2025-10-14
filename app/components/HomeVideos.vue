@@ -53,13 +53,19 @@ const videos = [
 
 <template>
   <UContainer class="mt-16">
-    <UPageGrid class="lg:grid-cols-4">
+    <ui-text
+      type="h2"
+      class="pb-8 text-center"
+    >
+      Mais vídeos
+    </ui-text>
+    <UPageGrid class="grid-cols-2 lg:grid-cols-4">
       <UCard
         v-for="item in videos"
         :key="item.title"
         variant="soft"
         class="bg-cover bg-center bg-blend-darken light:bg-blend-lighten"
-        style="background-image: url('/image/Bg2.png');"
+        style="background-image: url('/image/bg-2.png');"
       >
         <div
           class="flex flex-col items-center justify-center gap-4"

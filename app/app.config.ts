@@ -8,6 +8,12 @@ export default defineAppConfig({
       slots: {
         base: 'font-bold'
       }
+    },
+    page: {
+      slots: {
+        left: 'lg:col-span-3',
+        center: 'lg:col-span-7'
+      }
     }
   }
 })

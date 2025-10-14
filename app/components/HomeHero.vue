@@ -10,7 +10,7 @@ const links = ref([
 <template>
   <div
     class="bg-cover bg-center"
-    style="background-image: url('/image/BSS7518.jpg');"
+    style="background-image: url('/image/bg-disco.jpg');"
   >
     <UPageHero
       title="Lista de Recomendações"
@@ -18,12 +18,6 @@ const links = ref([
       orientation="horizontal"
       :links="links"
       class="backdrop-brightness-50"
-    >
-      <!-- <img
-        src="~/assets/image/BSS7518.jpg"
-        alt="App screenshot"
-        class="rounded-lg shadow-2xl ring ring-default"
-      > -->
-    </UPageHero>
+    />
   </div>
 </template>
