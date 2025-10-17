@@ -9,8 +9,7 @@ const links = ref([
 
 <template>
   <div
-    class="bg-cover bg-center"
-    style="background-image: url('/image/bg-disco.jpg');"
+    class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
   >
     <UPageHero
       title="Lista de Recomendações"
