@@ -52,42 +52,44 @@ const videos = [
 </script>
 
 <template>
-  <UContainer class="py-16 bg-elevated bg-[url('/image/bg-2.png')]">
-    <ui-text
-      type="h2"
-      class="pb-8 text-center"
-    >
-      Mais vídeos
-    </ui-text>
-    <UPageGrid class="grid-cols-2 lg:grid-cols-4">
-      <UCard
-        v-for="item in videos"
-        :key="item.title"
-        variant="outline"
-        class="bg-cover bg-center bg-blend-darken light:bg-blend-lighten"
+  <div class="">
+    <UContainer class="py-16">
+      <ui-text
+        type="h2"
+        class="pb-8 text-center"
       >
-        <div
-          class="flex flex-col items-center justify-center gap-4"
+        Mais vídeos
+      </ui-text>
+      <UPageGrid class="grid-cols-2 lg:grid-cols-4">
+        <UCard
+          v-for="item in videos"
+          :key="item.title"
+          variant="outline"
+          class="bg-[url('/image/bg-2.png')] bg-muted bg-cover bg-center bg-blend-color-dodge light:bg-blend-hard-light"
         >
-          <img
-            :src="item.image"
-            :alt="item.alt"
-            class="w-full rounded-md light:invert"
+          <div
+            class="flex flex-col items-center justify-center gap-4"
           >
+            <img
+              :src="item.image"
+              :alt="item.alt"
+              class="w-full rounded-md light:invert"
+            >
 
-          <h4 class="text-lg font-bold text-center">
-            {{ item.title }}
-          </h4>
+            <h4 class="text-lg font-bold text-center">
+              {{ item.title }}
+            </h4>
 
-          <UButton
-            :to="item.url"
-            target="_blank"
-            color="primary"
-          >
-            Ver Playlist
-          </UButton>
-        </div>
-      </UCard>
-    </UPageGrid>
-  </UContainer>
+            <UButton
+              :to="item.url"
+              target="_blank"
+              color="primary"
+            >
+              Ver Playlist
+            </UButton>
+          </div>
+        </UCard>
+      </UPageGrid>
+    </UContainer>
+  </div>
 </template>

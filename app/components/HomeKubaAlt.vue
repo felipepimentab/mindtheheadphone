@@ -1,5 +1,5 @@
 <template>
-  <UCard variant="soft">
+  <UCard variant="outline">
     <div class="flex flex-col justify-center items-center gap-y-5 lg:gap-y-12">
       <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-muted">
         Conheça minha marca de fones

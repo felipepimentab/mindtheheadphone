@@ -19,8 +19,8 @@ const links: ButtonProps[] = [
     description="O blog Mind the Headphone foi o início de tudo – e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
     orientation="vertical"
     :links="links"
-    class="bg-muted"
   >
+    <!-- class="bg-accented" -->
     <img
       src="/image/blog-screenshot.png"
       width="352"
