@@ -1,3 +1,5 @@
+import type { YouTubeVideo } from '../../../shared/types/youtube'
+
 export default defineEventHandler(async (event) => {
   const channelId = 'UC7fN3sq7h2BDFtBrzXWo4Zg' // Mind the Headphone channel ID
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
@@ -6,6 +8,9 @@ export default defineEventHandler(async (event) => {
   setHeader(event, 'Cache-Control', 's-maxage=1800')
 
   try {
+    const query = getQuery(event)
+    const limit = parseInt(query.limit as string) || 6 // Default to 6 videos
+
     // Fetch RSS feed
     const response = await $fetch(rssUrl, {
       headers: {
@@ -16,7 +21,7 @@ export default defineEventHandler(async (event) => {
     // Parse XML manually to extract video data
     const videos = parseYouTubeRSS(response as string)
 
-    return videos.slice(0, 6) // Return latest 6 videos
+    return videos.slice(0, limit) // Return specified number of videos
   } catch (error) {
     console.error('Failed to fetch YouTube feed:', error)
     throw createError({
@@ -26,10 +31,8 @@ export default defineEventHandler(async (event) => {
   }
 })
 
-function parseYouTubeRSS(xmlString: string) {
+function parseYouTubeRSS(xmlString: string): YouTubeVideo[] {
   const videos = []
-
-  // Extract video entries using regex
   const entryRegex = /<entry>(.*?)<\/entry>/gs
   const entries = xmlString.match(entryRegex) || []
 
@@ -49,7 +52,7 @@ function parseYouTubeRSS(xmlString: string) {
         publishedAt: published,
         thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
         url: `https://www.youtube.com/watch?v=${videoId}`
-      })
+      } as YouTubeVideo)
     }
   }
 

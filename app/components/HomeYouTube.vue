@@ -1,17 +1,8 @@
 <script setup lang="ts">
 import type { BlogPostProps } from '@nuxt/ui'
 
-interface YouTubeVideo {
-  id: string
-  title: string
-  description: string
-  publishedAt: string
-  thumbnail: string
-  url: string
-}
-
 // Fetch YouTube videos from RSS feed
-const { data: videos } = await useFetch<YouTubeVideo[]>('/api/youtube/feed')
+const { data: videos } = await useFetch('/api/youtube/feed')
 
 // Transform YouTube videos to BlogPostProps format
 const posts = computed<BlogPostProps[]>(() => {
