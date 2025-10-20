@@ -1,4 +1,21 @@
 <script lang="ts" setup>
+import { headphones } from '~/utils/headphones'
+import type { TabsItem } from '@nuxt/ui'
+
+const items: TabsItem[] = [
+  {
+    label: 'Lista',
+    value: 'list',
+    icon: 'i-lucide-list'
+  },
+  {
+    label: 'Grade',
+    value: 'grid',
+    icon: 'i-lucide-layout-grid'
+  }
+]
+
+const display = ref('grid')
 const categories = ref(['Intra-auricular', 'Earbud', 'Intra-auricular Bluetooth', 'Earbud Bluetooth', 'Headphone Cabeado', 'Headphone Bluetooth', 'Headphone Gamer'])
 const signatures = ref(['Enérgico', 'Natural', 'Neutro-Quente', 'Analítico', 'Seco/Direto', 'Neutro-Frio', 'Musical', 'Basshead', 'V-Shaped Forte'])
 const category = ref([])
@@ -8,10 +25,7 @@ const priceRange = ref([0, 50000])
 
 <template>
   <div>
-    <div
-      class="bg-cover bg-center"
-      style="background-image: url('/image/bg-recomendacoes.jpg');"
-    >
+    <div class="bg-cover bg-center bg-[url('/image/bg-recomendacoes.jpg')]">
       <UPageSection
         title="Recomendações"
         description="Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada."
@@ -87,22 +101,33 @@ const priceRange = ref([0, 50000])
         </template>
 
         <UPageBody>
+          <div class="flex items-center justify-between">
+            <p>Total: {{ headphones.length }} resultados</p>
+            <div class="flex items-center gap-x-2">
+              Visualizar como
+              <UTabs
+                v-model="display"
+                :items="items"
+                variant="pill"
+                size="sm"
+                :content="false"
+              />
+            </div>
+          </div>
           <UPageGrid>
-            <UCard
-              v-for="_ in 5"
-              :key="_"
-              variant="soft"
+            <article
+              v-for="headphone in headphones"
+              :key="headphone.name"
+              variant="outline"
             >
-              <template #header>
-                <USkeleton class="h-8" />
-              </template>
-
-              <USkeleton class="h-32 w-full" />
-
-              <template #footer>
-                <USkeleton class="h-8" />
-              </template>
-            </UCard>
+              <p>{{ headphone.name }}</p>
+              <img
+                :src="headphone.img"
+                :alt="headphone.name"
+              >
+              <p>{{ headphone.resumo }}</p>
+              <p>R$ {{ headphone.price }}</p>
+            </article>
           </UPageGrid>
         </UPageBody>
       </UPage>
