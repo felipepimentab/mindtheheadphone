@@ -40,7 +40,7 @@ const filterBySearch: FilterStrategy = (params, headphones) => {
   const { search } = params;
   if (!search.trim()) return headphones;
 
-  return headphones.filter(hp => hp.name.includes(search));
+  return headphones.filter(hp => normalizeString(hp.name).includes(normalizeString(search)));
 };
 
 export const useHeadphones = () => {
