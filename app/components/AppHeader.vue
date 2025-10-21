@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+import type { NavigationMenuItem } from '@nuxt/ui';
 
-const route = useRoute()
+const route = useRoute();
 
 const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Lista de Recomendações',
@@ -15,7 +15,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Blog',
   to: 'https://old.mindtheheadphone.com.br',
   target: '_blank'
-}])
+}]);
 </script>
 
 <template>

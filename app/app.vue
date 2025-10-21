@@ -9,10 +9,10 @@ useHead({
   htmlAttrs: {
     lang: 'pt-BR'
   }
-})
+});
 
-const title = 'Mind the Headphone'
-const description = 'O maior canal dedicado a fones de ouvido do mundo.'
+const title = 'Mind the Headphone';
+const description = 'O maior canal dedicado a fones de ouvido do mundo.';
 
 useSeoMeta({
   title,
@@ -22,7 +22,7 @@ useSeoMeta({
   ogImage: '/image/og-mth.png',
   twitterImage: '/image/og-mth.png',
   twitterCard: 'summary_large_image'
-})
+});
 </script>
 
 <template>

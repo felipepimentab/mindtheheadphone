@@ -4,7 +4,7 @@ const links = ref([
     label: 'Lista de Recomendações',
     to: '/recomendacoes'
   }
-])
+]);
 </script>
 
 <template>

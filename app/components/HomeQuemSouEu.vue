@@ -18,7 +18,7 @@ const features = [
     icon: 'i-lucide-headphones',
     to: 'https://kuba.audio'
   }
-]
+];
 </script>
 
 <template>

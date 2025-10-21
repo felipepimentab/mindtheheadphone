@@ -20,7 +20,7 @@ const footerLinks = [
     to: 'https://github.com/felipepimentab/mindtheheadphone',
     icon: 'i-lucide-github'
   }
-]
+];
 </script>
 
 <template>

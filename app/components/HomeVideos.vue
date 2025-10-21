@@ -48,7 +48,7 @@ const videos = [
     image: '/image/prancheta/tech.png',
     url: 'https://www.youtube.com/playlist?list=PLdSEUYEDTO1OA3ufEcheqwG2KfIRHHVG_'
   }
-]
+];
 </script>
 
 <template>

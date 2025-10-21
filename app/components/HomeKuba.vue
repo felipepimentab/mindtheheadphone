@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ButtonProps } from '@nuxt/ui'
+import type { ButtonProps } from '@nuxt/ui';
 
 const links: ButtonProps[] = [
   {
@@ -9,7 +9,7 @@ const links: ButtonProps[] = [
     variant: 'subtle',
     target: '_blank'
   }
-]
+];
 
 const items = [
   '/image/kuba/disco-2-bt.jpg',
@@ -18,25 +18,25 @@ const items = [
   '/image/kuba/nia.jpg',
   '/image/kuba/uni.jpg',
   '/image/kuba/mali-2.jpg'
-]
+];
 
-const carousel = useTemplateRef('carousel')
-const activeIndex = ref(0)
+const carousel = useTemplateRef('carousel');
+const activeIndex = ref(0);
 
 function onClickPrev() {
-  activeIndex.value--
+  activeIndex.value--;
 }
 function onClickNext() {
-  activeIndex.value++
+  activeIndex.value++;
 }
 function onSelect(index: number) {
-  activeIndex.value = index
+  activeIndex.value = index;
 }
 
 function select(index: number) {
-  activeIndex.value = index
+  activeIndex.value = index;
 
-  carousel.value?.emblaApi?.scrollTo(index)
+  carousel.value?.emblaApi?.scrollTo(index);
 }
 </script>
 

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-type UiTextTag = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+type UiTextTag = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 withDefaults(defineProps<{
   type?: UiTextTag
 }>(), {
   type: 'p'
-})
+});
 
 const uiClass: Record<UiTextTag, string> = {
   p: 'text-base',
@@ -15,7 +15,7 @@ const uiClass: Record<UiTextTag, string> = {
   h4: 'text-xl font-bold',
   h5: 'text-lg font-bold',
   h6: 'text-base font-bold'
-}
+};
 </script>
 
 <template>
