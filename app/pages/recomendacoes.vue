@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { headphones } from '~/utils/headphones'
-import type { TabsItem } from '@nuxt/ui'
+import type { TabsItem } from '@nuxt/ui';
+
+const { filteredHeadphones } = useHeadphones();
 
 const items: TabsItem[] = [
   {
@@ -13,14 +14,36 @@ const items: TabsItem[] = [
     value: 'grid',
     icon: 'i-lucide-layout-grid'
   }
-]
+];
 
-const display = ref('grid')
-const categories = ref(['Intra-auricular', 'Earbud', 'Intra-auricular Bluetooth', 'Earbud Bluetooth', 'Headphone Cabeado', 'Headphone Bluetooth', 'Headphone Gamer'])
-const signatures = ref(['Enérgico', 'Natural', 'Neutro-Quente', 'Analítico', 'Seco/Direto', 'Neutro-Frio', 'Musical', 'Basshead', 'V-Shaped Forte'])
-const category = ref([])
-const signature = ref([])
-const priceRange = ref([0, 50000])
+const display = ref('grid');
+const category = ref<HeadphoneCategory[]>([]);
+const signature = ref<SoundSignature[]>([]);
+const priceRange = ref([0, 50000]);
+const search = ref('');
+
+const headphones = computed(() => {
+  return filteredHeadphones({
+    min: priceRange.value[0],
+    max: priceRange.value[1],
+    search: search.value,
+    category: category.value,
+    signature: signature.value
+  });
+});
+
+function clearFilters() {
+  category.value = [];
+  signature.value = [];
+  priceRange.value = [0, 50000];
+  search.value = '';
+}
+
+function priceColor(price: number): 'success' | 'warning' | 'error' {
+  if (price < 500) return 'success';
+  if (price < 1500) return 'warning';
+  return 'error';
+}
 </script>
 
 <template>
@@ -36,22 +59,32 @@ const priceRange = ref([0, 50000])
       <UPage>
         <template #left>
           <UForm class="space-y-4 my-8">
+            <UFormField label="Buscar pelo nome">
+              <UInput
+                v-model="search"
+                icon="i-lucide-search"
+                variant="outline"
+                placeholder="Buscar..."
+                class="w-full"
+              />
+            </UFormField>
+            <USeparator />
             <UFormField label="Categoria">
               <USelect
                 v-model="category"
                 multiple
-                :items="categories"
+                :items="[...headphoneCategories]"
                 placeholder="Todas"
-                class="w-48"
+                class="w-full"
               />
             </UFormField>
             <UFormField label="Assinatura Sonora">
               <USelect
                 v-model="signature"
                 multiple
-                :items="signatures"
+                :items="[...soundSignatures]"
                 placeholder="Todas"
-                class="w-48"
+                class="w-full"
               />
             </UFormField>
             <USeparator />
@@ -89,14 +122,14 @@ const priceRange = ref([0, 50000])
                 </template>
               </UInput>
             </UFormField>
-            <USeparator />
-            <UFormField label="Buscar">
-              <UInput
-                icon="i-lucide-search"
-                variant="outline"
-                placeholder="Buscar..."
-              />
-            </UFormField>
+            <UButton
+              variant="ghost"
+              size="sm"
+              icon="i-lucide-eraser"
+              @click="clearFilters()"
+            >
+              Limpar todos os filtros
+            </UButton>
           </UForm>
         </template>
 
@@ -118,15 +151,62 @@ const priceRange = ref([0, 50000])
             <article
               v-for="headphone in headphones"
               :key="headphone.name"
-              variant="outline"
+              class="rounded-lg bg-muted shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden w-80 grid grid-cols-1"
+              variant="soft"
             >
-              <p>{{ headphone.name }}</p>
               <img
                 :src="headphone.img"
                 :alt="headphone.name"
+                class="w-80 object-cover"
               >
-              <p>{{ headphone.resumo }}</p>
-              <p>R$ {{ headphone.price }}</p>
+              <div class="px-4 py-3 flex flex-col gap-y-1 items-start">
+                <div class="flex items-center">
+                  <UBadge
+                    v-for="tag in headphone.tags"
+                    :key="tag"
+                    variant="subtle"
+                    class="font-bold rounded-full"
+                  >
+                    {{ tag }}
+                  </UBadge>
+                </div>
+                <h3 class="text-2xl font-bold text-highlighted">
+                  {{ headphone.name }}
+                </h3>
+                <p class="text-xs text-muted">
+                  {{ headphone.category }}
+                </p>
+                <p class="text-base line-clamp-2">
+                  {{ headphone.overview }}
+                </p>
+              </div>
+              <div class="px-4 pb-2">
+                <UBadge
+                  variant="subtle"
+                  size="xl"
+                  :color="priceColor(headphone.price)"
+                >
+                  R$ {{ headphone.price }}
+                </UBadge>
+              </div>
+              <div class="w-full justify-around flex p-2 border-accented border-t">
+                <!-- variant="link" -->
+                <UButton
+                  color="neutral"
+                  :to="headphone.buy"
+                  target="_blank"
+                >
+                  Comprar
+                </UButton>
+                <UButton
+                  variant="subtle"
+                  color="neutral"
+                  :to="headphone.review"
+                  target="_blank"
+                >
+                  Review
+                </UButton>
+              </div>
             </article>
           </UPageGrid>
         </UPageBody>
