@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import type { TabsItem } from '@nuxt/ui';
+// import type { TabsItem } from '@nuxt/ui';
 
 const { filteredHeadphones } = useHeadphones();
 
-const items: TabsItem[] = [
-  {
-    label: 'Lista',
-    value: 'list',
-    icon: 'i-lucide-list'
-  },
-  {
-    label: 'Grade',
-    value: 'grid',
-    icon: 'i-lucide-layout-grid'
-  }
-];
+// const items: TabsItem[] = [
+//   {
+//     label: 'Lista',
+//     value: 'list',
+//     icon: 'i-lucide-list'
+//   },
+//   {
+//     label: 'Grade',
+//     value: 'grid',
+//     icon: 'i-lucide-layout-grid'
+//   }
+// ];
 
-const display = ref('grid');
+// const display = ref('grid');
 const category = ref<HeadphoneCategory[]>([]);
 const signature = ref<SoundSignature[]>([]);
 const priceRange = ref([0, 50000]);
@@ -128,7 +128,7 @@ function clearFilters() {
         </template>
 
         <UPageBody>
-          <div class="flex items-center justify-between">
+          <!-- <div class="flex items-center justify-between">
             <p>Total: {{ headphones.length }} resultados</p>
             <div class="flex items-center gap-x-2">
               Visualizar como
@@ -140,7 +140,7 @@ function clearFilters() {
                 :content="false"
               />
             </div>
-          </div>
+          </div> -->
           <UPageGrid>
             <HeadphoneCard
               v-for="headphone in headphones"
