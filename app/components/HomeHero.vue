@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const links = ref([
+import type { ButtonProps } from '@nuxt/ui';
+
+const links: ButtonProps[] = [
   {
     label: 'Lista de Recomendações',
-    to: '/recomendacoes'
+    to: '/recomendacoes',
+    variant: 'subtle',
+    size: 'xl'
   }
-]);
+];
 </script>
 
 <template>
