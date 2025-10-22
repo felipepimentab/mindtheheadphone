@@ -105,8 +105,8 @@ export const headphones: Headphone[] = [
     signature: 'Natural',
     price: 158,
     overview: 'Um fone bluetooth extremamente acessível, com sonoridade legal. E tem rádio!',
-    buy: 'https://youtu.be/HuNNC9B6S0Y',
-    review: 'https://s.zbanx.com/r/1G7fQ37Ye25E',
+    buy: 'https://s.zbanx.com/r/1G7fQ37Ye25E',
+    review: 'https://youtu.be/HuNNC9B6S0Y',
     category: 'Headphone Bluetooth'
   },
   {
@@ -160,7 +160,7 @@ export const headphones: Headphone[] = [
     signature: 'Natural',
     price: 193,
     overview: 'Muitas opções de conectividade. Pode ser bem interessante pra jogos por conta disso.',
-    buy: 'https://s.zbanx.com/r/7YDkD33Cs90e%20%20%20%20',
+    buy: 'https://s.zbanx.com/r/7YDkD33Cs90e',
     review: 'https://youtu.be/HuNNC9B6S0Y',
     category: 'Headphone Gamer'
   },
@@ -732,7 +732,7 @@ export const headphones: Headphone[] = [
     signature: 'Seco/Direto',
     price: 1234,
     overview: 'Clássico Grado, fantástico para rock e jazz.',
-    buy: 'http://Necessário%20procurar.%20Merece%20a%20busca.',
+    buy: 'https://a.co/d/dx4V6aA',
     review: '',
     category: 'Headphone Cabeado'
   },
@@ -1074,7 +1074,7 @@ export const headphones: Headphone[] = [
     price: 5290,
     overview: 'O ápice basshead.',
     buy: 'https://audiodream.com.br/en/produto/motus/',
-    review: 'https://audiodream.com.btarget=',
+    review: 'https://youtu.be/AbzsfeoufPE?si=rnMSLWrb-_52fwbI',
     category: 'Intra-auricular'
   },
   {
@@ -1095,7 +1095,7 @@ export const headphones: Headphone[] = [
     signature: 'Enérgico',
     price: 5885,
     overview: 'Clássico Grado, fantástico para rock e jazz.',
-    buy: 'http://Necessário%20procurar.%20Merece%20a%20busca.',
+    buy: 'https://a.co/d/5OlcjOZ',
     review: 'https://youtu.be/RQPqpXbjN3Q',
     category: 'Headphone Cabeado'
   },
@@ -1106,7 +1106,7 @@ export const headphones: Headphone[] = [
     signature: 'Analítico',
     price: 5900,
     overview: 'Se você quer transparência acima de tudo.',
-    buy: 'https://www.audiodream.com.br/products',
+    buy: 'https://audiodream.com.br/produto/ad8/',
     review: 'https://youtu.be/zaR6ONrupG4',
     category: 'Intra-auricular'
   },
