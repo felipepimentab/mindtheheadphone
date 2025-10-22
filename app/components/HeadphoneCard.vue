@@ -27,28 +27,46 @@ function formatBRL(amount: number): string {
 }
 
 function signatureColor(signature: SoundSignature): string {
-  const colorReference: Record<SoundSignature, string> = {
-    'Enérgico': 'yellow',
-    'Natural': 'green',
-    'Neutro-Quente': 'orange',
-    'Neutro-Frio': 'sky',
-    'Seco/Direto': 'slate',
-    'Analítico': 'violet',
-    'Musical': 'emerald',
-    'Basshead': 'teal',
-    'V-Shaped Forte': 'indigo'
+  const colorReference: Record<SoundSignature, string[]> = {
+    'Enérgico': [
+      `text-yellow-400`,
+      `bg-yellow-700/30`
+    ],
+    'Natural': [
+      `text-green-400`,
+      `bg-green-700/30`
+    ],
+    'Neutro-Quente': [
+      `text-orange-400`,
+      `bg-orange-700/30`
+    ],
+    'Neutro-Frio': [
+      `text-sky-400`,
+      `bg-sky-700/30`
+    ],
+    'Seco/Direto': [
+      `text-slate-400`,
+      `bg-slate-700/30`
+    ],
+    'Analítico': [
+      `text-violet-400`,
+      `bg-violet-700/30`
+    ],
+    'Musical': [
+      `text-emerald-400`,
+      `bg-emerald-700/30`
+    ],
+    'Basshead': [
+      `text-teal-400`,
+      `bg-teal-700/30`
+    ],
+    'V-Shaped Forte': [
+      `text-indigo-400`,
+      `bg-indigo-700/30`
+    ]
   };
 
-  const color = colorReference[signature];
-
-  const classes = [
-    `text-${color}-400`,
-    `light:text-${color}-600`,
-    `bg-${color}-700/30`,
-    `light:bg-${color}-200/40`
-  ];
-
-  return classes.join(' ');
+  return (colorReference[signature] as string[]).join(' ');
 }
 </script>
 
@@ -103,7 +121,7 @@ function signatureColor(signature: SoundSignature): string {
       </p>
       <div class="mb-3 col-span-full">
         <p
-          class="text-xs px-2 py-1 rounded-lg w-fit"
+          class="text-xs px-2 py-1 rounded-lg w-fit font-semibold"
           :class="signatureColor(headphone.signature)"
         >
           {{ headphone.signature }}
