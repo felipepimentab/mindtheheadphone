@@ -37,7 +37,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
         :items="items"
         class="hidden lg:block"
       />
-      <UColorModeButton />
+      <!-- <UColorModeButton /> -->
     </template>
   </UHeader>
 </template>
