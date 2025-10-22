@@ -643,7 +643,7 @@ export const headphones: Headphone[] = [
     name: 'AKG K361',
     signature: 'Neutro-Quente',
     price: 806,
-    overview: 'signature Harman.',
+    overview: 'Assinatura Harman.',
     buy: 'https://amzn.to/3ed7BLV',
     review: '',
     category: 'Headphone Cabeado'
