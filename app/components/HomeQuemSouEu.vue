@@ -67,7 +67,7 @@ const features = [
           <img
             src="/image/ama.png"
             alt="Leonardo Drummond"
-            class="rounded-lg overflow-visible h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-0"
+            class="rounded-lg overflow-visible max-sm:w-full sm:h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-0"
           >
         </div>
       </div>
