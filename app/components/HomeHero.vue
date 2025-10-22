@@ -11,12 +11,18 @@ const links = ref([
   <div
     class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
   >
-    <UPageHero
-      title="Lista de Recomendações"
-      description="Está procurando um fone e não sabe por onde começar? Conheça minha lista de recomendações!"
-      orientation="horizontal"
-      :links="links"
-      class="backdrop-brightness-50"
-    />
+    <div class="bg-gradient-to-b from-transparent to-default">
+      <UPageHero
+        title="Lista de Recomendações"
+        orientation="horizontal"
+        :links="links"
+      >
+        <template #description>
+          <p class="text-highlighted">
+            Está procurando um fone e não sabe por onde começar? Conheça minha lista de recomendações!
+          </p>
+        </template>
+      </UPageHero>
+    </div>
   </div>
 </template>

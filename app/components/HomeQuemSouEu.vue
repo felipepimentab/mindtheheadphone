@@ -24,45 +24,53 @@ const features = [
 <template>
   <div class="bg-[url('/image/bg-3.png')] bg-cover bg-center p-0">
     <UContainer class="py-16 sm:py-24 lg:py-32">
-      <UCard
-        variant="soft"
-        class="col-span-3 bg-cover bg-center p-0 overflow-visible"
-      >
-        <div class="lg:flex flex-row-reverse align-bottom justify-center gap-x-4 overflow-visible">
-          <UCard
-            variant="solid"
-            class="bg-transparent"
-          >
-            <h2 class="text-3xl sm:text-4xl text-pretty tracking-tight font-bold text-highlighted">
-              Quem sou eu
-            </h2>
-            <p class="text-base sm:text-lg text-pretty text-toned mt-6">
-              Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio.
-            </p>
-            <div class="flex flex-col justify-center items-left">
-              <UPageFeature
-                v-for="feature in features"
-                :key="feature.title"
-                :title="feature.title"
-                :description="feature.description"
-                :icon="feature.icon"
-                :to="feature.to"
-                target="_blank"
-                class="mt-5"
-              />
-            </div>
-          </UCard>
-          <div class="lg:w-1/2 shrink-0 flex flex-col justify-center overflow-visible">
-            <img
-              src="/image/ama.png"
-              width="352"
-              height="647"
-              alt="Leonardo Drummond"
-              class="w-full rounded-lg lg:mb-[-1.5rem] lg:mt-[-6rem] overflow-visible"
+      <div class="rounded-lg bg-elevated/50 backdrop-blur p-0 overflow-visible grid grid-cols-1 grid-rows-[auto_auto] lg:grid-cols-[auto_1fr] lg:grid-rows-1 lg:h-[450px] xl:h-[550px]">
+        <UCard
+          variant="solid"
+          class="bg-transparent lg:order-2"
+        >
+          <h2 class="text-3xl sm:text-4xl xl:text-5xl text-pretty tracking-tight font-bold text-highlighted">
+            Quem sou eu
+          </h2>
+          <p class="text-base sm:text-lg xl:text-xl text-pretty text-toned mt-6">
+            Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio.
+          </p>
+          <div class="flex flex-col justify-center items-left">
+            <UPageFeature
+              v-for="feature in features"
+              :key="feature.title"
+              :icon="feature.icon"
+              :to="feature.to"
+              target="_blank"
+              class="mt-5 rounded-md hover:bg-accented/30 transition-colors"
             >
+              <template #leading>
+                <Icon
+                  :name="feature.icon"
+                  class="text-primary size-5 xl:size-6"
+                />
+              </template>
+              <template #title>
+                <span class="xl:text-lg">
+                  {{ feature.title }}
+                </span>
+              </template>
+              <template #description>
+                <span class="text-toned xl:text-base">
+                  {{ feature.description }}
+                </span>
+              </template>
+            </UPageFeature>
           </div>
+        </UCard>
+        <div class="p-4 sm:p-6 lg:py-0 lg:pr-0 shrink-0 overflow-visible lg:order-1">
+          <img
+            src="/image/ama.png"
+            alt="Leonardo Drummond"
+            class="rounded-lg overflow-visible h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-0"
+          >
         </div>
-      </UCard>
+      </div>
     </UContainer>
   </div>
 </template>

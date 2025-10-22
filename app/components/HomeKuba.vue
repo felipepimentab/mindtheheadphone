@@ -7,7 +7,8 @@ const links: ButtonProps[] = [
     to: 'https://kuba.audio',
     color: 'success',
     variant: 'subtle',
-    target: '_blank'
+    target: '_blank',
+    size: 'xl'
   }
 ];
 

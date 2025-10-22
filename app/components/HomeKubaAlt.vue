@@ -1,7 +1,7 @@
 <template>
   <UCard variant="outline">
     <div class="flex flex-col justify-center items-center gap-y-5 lg:gap-y-12">
-      <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-muted">
+      <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-toned">
         Conheça minha marca de fones
       </h2>
       <img
@@ -14,10 +14,11 @@
         alt="Kuba"
       >
       <UButton
-        variant="subtle"
+        variant="solid"
         color="success"
         to="https://kuba.audio"
         target="_blank"
+        size="xl"
       >
         Acesse o site
       </UButton>

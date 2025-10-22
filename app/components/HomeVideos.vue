@@ -76,7 +76,7 @@ const videos = [
               class="w-full rounded-md light:invert"
             >
 
-            <h4 class="text-lg font-bold text-center">
+            <h4 class="text-lg lg:text-xl font-bold text-center">
               {{ item.title }}
             </h4>
 
@@ -84,6 +84,8 @@ const videos = [
               :to="item.url"
               target="_blank"
               color="primary"
+              size="xl"
+              variant="subtle"
             >
               Ver Playlist
             </UButton>

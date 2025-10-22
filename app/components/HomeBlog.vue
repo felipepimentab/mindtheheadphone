@@ -8,7 +8,8 @@ const links: ButtonProps[] = [
     target: '_blank',
     color: 'primary',
     variant: 'subtle',
-    trailingIcon: 'i-lucide-arrow-right'
+    size: 'xl',
+    trailingIcon: 'i-lucide-external-link'
   }
 ];
 </script>
