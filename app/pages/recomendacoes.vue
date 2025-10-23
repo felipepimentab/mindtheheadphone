@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // import type { TabsItem } from '@nuxt/ui';
 
-const { filteredHeadphones } = useHeadphones();
+const { filteredHeadphones } = await useHeadphones();
 
 // const items: TabsItem[] = [
 //   {
@@ -61,7 +61,7 @@ function clearFilters() {
     <UContainer class="py-4 sm:py-6 lg:py-8">
       <UPage>
         <template #left>
-          <UForm class="space-y-4 my-8">
+          <UForm class="space-y-4 lg:sticky lg:top-24 lg:h-fit max-lg:mb-8 max-lg:pb-4 max-lg:border-b max-lg:border-default">
             <UFormField label="Buscar pelo nome">
               <UInput
                 v-model="search"
@@ -97,13 +97,15 @@ function clearFilters() {
                 :min="0"
                 :max="50000"
                 :step="100"
+                class="pt-1"
               />
             </UFormField>
             <UFormField label="Preço Mínimo">
               <UInput
                 v-model="priceRange[0]"
                 type="number"
-                size="xs"
+                size="md"
+                class="w-full"
               >
                 <template #leading>
                   <p class="text-sm text-muted">
@@ -116,7 +118,8 @@ function clearFilters() {
               <UInput
                 v-model="priceRange[1]"
                 type="number"
-                size="xs"
+                size="md"
+                class="w-full"
               >
                 <template #leading>
                   <p class="text-sm text-muted">
@@ -136,28 +139,26 @@ function clearFilters() {
           </UForm>
         </template>
 
-        <UPageBody>
-          <!-- <div class="flex items-center justify-between">
-            <p>Total: {{ headphones.length }} resultados</p>
-            <div class="flex items-center gap-x-2">
-              Visualizar como
-              <UTabs
-                v-model="display"
-                :items="items"
-                variant="pill"
-                size="sm"
-                :content="false"
-              />
-            </div>
-          </div> -->
-          <UPageGrid>
-            <HeadphoneCard
-              v-for="headphone in headphones"
-              :key="headphone.name"
-              :headphone="headphone"
+        <!-- <div class="flex items-center justify-between">
+          <p>Total: {{ headphones.length }} resultados</p>
+          <div class="flex items-center gap-x-2">
+            Visualizar como
+            <UTabs
+              v-model="display"
+              :items="items"
+              variant="pill"
+              size="sm"
+              :content="false"
             />
-          </UPageGrid>
-        </UPageBody>
+          </div>
+        </div> -->
+        <UPageGrid>
+          <HeadphoneCard
+            v-for="headphone in headphones"
+            :key="headphone.name"
+            :headphone="headphone"
+          />
+        </UPageGrid>
       </UPage>
     </UContainer>
   </div>

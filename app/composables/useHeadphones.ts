@@ -1,4 +1,3 @@
-import { headphones } from '~/utils/headphones';
 import type { Headphone, HeadphoneCategory, SoundSignature } from '~~/shared/types/headphone';
 
 interface FilterParams {
@@ -43,8 +42,20 @@ const filterBySearch: FilterStrategy = (params, headphones) => {
   return headphones.filter(hp => normalizeString(hp.name).includes(normalizeString(search)));
 };
 
-export const useHeadphones = () => {
+export const useHeadphones = async () => {
   const filterChain: FilterChain = [filterByMin, filterByMax, filterByCategory, filterBySignature, filterBySearch];
+  let headphones: Headphone[] = [];
+
+  try {
+    const response = await useFetch('/api/headphone');
+    headphones = response.data.value || [];
+  } catch (error) {
+    console.error('Failed to fetch headphones:', error);
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to fetch headphones'
+    });
+  }
 
   function filteredHeadphones(filterParams: FilterParams): Headphone[] {
     let headphonesList = headphones;

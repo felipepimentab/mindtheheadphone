@@ -1,3 +1,5 @@
+import type { Headphone } from '~~/shared/types/headphone';
+
 export const headphones: Headphone[] = [
   {
     img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-69.png',
