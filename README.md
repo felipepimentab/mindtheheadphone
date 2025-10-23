@@ -1,60 +1,50 @@
-# Nuxt Starter Template
+# 🎧 Mind the Headphone
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+<div style="display: inline">
+  <img src="https://img.shields.io/badge/bun-282a36?style=for-the-badge&logo=bun&logoColor=fbf0df" alt="Bun">
+  <img src="https://img.shields.io/badge/nuxt.js-020618?style=for-the-badge&logo=nuxt&logoColor=00dc82" alt="Nuxt Js">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
+</div>
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+> Headphone recommendation platform made for free for the **Mind the Headphone** YouTube channel
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-  </picture>
-</a>
+![Screenshot](screenshot.jpg)
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+## 🔍 About
 
-## Quick Start
+This website was created as a **free contribution** to the [Mind the Headphone YouTube channel](https://youtube.com/@mindtheheadphone) to serve as a home for the channel and help viewers find the perfect headphones through the channel's list of recommendations.
 
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/starter
-```
+## 🎯 Features
 
-## Deploy your own
+- **Filtering**: Filter headphones by price range, sound signature, and category;
+- **Reviews**: Direct links to the channel's reviews;
+- **Responsive Design**: Works perfectly on all devices.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+## 🛠️ Tech Stack
 
-## Setup
+- **[Bun](https://bun.com/)** - JavaScript runtime and package manager
+- **[Nuxt.js](https://nuxt.com/)** - Fullstack Vue.js framework with SSR
+- **[Nuxt UI](https://ui.nuxt.com/)** - Beautiful and customizable UI components
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
+- **[Vercel](https://vercel.com/)** - Fast and easy deployment
 
-Make sure to install the dependencies:
-
-```bash
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## 🚀 Getting Started
 
 ```bash
-pnpm dev
+# Install dependencies
+bun install
+
+# Start development server
+bun run dev
+
+# Build for production
+bun run build
 ```
 
-## Production
+## 🔗 Links
 
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- **YouTube Channel**: [@mindtheheadphone](https://youtube.com/@mindtheheadphone)
+- **Original Blog**: [mindtheheadphone.com.br](https://old.mindtheheadphone.com.br)
+- **Kuba Audio**: [kuba.audio](https://kuba.audio) - Brazilian headphone brand
