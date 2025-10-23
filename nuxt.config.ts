@@ -19,7 +19,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/recomendacoes': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
