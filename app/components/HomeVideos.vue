@@ -70,11 +70,14 @@ const videos = [
           <div
             class="flex flex-col items-center justify-center gap-4"
           >
-            <img
+            <NuxtImg
               :src="item.image"
               :alt="item.alt"
+              width="232"
+              height="232"
               class="w-full rounded-md light:invert"
-            >
+              loading="lazy"
+            />
 
             <h4 class="text-lg lg:text-xl font-bold text-center">
               {{ item.title }}

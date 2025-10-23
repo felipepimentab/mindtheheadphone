@@ -11,12 +11,6 @@ const items = [
 const carousel = useTemplateRef('carousel');
 const activeIndex = ref(0);
 
-function onClickPrev() {
-  activeIndex.value--;
-}
-function onClickNext() {
-  activeIndex.value++;
-}
 function onSelect(index: number) {
   activeIndex.value = index;
 }
@@ -39,17 +33,16 @@ function select(index: number) {
         ref="carousel"
         v-slot="{ item }"
         :items="items"
-        :prev="{ onClick: onClickPrev }"
-        :next="{ onClick: onClickNext }"
         class="w-full mx-auto"
         @select="onSelect"
       >
-        <img
+        <NuxtImg
           :src="item"
           width="640"
           height="640"
           class="rounded-lg"
-        >
+          loading="lazy"
+        />
       </UCarousel>
       <UButton
         to="https://kuba.audio"
@@ -87,12 +80,13 @@ function select(index: number) {
           :class="{ 'opacity-100': activeIndex === index }"
           @click="select(index)"
         >
-          <img
+          <NuxtImg
             :src="item"
             width="64"
             height="64"
             class="rounded-lg cursor-pointer"
-          >
+            loading="lazy"
+          />
         </div>
       </div>
       <UButton

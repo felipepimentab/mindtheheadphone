@@ -4,15 +4,19 @@
       <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-toned">
         Conheça minha marca de fones
       </h2>
-      <img
+      <NuxtImg
         src="/image/kuba/logo-white.png"
-        alt="Kuba"
+        alt="Logo Kuba"
         class="w-24 sm:w-32"
-      >
-      <img
+        loading="lazy"
+      />
+      <NuxtImg
         src="/image/kuba/hp-d2.png"
-        alt="Kuba"
-      >
+        alt="Headphone Kuba Disco 2"
+        width="336"
+        height="336"
+        loading="lazy"
+      />
       <UButton
         variant="subtle"
         color="success"

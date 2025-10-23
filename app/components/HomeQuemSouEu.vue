@@ -64,11 +64,13 @@ const features = [
           </div>
         </UCard>
         <div class="p-4 sm:p-6 lg:py-0 lg:pr-0 shrink-0 overflow-visible lg:order-1">
-          <img
+          <NuxtImg
             src="/image/ama.png"
+            format="webp"
             alt="Leonardo Drummond"
+            sizes="sm:400px lg:500 xl:625"
             class="rounded-lg overflow-visible max-sm:w-full sm:h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-0"
-          >
+          />
         </div>
       </div>
     </UContainer>

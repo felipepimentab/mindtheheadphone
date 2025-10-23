@@ -75,11 +75,12 @@ function signatureColor(signature: SoundSignature): string {
     class="rounded-lg border-muted border shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr_auto]"
   >
     <div class="bg-white flex justify-center h-52 lg:h-64 relative">
-      <img
+      <NuxtImg
         :src="headphone.img"
         :alt="headphone.name"
         class="object-cover h-52 w-52 lg:w-64 lg:h-64"
-      >
+        loading="lazy"
+      />
       <div class="flex items-center justify-between w-full absolute px-3 py-2 gap-2">
         <div class="flex gap-2 flex-wrap">
           <UBadge

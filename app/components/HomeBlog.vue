@@ -21,13 +21,13 @@ const links: ButtonProps[] = [
     orientation="vertical"
     :links="links"
   >
-    <!-- class="bg-accented" -->
-    <img
+    <NuxtImg
       src="/image/blog-screenshot.png"
-      width="352"
-      height="647"
-      alt="Illustration"
-      class="w-full rounded-lg"
-    >
+      width="1216"
+      height="800"
+      alt="Captura de tela do blog antigo"
+      class="w-full h-fit rounded-lg"
+      loading="lazy"
+    />
   </UPageSection>
 </template>
