@@ -26,12 +26,12 @@ const footerLinks = [
 <template>
   <UFooter>
     <template #left>
-      <div class="text-sm text-muted">
+      <div class="text-sm text-toned">
         <span>
           &copy; 2025 Mind The Headphone. Todos os direitos reservados.
         </span>
-        <span class="italic">
-          Feito por
+        <span class="italic text-muted">
+          - Feito por
           <a
             href="https://github.com/felipepimentab/mindtheheadphone"
             target="_blank"
