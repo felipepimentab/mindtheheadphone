@@ -1,9 +1,6 @@
 import { headphones } from '~~/shared/utils/headphones';
 
-export default defineEventHandler(async (event) => {
-  // Cache for 30 minutes to avoid excessive requests
-  setHeader(event, 'Cache-Control', 's-maxage=1800');
-
+export default defineCachedEventHandler(async (_event) => {
   const headphoneList = headphones;
   return headphoneList;
-});
+}, { maxAge: 60 * 60 * 24 }); // 1 day

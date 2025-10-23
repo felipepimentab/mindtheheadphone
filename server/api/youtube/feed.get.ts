@@ -1,11 +1,8 @@
 import type { YouTubeVideo } from '../../../shared/types/youtube';
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const channelId = 'UC7fN3sq7h2BDFtBrzXWo4Zg'; // Mind the Headphone channel ID
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-
-  // Cache for 30 minutes to avoid excessive requests
-  setHeader(event, 'Cache-Control', 's-maxage=1800');
 
   try {
     const query = getQuery(event);
@@ -29,7 +26,7 @@ export default defineEventHandler(async (event) => {
       statusMessage: 'Failed to fetch YouTube feed'
     });
   }
-});
+}, { maxAge: 60 * 60 }); // 1 hour
 
 function parseYouTubeRSS(xmlString: string): YouTubeVideo[] {
   const videos = [];
