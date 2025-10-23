@@ -81,7 +81,7 @@ function signatureColor(signature: SoundSignature): string {
         class="object-cover h-52 w-52 lg:w-64 lg:h-64"
       >
       <div class="flex items-center justify-between w-full absolute px-3 py-2 gap-2">
-        <div class="flex gap-2">
+        <div class="flex gap-2 flex-wrap">
           <UBadge
             v-for="tag in headphone.tags"
             :key="tag"
@@ -97,10 +97,10 @@ function signatureColor(signature: SoundSignature): string {
           variant="subtle"
           color="warning"
           class="items-center"
-          size="sm"
+          size="md"
           trailing-icon="i-lucide-star"
         >
-          <span class="text-black font-semibold">
+          <span class="text-black font-bold">
             4
           </span>
         </UBadge>
