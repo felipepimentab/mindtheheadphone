@@ -7,6 +7,14 @@ const items = [
   '/image/kuba/uni.jpg',
   '/image/kuba/mali-2.jpg'
 ];
+const alt = [
+  'Headphone Kuba Disco 2 Bluetooth',
+  'Headphone Kuba Disco 2 Clássico',
+  'Headphone Kuba Disco 2 Pro',
+  'Headphone Kuba Nia',
+  'Headphone Kuba Uni',
+  'Headphone Kuba Mali 2'
+];
 
 const carousel = useTemplateRef('carousel');
 const activeIndex = ref(0);
@@ -82,6 +90,7 @@ function select(index: number) {
         >
           <NuxtImg
             :src="item"
+            :alt="alt[index]"
             width="64"
             height="64"
             class="rounded-lg cursor-pointer"
