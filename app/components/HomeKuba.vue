@@ -1,17 +1,4 @@
 <script setup lang="ts">
-import type { ButtonProps } from '@nuxt/ui';
-
-const links: ButtonProps[] = [
-  {
-    label: 'Conheça',
-    to: 'https://kuba.audio',
-    color: 'success',
-    variant: 'subtle',
-    target: '_blank',
-    size: 'xl'
-  }
-];
-
 const items = [
   '/image/kuba/disco-2-bt.jpg',
   '/image/kuba/disco-2-classico.jpg',
@@ -45,42 +32,54 @@ function select(index: number) {
   <UPageSection
     title="Kuba Audio: Minha marca de fones"
     orientation="horizontal"
-    :links="links"
+    class="bg-muted"
   >
-    <UCarousel
-      ref="carousel"
-      v-slot="{ item }"
-      :items="items"
-      :prev="{ onClick: onClickPrev }"
-      :next="{ onClick: onClickNext }"
-      class="w-full mx-auto"
-      @select="onSelect"
-    >
-      <img
-        :src="item"
-        width="640"
-        height="640"
-        class="rounded-lg"
+    <div>
+      <UCarousel
+        ref="carousel"
+        v-slot="{ item }"
+        :items="items"
+        :prev="{ onClick: onClickPrev }"
+        :next="{ onClick: onClickNext }"
+        class="w-full mx-auto"
+        @select="onSelect"
       >
-    </UCarousel>
+        <img
+          :src="item"
+          width="640"
+          height="640"
+          class="rounded-lg"
+        >
+      </UCarousel>
+      <UButton
+        to="https://kuba.audio"
+        color="success"
+        variant="subtle"
+        target="_blank"
+        size="xl"
+        class="w-fit lg:hidden mt-8"
+      >
+        Conheça
+      </UButton>
+    </div>
 
     <template #description>
       <h4 class="my-3 text-2xl font-bold">
         A Primeira Marca Brasileira de Headphones
       </h4>
-      <p class="my-3">
+      <p class="my-3 text-highlighted">
         A Kuba Audio é uma marca criada por mim e pela minha sócia, a Eduarda, em 2016.
         <span class="font-black">
           Desenvolvemos fones de ouvido de alta fidelidade, totalmente modulares e feitos para durar.
         </span>
       </p>
-      <p class="my-3">
+      <p class="my-3 text-highlighted">
         Até hoje, já ultrapassamos 40.000 unidades vendidas, conquistando não só o público geral como o profissional e o entusiasta.
       </p>
     </template>
 
     <template #body>
-      <div class="flex gap-1 justify-start gap-2 pt-4">
+      <div class="flex justify-start gap-2 pt-4">
         <div
           v-for="(item, index) in items"
           :key="index"
@@ -96,6 +95,16 @@ function select(index: number) {
           >
         </div>
       </div>
+      <UButton
+        to="https://kuba.audio"
+        color="success"
+        variant="subtle"
+        target="_blank"
+        size="xl"
+        class="max-lg:hidden mt-8"
+      >
+        Conheça
+      </UButton>
     </template>
   </UPageSection>
 </template>
