@@ -1,14 +1,16 @@
 # 🎧 Mind the Headphone
 
-<div style="display: inline">
+<!-- <div style="display: inline">
   <img src="https://img.shields.io/badge/bun-282a36?style=for-the-badge&logo=bun&logoColor=fbf0df" alt="Bun">
   <img src="https://img.shields.io/badge/nuxt.js-020618?style=for-the-badge&logo=nuxt&logoColor=00dc82" alt="Nuxt Js">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
-</div>
+</div> -->
 
+Headphone recommendation platform made as a free contribution to the **Mind the Headphone** YouTube channel and the audio enthusiast community.
 
-> Headphone recommendation platform made for free for the **Mind the Headphone** YouTube channel
+> [!IMPORTANT]
+> This project is for personal development and is not associated with the official Mind the Headphone brand or its creators in any way.
 
 ![Screenshot](screenshot.jpg)
 
