@@ -1,4 +1,4 @@
-import type { Headphone } from '~~/shared/types/headphone';
+import { Headphone, type HeadphoneCategory } from '~~/shared/types/headphone';
 
 export const headphones: Headphone[] = [
   {
@@ -1343,4 +1343,16 @@ export const headphones: Headphone[] = [
     review: 'https://youtu.be/7du9oDkHdSA',
     category: 'Headphone Cabeado'
   }
-];
+].map((hp) => {
+  return new Headphone(
+    hp.name,
+    hp.img,
+    hp.tags,
+    hp.signature,
+    (hp.category as HeadphoneCategory),
+    hp.price,
+    hp.overview,
+    hp.buy,
+    hp.review
+  );
+});

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose'],
 
   devtools: {
     enabled: true
@@ -47,5 +47,15 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  mongoose: {
+    uri: process.env.DB_MONGODB_URI,
+    options: {
+      appName: 'devrel.vercel.integration',
+      maxIdleTimeMS: 5000
+    },
+    modelsDir: 'models',
+    devtools: true
   }
 });
