@@ -94,7 +94,7 @@ function signatureColor(signature: SoundSignature): string {
             {{ tag }}
           </UBadge>
         </div>
-        <UBadge
+        <!-- <UBadge
           variant="subtle"
           color="warning"
           class="items-center"
@@ -104,7 +104,7 @@ function signatureColor(signature: SoundSignature): string {
           <span class="text-black font-bold">
             4
           </span>
-        </UBadge>
+        </UBadge> -->
       </div>
     </div>
     <div class="grid grid-cols-[1fr_auto] grid-rows-[auto_auto_auto_1fr] p-4 gap-x-2">
@@ -134,8 +134,8 @@ function signatureColor(signature: SoundSignature): string {
     </div>
     <div class="w-full grid grid-cols-2 gap-2 p-2">
       <UButton
-        v-if="isValidUrl(headphone.buy)"
-        variant="subtle"
+        v-if="isValidUrl(headphone.buy || '')"
+        variant="ghost"
         color="neutral"
         :to="headphone.buy"
         target="_blank"
@@ -145,8 +145,8 @@ function signatureColor(signature: SoundSignature): string {
         Comprar
       </UButton>
       <UButton
-        v-if="isValidUrl(headphone.review)"
-        variant="outline"
+        v-if="isValidUrl(headphone.review || '')"
+        variant="ghost"
         color="neutral"
         :to="headphone.review"
         target="_blank"
