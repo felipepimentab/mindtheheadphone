@@ -1,6 +1,3 @@
-import { headphones } from '~~/shared/utils/headphones';
-
 export default defineCachedEventHandler(async (_event) => {
-  const headphoneList = headphones;
-  return headphoneList;
+  return await HeadphoneSchema.find();
 }, { maxAge: 60 * 60 * 24 }); // 1 day
