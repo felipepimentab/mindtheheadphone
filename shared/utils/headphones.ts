@@ -2,7 +2,7 @@ import { Headphone, type HeadphoneCategory } from '~~/shared/types/headphone';
 
 export const headphones: Headphone[] = [
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-69.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/ry4s.png',
     tags: [],
     name: 'RY4S',
     signature: 'Natural',
@@ -13,7 +13,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-3-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/lenovo-gm2-pro.png',
     tags: [],
     name: 'Lenovo GM2 Pro',
     signature: 'Natural',
@@ -24,7 +24,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-48.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/cca-cra.png',
     tags: [],
     name: 'CCA CRA',
     signature: 'Enérgico',
@@ -35,7 +35,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-106.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/qkz-x-hbb.png',
     tags: [],
     name: 'QKZ x HBB',
     signature: 'Basshead',
@@ -46,7 +46,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-108.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kz-zsn-pro.png',
     tags: [],
     name: 'KZ ZSN Pro',
     signature: 'V-Shaped Forte',
@@ -57,7 +57,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-41.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/redmi-buds-6-active.png',
     tags: [],
     name: 'Redmi Buds 6 Active',
     signature: 'Natural',
@@ -68,7 +68,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-47.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-chu-ii.png',
     tags: ['Favorito do canal'],
     name: 'Moondrop Chu II',
     signature: 'Natural',
@@ -79,7 +79,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-73.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/qcy-t20.png',
     tags: [],
     name: 'QCY T20',
     signature: 'Natural',
@@ -90,7 +90,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-6-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kawano-audio-horaiko.png',
     tags: [],
     name: 'Kawano Audio Horaiko',
     signature: 'Neutro-Quente',
@@ -101,7 +101,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-16.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/havit-h630bt.png',
     tags: [],
     name: 'Havit H630BT',
     signature: 'Natural',
@@ -112,7 +112,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-2-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/qcy-t13-anc.png',
     tags: [],
     name: 'QCY T13 ANC',
     signature: 'Natural',
@@ -123,7 +123,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-17.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/arcano-ar-414b.png',
     tags: [],
     name: 'Arcano AR-414B',
     signature: 'Neutro-Quente',
@@ -134,7 +134,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-61.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/anker-soundcore-p20i.png',
     tags: [],
     name: 'Anker Soundcore P20i',
     signature: 'Enérgico',
@@ -145,7 +145,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-88.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-chu.png',
     tags: [],
     name: 'Moondrop Chu',
     signature: 'Neutro-Frio',
@@ -156,7 +156,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-5.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/havit-fuxi-h3.png',
     tags: [],
     name: 'Havit Fuxi-H3',
     signature: 'Natural',
@@ -167,7 +167,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-42.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/huawei-freebuds-2se.png',
     tags: [],
     name: 'Huawei Freebuds 2SE',
     signature: 'Enérgico',
@@ -178,7 +178,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-68.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/qcy-ht10.png',
     tags: [],
     name: 'QCY HT10',
     signature: 'Natural',
@@ -189,7 +189,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-6.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/havit-h2002d.png',
     tags: [],
     name: 'Havit H2002D',
     signature: 'Natural',
@@ -200,7 +200,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-98.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-space-travel.png',
     tags: [],
     name: 'Moondrop Space Travel',
     signature: 'Natural',
@@ -211,7 +211,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-103.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/oneodio-pro-10.png',
     tags: [],
     name: 'OneOdio Pro-10',
     signature: 'Neutro-Quente',
@@ -222,7 +222,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-75.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/tin-hifi-c2-mech-warrior.png',
     tags: [],
     name: 'Tin Hifi C2 Mech Warrior',
     signature: 'Natural',
@@ -233,7 +233,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-104.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/arcano-shp80.png',
     tags: [],
     name: 'Arcano SHP80',
     signature: 'Neutro-Frio',
@@ -244,7 +244,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-5-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kawano-audio-hanabi.png',
     tags: [],
     name: 'Kawano Audio Hanabi',
     signature: 'Neutro-Quente',
@@ -255,7 +255,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-89.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/blon-z300.png',
     tags: [],
     name: 'Blon Z300',
     signature: 'Neutro-Quente',
@@ -266,7 +266,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-97.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/qcy-melobuds-pro.png',
     tags: [],
     name: 'QCY MeloBuds Pro',
     signature: 'Natural',
@@ -277,7 +277,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-67.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/arcano-shp300.png',
     tags: [],
     name: 'Arcano SHP300',
     signature: 'Neutro-Quente',
@@ -288,7 +288,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-46.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kz-zs10-pro-x.png',
     tags: [],
     name: 'KZ ZS10 Pro X',
     signature: 'Enérgico',
@@ -299,7 +299,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-15.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/havit-h655bt.png',
     tags: [],
     name: 'Havit H655BT',
     signature: 'Natural',
@@ -310,7 +310,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-93.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/tin-hifi-t2.png',
     tags: [],
     name: 'Tin Hifi T2',
     signature: 'Neutro-Frio',
@@ -321,7 +321,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-110.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kz-zar.png',
     tags: [],
     name: 'KZ ZAR',
     signature: 'Basshead',
@@ -332,7 +332,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-14.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/edifier-w800bt-plus.png',
     tags: [],
     name: 'Edifier W800BT Plus',
     signature: 'Natural',
@@ -343,7 +343,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-13.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/edifier-w820nb.png',
     tags: [],
     name: 'Edifier W820NB',
     signature: 'Natural',
@@ -354,7 +354,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-74.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/armer-sh450.png',
     tags: [],
     name: 'Armer SH450',
     signature: 'Neutro-Quente',
@@ -365,7 +365,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-96.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kz-xtra.png',
     tags: [],
     name: 'KZ Xtra',
     signature: 'Neutro-Frio',
@@ -376,7 +376,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-99.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/redmi-buds-5-pro.png',
     tags: [],
     name: 'Redmi Buds 5 Pro',
     signature: 'Natural',
@@ -387,7 +387,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-12.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/haylou-s30-pro.png',
     tags: [],
     name: 'Haylou S30 Pro',
     signature: 'Natural',
@@ -398,7 +398,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-66.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/samsung-galaxy-buds-live.png',
     tags: [],
     name: 'Samsung Galaxy Buds Live',
     signature: 'Neutro-Quente',
@@ -409,7 +409,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-4.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/pichau-p852-atria.png',
     tags: [],
     name: 'Pichau P852 Atria',
     signature: 'Natural',
@@ -420,7 +420,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-60.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/anker-x10.png',
     tags: [],
     name: 'Anker X10',
     signature: 'Natural',
@@ -431,7 +431,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-109.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/truthear-zero.png',
     tags: [],
     name: 'Truthear Zero',
     signature: 'Basshead',
@@ -442,7 +442,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-2.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/hyperx-cloud-core.png',
     tags: [],
     name: 'HyperX Cloud Core',
     signature: 'Natural',
@@ -453,7 +453,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-3.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/pichau-p852-vega.png',
     tags: [],
     name: 'Pichau P852 Vega',
     signature: 'Natural',
@@ -464,7 +464,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-65.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/anker-soundcore-space-a40.png',
     tags: [],
     name: 'Anker Soundcore Space A40',
     signature: 'Neutro-Frio',
@@ -475,7 +475,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-50.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/thuthear-zero-red.png',
     tags: ['Favorito do canal'],
     name: 'Truthear Zero:RED',
     signature: 'Natural',
@@ -486,7 +486,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-8-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/anker-soundcore-liberty-4nc.png',
     tags: [],
     name: 'Anker Soundcore Liberty 4NC',
     signature: 'Natural',
@@ -497,7 +497,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-51.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-may.png',
     tags: [],
     name: 'Moondrop May',
     signature: 'Natural',
@@ -508,7 +508,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-10-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/fiio-jt1.png',
     tags: [],
     name: 'FiiO JT1',
     signature: 'Neutro-Quente',
@@ -519,7 +519,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-70.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/philips-shp9500.png',
     tags: [],
     name: 'Philips SHP9500',
     signature: 'Analítico',
@@ -530,7 +530,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-43.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/huawei-freebuds-6i.png',
     tags: [],
     name: 'Huawei Freebuds 6i',
     signature: 'Natural',
@@ -541,7 +541,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-38.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kuba-nia-lite.png',
     tags: [],
     name: 'Kuba Nia Lite',
     signature: 'Enérgico',
@@ -552,7 +552,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-11.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/anker-soundcore-q30.png',
     tags: [],
     name: 'Anker Soundcore Q30',
     signature: 'Basshead',
@@ -563,7 +563,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-40.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/huawei-freebuds-5.png',
     tags: [],
     name: 'Huawei Freebuds 5',
     signature: 'Natural',
@@ -574,7 +574,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-37.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kuba-nia-headset.png',
     tags: [],
     name: 'Kuba Nia Headset',
     signature: 'Enérgico',
@@ -585,7 +585,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-39.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/hifiman-he400se.png',
     tags: [],
     name: 'Hifiman HE400SE',
     signature: 'Seco/Direto',
@@ -596,7 +596,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-101.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/samsung-galaxy-buds2-pro.png',
     tags: [],
     name: 'Samsung Galaxy Buds2 Pro',
     signature: 'Natural',
@@ -607,7 +607,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-72.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/armer-sh550.png',
     tags: [],
     name: 'Armer SH550',
     signature: 'Neutro-Frio',
@@ -618,7 +618,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-102.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/dunu-alpha-3.png',
     tags: [],
     name: 'Dunu Alpha 3',
     signature: 'Natural',
@@ -629,7 +629,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-45.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kinera-celest--phoenixcall.png',
     tags: [],
     name: 'Kinera Celest Phoenixcall',
     signature: 'V-Shaped Forte',
@@ -640,7 +640,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-36.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/akg-k361.png',
     tags: [],
     name: 'AKG K361',
     signature: 'Neutro-Quente',
@@ -651,7 +651,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-10.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/akg-k361bt.png',
     tags: [],
     name: 'AKG K361BT',
     signature: 'Neutro-Quente',
@@ -662,7 +662,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-94.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/truthear-hexa.png',
     tags: [],
     name: 'Truthear Hexa',
     signature: 'Neutro-Frio',
@@ -673,7 +673,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-33.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kuba-disco-2.png',
     tags: [],
     name: 'Kuba Disco 2',
     signature: 'Enérgico',
@@ -684,7 +684,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-34.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kuba-disco-2-pro.png',
     tags: [],
     name: 'Kuba Disco 2 Pro',
     signature: 'Enérgico',
@@ -695,7 +695,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-92.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/letshuoer-s12.png',
     tags: [],
     name: 'Letshuoer S12',
     signature: 'Enérgico',
@@ -706,7 +706,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/aful-explorer.png',
     tags: ['Excelentes tecnicalidades'],
     name: 'Aful Explorer',
     signature: 'Neutro-Quente',
@@ -717,7 +717,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-35.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kuba-disco-bluetooth.png',
     tags: [],
     name: 'Kuba Disco Bluetooth',
     signature: 'Enérgico',
@@ -728,7 +728,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-31.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/grado-sr80x.png',
     tags: [],
     name: 'Grado SR80x',
     signature: 'Seco/Direto',
@@ -739,7 +739,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-32.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/thieaudio-ghost.png',
     tags: [],
     name: 'Thieaudio Ghost',
     signature: 'Neutro-Quente',
@@ -750,7 +750,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-56.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/tri-i3-mk3.png',
     tags: [],
     name: 'Tri i3 MK3',
     signature: 'Natural',
@@ -761,7 +761,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-71.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/nothing-ear-2.png',
     tags: [],
     name: 'Nothing (Ear) 2',
     signature: 'Natural',
@@ -772,7 +772,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-63.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/etymotic-er2se.png',
     tags: [],
     name: 'Etymotic ER2SE',
     signature: 'Seco/Direto',
@@ -783,7 +783,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-30.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/beyerdynamic-dt770-pro.png',
     tags: [],
     name: 'Beyerdynamic DT770 Pro',
     signature: 'Neutro-Frio',
@@ -794,7 +794,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-95.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/simphonio-sunrise-dragon-2.png',
     tags: [],
     name: 'Simphonio Sunrise Dragon 2',
     signature: 'Natural',
@@ -805,7 +805,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-9-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/fiio-ft1.png',
     tags: [],
     name: 'FiiO FT1',
     signature: 'Neutro-Quente',
@@ -816,7 +816,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-57.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/meze-alba.png',
     tags: [],
     name: 'Meze Alba',
     signature: 'Natural',
@@ -827,7 +827,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/hyperx-cloud-orbit-s.png',
     tags: [],
     name: 'HyperX Cloud Orbit S',
     signature: 'Enérgico',
@@ -838,7 +838,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Gamer'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-112.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/heartfield-acoustics-deer.png',
     tags: [],
     name: 'Heartfield Acoustics Deer',
     signature: 'Basshead',
@@ -849,7 +849,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/huawei-freebuds-studio.png',
     tags: [],
     name: 'Huawei Freebuds Studio',
     signature: 'Natural',
@@ -860,7 +860,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-64.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/etymotic-er4xr.png',
     tags: [],
     name: 'Etymotic ER4XR',
     signature: 'Seco/Direto',
@@ -871,7 +871,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-9.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sony-wh-1000xm4.png',
     tags: [],
     name: 'Sony WH-1000XM4',
     signature: 'Neutro-Quente',
@@ -882,7 +882,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/epz-p50.png',
     tags: [],
     name: 'EPZ P50',
     signature: 'Neutro-Frio',
@@ -893,7 +893,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal2_Prancheta-1-copia-113.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sennheiser-hd560s.png',
     tags: [],
     name: 'Sennheiser HD560S',
     signature: 'Neutro-Frio',
@@ -904,7 +904,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-86.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/7hz-timeless.png',
     tags: [],
     name: '7Hz Timeless',
     signature: 'Enérgico',
@@ -915,7 +915,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-82.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/juzer-butterfly-61t.png',
     tags: [],
     name: 'Juzer Butterfly 61T',
     signature: 'Neutro-Quente',
@@ -926,7 +926,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-100.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/apple-airpods-pro-2.png',
     tags: [],
     name: 'Apple AirPods Pro 2',
     signature: 'Natural',
@@ -937,7 +937,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-62.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/7hz-timeless-ae.png',
     tags: [],
     name: '7Hz Timeless AE',
     signature: 'Neutro-Frio',
@@ -948,7 +948,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-58.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/dunu-davinci.png',
     tags: [],
     name: 'Dunu DaVinci',
     signature: 'Neutro-Quente',
@@ -959,7 +959,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal2_Prancheta-1-copia-111.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-para.png',
     tags: [],
     name: 'Moondrop Para',
     signature: 'Natural',
@@ -970,7 +970,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-29.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sennheiser-hd600.png',
     tags: ['Natural e equilibrado'],
     name: 'Sennheiser HD600',
     signature: 'Natural',
@@ -981,7 +981,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-105.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/yanyin-canon.png',
     tags: [],
     name: 'Yanyin Canon',
     signature: 'Enérgico',
@@ -992,7 +992,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-52.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-dusk.png',
     tags: [],
     name: 'Moondrop Dusk',
     signature: 'Natural',
@@ -1003,7 +1003,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-107.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-blessing-3.png',
     tags: [],
     name: 'Moondrop Blessing 3',
     signature: 'Neutro-Frio',
@@ -1014,7 +1014,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-84.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/aful-performer-8.png',
     tags: [],
     name: 'Aful Performer 8',
     signature: 'Musical',
@@ -1025,7 +1025,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-83.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/yanyin-canon-2.png',
     tags: [],
     name: 'Yanyin Canon 2',
     signature: 'Neutro-Quente',
@@ -1036,7 +1036,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-27.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sivga-p2-pro.png',
     tags: [],
     name: 'Sivga P2 Pro',
     signature: 'Neutro-Quente',
@@ -1047,7 +1047,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-53.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/softears-studio4.png',
     tags: [],
     name: 'SoftEars Studio4',
     signature: 'Natural',
@@ -1058,7 +1058,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-28.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/hifiman-edition-xs.png',
     tags: [],
     name: 'Hifiman Edition XS',
     signature: 'Neutro-Frio',
@@ -1069,7 +1069,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-114.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/audiodream-motus.png',
     tags: [],
     name: 'AudioDream Motus',
     signature: 'Basshead',
@@ -1080,7 +1080,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/novoz_Prancheta-1-copia.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-meteor.png',
     tags: ['Favorito do canal', 'Graves impactantes'],
     name: 'Moondrop Meteor',
     signature: 'Natural',
@@ -1091,7 +1091,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-26.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/grado-rs2x.png',
     tags: [],
     name: 'Grado RS2x',
     signature: 'Enérgico',
@@ -1102,7 +1102,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-80.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/audiodream-ad8.png',
     tags: [],
     name: 'AudioDream AD8',
     signature: 'Analítico',
@@ -1113,7 +1113,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-91.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/dunu-sa6-mkii.png',
     tags: [],
     name: 'Dunu SA6 MKII',
     signature: 'Musical',
@@ -1124,7 +1124,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-8.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/apple-airpods-max.png',
     tags: [],
     name: 'Apple AirPods Max',
     signature: 'Natural',
@@ -1135,7 +1135,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-85.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/tanchjim-prism.png',
     tags: [],
     name: 'Tanchjim Prism',
     signature: 'Seco/Direto',
@@ -1146,7 +1146,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-87.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/unique-melody-mest-mkii.png',
     tags: [],
     name: 'Unique Melody Mest MKII',
     signature: 'Musical',
@@ -1157,7 +1157,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-7.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/focal-bathys.png',
     tags: [],
     name: 'Focal Bathys',
     signature: 'Neutro-Quente',
@@ -1168,7 +1168,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Bluetooth'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-7-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/stax-sr-x1.png',
     tags: [],
     name: 'Stax SR-X1',
     signature: 'Natural',
@@ -1179,7 +1179,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-44.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sennheiser-ie900.png',
     tags: [],
     name: 'Sennheiser IE900',
     signature: 'V-Shaped Forte',
@@ -1190,7 +1190,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-78.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/thieaudio-monarch-mkiii.png',
     tags: [],
     name: 'Thieaudio Monarch MKIII',
     signature: 'Natural',
@@ -1201,7 +1201,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-90.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/64audio-u4s.png',
     tags: [],
     name: '64Audio U4S',
     signature: 'Enérgico',
@@ -1212,7 +1212,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-23.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/sennheiser-hd800s.png',
     tags: [],
     name: 'Sennheiser HD800S',
     signature: 'Analítico',
@@ -1223,7 +1223,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-79.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/yanyin-moonlight-ultra.png',
     tags: [],
     name: 'Yanyin Moonlight Ultra',
     signature: 'Natural',
@@ -1234,7 +1234,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-76.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/audiodream-somnium-est.png',
     tags: [],
     name: 'AudioDream Somnium EST',
     signature: 'Natural',
@@ -1245,7 +1245,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-22.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/meze-liric-2.png',
     tags: [],
     name: 'Meze Liric 2',
     signature: 'Neutro-Frio',
@@ -1256,7 +1256,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-4-1.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/meze-poet.png',
     tags: [],
     name: 'Meze Poet',
     signature: 'Natural',
@@ -1267,7 +1267,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-81.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/unique-melody-multiverse-mentor.png',
     tags: [],
     name: 'Unique Melody Multiverse Mentor',
     signature: 'Neutro-Quente',
@@ -1278,7 +1278,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-55.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/64audio-vol-r.png',
     tags: [],
     name: '64Audio Volür',
     signature: 'Enérgico',
@@ -1289,7 +1289,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-54.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/moondrop-solis-2.png',
     tags: [],
     name: 'Moondrop Solis 2',
     signature: 'Natural',
@@ -1300,7 +1300,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-21.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/meze-empyrean-ii.png',
     tags: [],
     name: 'Meze Empyrean II',
     signature: 'Natural',
@@ -1311,7 +1311,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-20.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/stax-sr-009s.png',
     tags: [],
     name: 'Stax SR-009S',
     signature: 'Analítico',
@@ -1322,7 +1322,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-19.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/focal-utopia-2022.png',
     tags: [],
     name: 'Focal Utopia 2022',
     signature: 'Neutro-Quente',
@@ -1333,7 +1333,7 @@ export const headphones: Headphone[] = [
     category: 'Headphone Cabeado'
   },
   {
-    img: 'http://mindtheheadphone.com.br/wp-content/uploads/2025/06/arquivofinal_Prancheta-1-copia-18.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/stax-sr-x9000.png',
     tags: [],
     name: 'Stax SR-X9000',
     signature: 'Neutro-Frio',

@@ -6,45 +6,45 @@ export const HeadphoneSchema = defineMongooseModel<Headphone>({
   name: 'Headphone',
   schema: {
     name: {
-      type: String,
+      type: 'string',
       required: true,
       unique: true
     },
     slug: {
-      type: String,
+      type: 'string',
       required: true,
       unique: true
     },
     img: {
-      type: String,
+      type: 'string',
       required: true
     },
     tags: {
-      type: [String],
+      type: ['string'],
       required: false
     },
     signature: {
-      type: String,
+      type: 'string',
       required: true
     },
     category: {
-      type: String,
+      type: 'string',
       required: true
     },
     price: {
-      type: Number,
+      type: 'number',
       required: true
     },
     overview: {
-      type: String,
+      type: 'string',
       required: false
     },
     buy: {
-      type: String,
+      type: 'string',
       required: false
     },
     review: {
-      type: String,
+      type: 'string',
       required: false
     }
   }
