@@ -15,18 +15,13 @@ const links: ButtonProps[] = [
   <div
     class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
   >
-    <div class="bg-gradient-to-b from-transparent to-default">
+    <div class="bg-linear-to-b from-transparent to-default backdrop-brightness-75">
       <UPageHero
         title="Lista de Recomendações"
         orientation="horizontal"
+        description="Está procurando um fone e não sabe por onde começar? Conheça minha lista de recomendações!"
         :links="links"
-      >
-        <template #description>
-          <p class="text-highlighted">
-            Está procurando um fone e não sabe por onde começar? Conheça minha lista de recomendações!
-          </p>
-        </template>
-      </UPageHero>
+      />
     </div>
   </div>
 </template>
