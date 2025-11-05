@@ -43,7 +43,7 @@ function clearFilters() {
 <template>
   <div>
     <div class="bg-cover bg-center bg-[url('/image/bg-recomendacoes.jpg')]">
-      <div class="bg-gradient-to-b from-transparent to-default">
+      <div class="bg-linear-to-b from-transparent to-default">
         <UPageSection>
           <template #title>
             <h1>
