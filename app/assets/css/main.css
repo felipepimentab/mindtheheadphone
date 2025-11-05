@@ -2,19 +2,10 @@
 @import "@nuxt/ui";
 
 @theme static {
-	--color-brand-50: oklch(97.59% 0.02 82.1deg);
-	--color-brand-100: oklch(94.58% 0.05 78.41deg);
-	--color-brand-200: oklch(88.77% 0.1 77.24deg);
-	--color-brand-300: oklch(83.05% 0.15 74.17deg);
-	--color-brand-400: oklch(78.4% 0.17 68.09deg);
-	--color-brand-500: oklch(76.03% 0.18 61.07deg);
-	--color-brand-600: oklch(68.18% 0.17 53.75deg);
-	--color-brand-700: oklch(55.54% 0.14 53.4deg);
-	--color-brand-800: oklch(49.21% 0.12 54.74deg);
-	--color-brand-900: oklch(42.13% 0.1 55.55deg);
-	--color-brand-950: oklch(28.61% 0.07 53.24deg);
+	--font-sans: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-lato: "Lato", var(--font-sans);
 
-	--font-sans: "Lato", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --ui-container: 100rem;
 
-	--ui-radius: 0.25rem;
+	--ui-radius: 0.5rem;
 }

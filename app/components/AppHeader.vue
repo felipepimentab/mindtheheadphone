@@ -4,13 +4,17 @@ import type { NavigationMenuItem } from '@nuxt/ui';
 const route = useRoute();
 
 const items = computed<NavigationMenuItem[]>(() => [{
-  label: 'Lista de Recomendações',
+  label: 'Recomendações',
   to: '/recomendacoes',
   active: route.path.startsWith('/recomendacoes')
 }, {
-  label: 'Canal',
-  to: 'https://youtube.com/c/mindtheheadphone',
-  target: '_blank'
+  label: 'Sobre',
+  to: '/sobre',
+  active: route.path.startsWith('/sobre')
+}, {
+  label: 'FAQ',
+  to: '/faq',
+  active: route.path.startsWith('/faq')
 }, {
   label: 'Blog',
   to: 'https://old.mindtheheadphone.com.br',
@@ -19,11 +23,16 @@ const items = computed<NavigationMenuItem[]>(() => [{
 </script>
 
 <template>
-  <UHeader>
+  <UHeader mode="slideover">
     <template #title>
       <LogoMTH />
     </template>
 
+    <UNavigationMenu
+      :items="items"
+      variant="link"
+      content-orientation="vertical"
+    />
     <template #body>
       <UNavigationMenu
         :items="items"
@@ -33,11 +42,27 @@ const items = computed<NavigationMenuItem[]>(() => [{
     </template>
 
     <template #right>
-      <UNavigationMenu
-        :items="items"
-        class="hidden lg:block"
-      />
       <!-- <UColorModeButton /> -->
+      <UButton
+        color="neutral"
+        variant="ghost"
+        to="https://youtube.com/c/mindtheheadphone"
+        target="_blank"
+        icon="i-lucide-youtube"
+        aria-label="Canal no YouTube"
+      >
+        Canal
+      </UButton>
+      <UButton
+        color="neutral"
+        variant="ghost"
+        to="https://kuba.audio"
+        target="_blank"
+        icon="i-lucide-headphones"
+        aria-label="Kuba"
+      >
+        Kuba
+      </UButton>
     </template>
   </UHeader>
 </template>
