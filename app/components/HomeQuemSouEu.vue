@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const title = 'Quem sou eu';
+const description = 'Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio.';
 const features = [
   {
     title: 'Blog',
@@ -24,16 +26,16 @@ const features = [
 <template>
   <div class="bg-[url('/image/bg-3.png')] bg-cover bg-center p-0">
     <UContainer class="py-16 sm:py-24 lg:py-32">
-      <div class="rounded-lg bg-elevated/50 backdrop-blur p-0 overflow-visible grid grid-cols-1 grid-rows-[auto_auto] lg:grid-cols-[auto_1fr] lg:grid-rows-1 lg:h-[450px] xl:h-[550px]">
+      <div class="rounded-lg bg-elevated/50 backdrop-blur backdrop-brightness-75 p-0 overflow-visible grid grid-cols-1 grid-rows-[auto_auto] lg:grid-cols-[auto_1fr] lg:grid-rows-1 lg:h-[450px] xl:h-[550px] inset-shadow-sm inset-shadow-white/5">
         <UCard
           variant="solid"
           class="bg-transparent lg:order-2"
         >
-          <h2 class="text-3xl sm:text-4xl xl:text-5xl text-pretty tracking-tight font-bold text-highlighted">
-            Quem sou eu
+          <h2 class="text-3xl sm:text-4xl xl:text-6xl text-pretty tracking-tight font-bold text-highlighted">
+            {{ title }}
           </h2>
           <p class="text-base sm:text-lg xl:text-xl text-pretty text-toned mt-6">
-            Muito prazer! Meu nome é Leonardo Drummond. Sempre fui apaixonado por música e áudio.
+            {{ description }}
           </p>
           <div class="flex flex-col justify-center items-left">
             <UPageFeature
@@ -42,7 +44,7 @@ const features = [
               :icon="feature.icon"
               :to="feature.to"
               target="_blank"
-              class="mt-5 rounded-md hover:bg-accented/30 transition-colors"
+              class="mt-3 p-2 rounded-md hover:bg-accented/30 transition-colors"
             >
               <template #leading>
                 <Icon
@@ -51,12 +53,12 @@ const features = [
                 />
               </template>
               <template #title>
-                <span class="xl:text-lg">
+                <span class="lg:text-lg xl:text-xl">
                   {{ feature.title }}
                 </span>
               </template>
               <template #description>
-                <span class="text-toned xl:text-base">
+                <span class="text-toned lg:text-base/6 xl:text-lg/6">
                   {{ feature.description }}
                 </span>
               </template>
