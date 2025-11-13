@@ -48,7 +48,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
         variant="ghost"
         to="https://youtube.com/c/mindtheheadphone"
         target="_blank"
-        icon="i-lucide-youtube"
+        trailing-icon="i-lucide-youtube"
         aria-label="Canal no YouTube"
       >
         Canal
@@ -58,7 +58,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
         variant="ghost"
         to="https://kuba.audio"
         target="_blank"
-        icon="i-lucide-headphones"
+        trailing-icon="i-lucide-headphones"
         aria-label="Kuba"
       >
         Kuba
