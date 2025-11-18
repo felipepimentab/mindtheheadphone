@@ -85,7 +85,7 @@ function clearFilters() {
                 variant="outline"
                 placeholder="Buscar..."
                 class="w-full"
-                size="lg"
+                size="xl"
               />
             </UFormField>
             <USeparator />
@@ -96,7 +96,7 @@ function clearFilters() {
                 :items="[...headphoneCategories]"
                 placeholder="Todas"
                 class="w-full"
-                size="lg"
+                size="xl"
               />
             </UFormField>
             <UFormField label="Assinatura Sonora">
@@ -106,7 +106,7 @@ function clearFilters() {
                 :items="[...soundSignatures]"
                 placeholder="Todas"
                 class="w-full"
-                size="lg"
+                size="xl"
               />
             </UFormField>
             <USeparator />
@@ -117,7 +117,7 @@ function clearFilters() {
                 :max="MAX_RANGE"
                 :step="1"
                 class="pt-1"
-                size="lg"
+                size="xl"
               />
             </UFormField>
             <UFormField label="Preço Mínimo">
@@ -125,7 +125,7 @@ function clearFilters() {
                 v-model="priceMin"
                 type="number"
                 class="w-full"
-                size="lg"
+                size="xl"
                 @change="adjustSlider"
               >
                 <template #leading>
@@ -140,7 +140,7 @@ function clearFilters() {
                 v-model="priceMax"
                 type="number"
                 class="w-full"
-                size="lg"
+                size="xl"
                 @change="adjustSlider"
               >
                 <template #leading>
@@ -153,7 +153,7 @@ function clearFilters() {
             <UButton
               variant="link"
               icon="i-lucide-eraser"
-              size="lg"
+              size="xl"
               @click="clearFilters()"
             >
               Limpar todos os filtros
@@ -172,7 +172,7 @@ function clearFilters() {
             <UButton
               variant="link"
               icon="i-lucide-eraser"
-              size="lg"
+              size="xl"
               @click="clearFilters()"
             >
               Limpar filtros
