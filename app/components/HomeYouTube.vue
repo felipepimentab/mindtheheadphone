@@ -14,7 +14,7 @@ const posts = computed<BlogPostProps[]>(() => {
     date: new Date(video.publishedAt),
     to: video.url,
     target: '_blank',
-    variant: 'outline',
+    variant: 'soft',
     badge: index === 0
       ? {
           label: 'Novo',

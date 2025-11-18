@@ -72,7 +72,7 @@ function signatureColor(signature: SoundSignature): string {
 
 <template>
   <article
-    class="rounded-lg border-muted border shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr_auto]"
+    class="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr_auto] bg-neutral-900"
   >
     <div class="bg-white flex justify-center h-52 lg:h-64 relative">
       <NuxtImg

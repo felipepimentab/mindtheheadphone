@@ -34,7 +34,6 @@ function select(index: number) {
   <UPageSection
     title="Kuba Audio: Minha marca de fones"
     orientation="horizontal"
-    class="bg-muted"
   >
     <div>
       <UCarousel
@@ -55,7 +54,7 @@ function select(index: number) {
       <UButton
         to="https://kuba.audio"
         color="success"
-        variant="subtle"
+        variant="outline"
         target="_blank"
         size="xl"
         class="w-fit lg:hidden mt-8"
@@ -101,7 +100,7 @@ function select(index: number) {
       <UButton
         to="https://kuba.audio"
         color="success"
-        variant="subtle"
+        variant="outline"
         target="_blank"
         size="xl"
         class="max-lg:hidden mt-8"

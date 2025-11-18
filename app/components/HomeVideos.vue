@@ -64,8 +64,7 @@ const videos = [
         <UCard
           v-for="item in videos"
           :key="item.title"
-          variant="outline"
-          class="bg-[url('/image/bg-2.png')] bg-muted bg-cover bg-center bg-blend-color-dodge light:bg-blend-hard-light"
+          variant="soft"
         >
           <div
             class="flex flex-col items-center justify-center gap-4"
@@ -73,9 +72,9 @@ const videos = [
             <NuxtImg
               :src="item.image"
               :alt="item.alt"
-              width="232"
-              height="232"
-              class="w-full rounded-md light:invert"
+              width="200"
+              height="200"
+              class="rounded-md"
               loading="lazy"
             />
 
@@ -88,7 +87,7 @@ const videos = [
               target="_blank"
               color="primary"
               size="xl"
-              variant="subtle"
+              variant="outline"
             >
               Ver Playlist
             </UButton>

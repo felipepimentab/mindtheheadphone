@@ -10,11 +10,13 @@ const items = computed<NavigationMenuItem[]>(() => [{
 }, {
   label: 'Sobre',
   to: '/sobre',
-  active: route.path.startsWith('/sobre')
+  active: route.path.startsWith('/sobre'),
+  disabled: true
 }, {
   label: 'FAQ',
   to: '/faq',
-  active: route.path.startsWith('/faq')
+  active: route.path.startsWith('/faq'),
+  disabled: true
 }, {
   label: 'Blog',
   to: 'https://old.mindtheheadphone.com.br',

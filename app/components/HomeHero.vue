@@ -5,7 +5,7 @@ const links: ButtonProps[] = [
   {
     label: 'Lista de Recomendações',
     to: '/recomendacoes',
-    variant: 'subtle',
+    variant: 'outline',
     size: 'xl'
   }
 ];
@@ -15,7 +15,7 @@ const links: ButtonProps[] = [
   <div
     class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
   >
-    <div class="bg-linear-to-b from-transparent to-default backdrop-brightness-75">
+    <div class="bg-linear-to-b from-transparent to-black">
       <UPageHero
         title="Lista de Recomendações"
         orientation="horizontal"

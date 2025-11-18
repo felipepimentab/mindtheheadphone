@@ -7,5 +7,20 @@
 
   --ui-container: 100rem;
 
+  --ui-bg: black;
+
+  --color-mth-50: oklch(97.08% 0.01 28.11deg);
+	--color-mth-100: oklch(93.53% 0.03 25.91deg);
+	--color-mth-200: oklch(88.5% 0.06 27.89deg);
+	--color-mth-300: oklch(80.83% 0.11 27.98deg);
+	--color-mth-400: oklch(70.36% 0.18 27.71deg);
+	--color-mth-500: oklch(60.99% 0.22 28.02deg);
+	--color-mth-600: oklch(57.7% 0.23 28.02deg);
+	--color-mth-700: oklch(50.56% 0.2 28.03deg);
+	--color-mth-800: oklch(44.31% 0.17 27.89deg);
+	--color-mth-900: oklch(39.48% 0.12 27.99deg);
+	--color-mth-950: oklch(25.92% 0.09 28.45deg);
+
 	--ui-radius: 0.5rem;
 }
+/* oklch(63.7% 0.237 25.331) *

@@ -1,31 +1,45 @@
 <script lang="ts" setup>
-// import type { TabsItem } from '@nuxt/ui';
-
 const { filteredHeadphones } = await useHeadphones();
-
-// const items: TabsItem[] = [
-//   {
-//     label: 'Lista',
-//     value: 'list',
-//     icon: 'i-lucide-list'
-//   },
-//   {
-//     label: 'Grade',
-//     value: 'grid',
-//     icon: 'i-lucide-layout-grid'
-//   }
-// ];
-
-// const display = ref('grid');
+const MIN_RANGE = 0;
+const MAX_RANGE = 150;
+const MIN_PRICE = sliderToPrice(MIN_RANGE);
+const MAX_PRICE = sliderToPrice(MAX_RANGE); // 50625
 const category = ref<HeadphoneCategory[]>([]);
 const signature = ref<SoundSignature[]>([]);
-const priceRange = ref([0, 50000]);
+const sliderRange = ref([MIN_RANGE, MAX_RANGE]);
+const priceMin = ref(MIN_PRICE);
+const priceMax = ref(MAX_PRICE);
 const search = ref('');
+
+function sliderToPrice(v: number) {
+  return Math.floor(Math.pow((v / 10), 4));
+}
+
+function priceToSlider(price: number) {
+  return Math.floor(Math.sqrt(Math.sqrt(price)) * 10);
+}
+
+watch(sliderRange, () => {
+  let minPrice = sliderToPrice(sliderRange.value[0] || MIN_PRICE);
+  const maxPrice = sliderToPrice(sliderRange.value[1] || MAX_PRICE);
+
+  if (minPrice > maxPrice) {
+    minPrice = maxPrice;
+  }
+
+  priceMin.value = minPrice;
+  priceMax.value = maxPrice;
+});
+
+function adjustSlider() {
+  sliderRange.value[0] = priceToSlider(priceMin.value);
+  sliderRange.value[1] = priceToSlider(priceMax.value);
+}
 
 const headphones = computed(() => {
   return filteredHeadphones({
-    min: priceRange.value[0],
-    max: priceRange.value[1],
+    min: priceMin.value,
+    max: priceMax.value,
     search: search.value,
     category: category.value,
     signature: signature.value
@@ -35,19 +49,21 @@ const headphones = computed(() => {
 function clearFilters() {
   category.value = [];
   signature.value = [];
-  priceRange.value = [0, 50000];
+  sliderRange.value = [MIN_RANGE, MAX_RANGE];
+  priceMin.value = MIN_PRICE;
+  priceMax.value = MAX_PRICE;
   search.value = '';
 }
 </script>
 
 <template>
   <div>
-    <div class="bg-cover bg-center bg-[url('/image/bg-recomendacoes.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/banner-kali.jpg')]">
       <div class="bg-linear-to-b from-transparent to-default">
         <UPageSection>
           <template #title>
             <h1>
-              Recomendações
+              Headphones e Earphones
             </h1>
           </template>
           <template #description>
@@ -69,6 +85,7 @@ function clearFilters() {
                 variant="outline"
                 placeholder="Buscar..."
                 class="w-full"
+                size="lg"
               />
             </UFormField>
             <USeparator />
@@ -79,6 +96,7 @@ function clearFilters() {
                 :items="[...headphoneCategories]"
                 placeholder="Todas"
                 class="w-full"
+                size="lg"
               />
             </UFormField>
             <UFormField label="Assinatura Sonora">
@@ -88,24 +106,27 @@ function clearFilters() {
                 :items="[...soundSignatures]"
                 placeholder="Todas"
                 class="w-full"
+                size="lg"
               />
             </UFormField>
             <USeparator />
             <UFormField label="Faixa de Preço">
               <USlider
-                v-model="priceRange"
-                :min="0"
-                :max="50000"
-                :step="100"
+                v-model="sliderRange"
+                :min="MIN_RANGE"
+                :max="MAX_RANGE"
+                :step="1"
                 class="pt-1"
+                size="lg"
               />
             </UFormField>
             <UFormField label="Preço Mínimo">
               <UInput
-                v-model="priceRange[0]"
+                v-model="priceMin"
                 type="number"
-                size="md"
                 class="w-full"
+                size="lg"
+                @change="adjustSlider"
               >
                 <template #leading>
                   <p class="text-sm text-muted">
@@ -116,10 +137,11 @@ function clearFilters() {
             </UFormField>
             <UFormField label="Preço Máximo">
               <UInput
-                v-model="priceRange[1]"
+                v-model="priceMax"
                 type="number"
-                size="md"
                 class="w-full"
+                size="lg"
+                @change="adjustSlider"
               >
                 <template #leading>
                   <p class="text-sm text-muted">
@@ -129,29 +151,34 @@ function clearFilters() {
               </UInput>
             </UFormField>
             <UButton
-              variant="ghost"
-              size="sm"
+              variant="link"
               icon="i-lucide-eraser"
+              size="lg"
               @click="clearFilters()"
             >
               Limpar todos os filtros
             </UButton>
           </UForm>
         </template>
-
-        <!-- <div class="flex items-center justify-between">
-          <p>Total: {{ headphones.length }} resultados</p>
-          <div class="flex items-center gap-x-2">
-            Visualizar como
-            <UTabs
-              v-model="display"
-              :items="items"
-              variant="pill"
-              size="sm"
-              :content="false"
-            />
-          </div>
-        </div> -->
+        <UEmpty
+          v-if="!headphones.length"
+          variant="soft"
+          icon="i-lucide-search-x"
+          title="Nenhum fone encontrado"
+          description="Tente ajustar sua seleção ou clique em “Limpar filtros” para ver todos os modelos disponíveis."
+          size="xl"
+        >
+          <template #actions>
+            <UButton
+              variant="link"
+              icon="i-lucide-eraser"
+              size="lg"
+              @click="clearFilters()"
+            >
+              Limpar filtros
+            </UButton>
+          </template>
+        </UEmpty>
         <UPageGrid>
           <HeadphoneCard
             v-for="headphone in headphones"

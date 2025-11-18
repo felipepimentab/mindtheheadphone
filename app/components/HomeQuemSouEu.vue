@@ -24,13 +24,17 @@ const features = [
 </script>
 
 <template>
-  <div class="bg-[url('/image/bg-3.png')] bg-cover bg-center p-0">
+  <!-- bg-[url('/image/bg-3.png')]  -->
+  <div class="bg-cover bg-center p-0 bg-default">
     <UContainer class="py-16 sm:py-24 lg:py-32">
-      <div class="rounded-lg bg-elevated/50 backdrop-blur backdrop-brightness-75 p-0 overflow-visible grid grid-cols-1 grid-rows-[auto_auto] lg:grid-cols-[auto_1fr] lg:grid-rows-1 lg:h-[450px] xl:h-[550px] inset-shadow-sm inset-shadow-white/5">
-        <UCard
-          variant="solid"
-          class="bg-transparent lg:order-2"
-        >
+      <UPageCard
+        class="p-0 sm:p-0 lg:p-0 lg:h-[450px] xl:h-[574px] overflow-visible"
+        spotlight
+        spotlight-color="primary"
+        orientation="horizontal"
+        reverse
+      >
+        <template #description>
           <h2 class="text-3xl sm:text-4xl xl:text-6xl text-pretty tracking-tight font-bold text-highlighted">
             {{ title }}
           </h2>
@@ -44,7 +48,7 @@ const features = [
               :icon="feature.icon"
               :to="feature.to"
               target="_blank"
-              class="mt-3 p-2 rounded-md hover:bg-accented/30 transition-colors"
+              class="mt-3 p-2 rounded-md"
             >
               <template #leading>
                 <Icon
@@ -64,17 +68,17 @@ const features = [
               </template>
             </UPageFeature>
           </div>
-        </UCard>
-        <div class="p-4 sm:p-6 lg:py-0 lg:pr-0 shrink-0 overflow-visible lg:order-1">
+        </template>
+        <template #default>
           <NuxtImg
             src="/image/ama.png"
             format="webp"
             alt="Leonardo Drummond"
             sizes="sm:400px lg:500 xl:625"
-            class="rounded-lg overflow-visible max-sm:w-full sm:h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-0"
+            class="rounded-lg overflow-visible max-sm:w-full sm:h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-1 shrink-0"
           />
-        </div>
-      </div>
+        </template>
+      </UPageCard>
     </UContainer>
   </div>
 </template>

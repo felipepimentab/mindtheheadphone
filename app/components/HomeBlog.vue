@@ -7,7 +7,7 @@ const links: ButtonProps[] = [
     to: 'https://old.mindtheheadphone.com.br/',
     target: '_blank',
     color: 'primary',
-    variant: 'subtle',
+    variant: 'outline',
     size: 'xl',
     trailingIcon: 'i-lucide-external-link'
   }

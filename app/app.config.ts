@@ -1,12 +1,18 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: 'red',
+      primary: 'mth',
       neutral: 'neutral'
     },
     button: {
       slots: {
         base: 'font-bold'
+      },
+      variants: {
+        variant: {
+          subtle: 'backdrop-blur',
+          soft: 'backdrop-blur'
+        }
       }
     }
   }

@@ -2,8 +2,6 @@
   <UContainer>
     <UPageCard
       orientation="vertical"
-      spotlight
-      spotlight-color="primary"
       class="my-16"
     >
       <template #default>
