@@ -53,7 +53,9 @@ const items = computed<NavigationMenuItem[]>(() => [{
         trailing-icon="i-lucide-youtube"
         aria-label="Canal no YouTube"
       >
-        Canal
+        <span class="max-sm:hidden">
+          Canal
+        </span>
       </UButton>
       <UButton
         color="neutral"
@@ -63,7 +65,9 @@ const items = computed<NavigationMenuItem[]>(() => [{
         trailing-icon="i-lucide-headphones"
         aria-label="Kuba"
       >
-        Kuba
+        <span class="max-sm:hidden">
+          Kuba
+        </span>
       </UButton>
     </template>
   </UHeader>

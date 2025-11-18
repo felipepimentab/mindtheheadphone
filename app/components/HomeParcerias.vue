@@ -12,7 +12,7 @@
           Parcerias comerciais
         </UiText>
         <UiText
-          type="h4"
+          type="h5"
           class="text-center w-full"
         >
           Para parcerias e contatos comerciais, entre em contato via
