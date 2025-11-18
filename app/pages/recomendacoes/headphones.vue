@@ -88,7 +88,7 @@ function clearFilters() {
                 size="xl"
               />
             </UFormField>
-            <USeparator />
+            <!-- <USeparator /> -->
             <UFormField label="Categoria">
               <USelect
                 v-model="category"
@@ -109,7 +109,7 @@ function clearFilters() {
                 size="xl"
               />
             </UFormField>
-            <USeparator />
+            <!-- <USeparator /> -->
             <UFormField label="Faixa de Preço">
               <USlider
                 v-model="sliderRange"
@@ -120,40 +120,38 @@ function clearFilters() {
                 size="xl"
               />
             </UFormField>
-            <UFormField label="Preço Mínimo">
-              <UInput
-                v-model="priceMin"
-                type="number"
-                class="w-full"
-                size="xl"
-                @change="adjustSlider"
-              >
-                <template #leading>
-                  <p class="text-sm text-muted">
-                    R$
-                  </p>
-                </template>
-              </UInput>
-            </UFormField>
-            <UFormField label="Preço Máximo">
-              <UInput
-                v-model="priceMax"
-                type="number"
-                class="w-full"
-                size="xl"
-                @change="adjustSlider"
-              >
-                <template #leading>
-                  <p class="text-sm text-muted">
-                    R$
-                  </p>
-                </template>
-              </UInput>
-            </UFormField>
+            <div class="flex gap-x-3">
+              <UFormField label="Preço Mínimo">
+                <UInputNumber
+                  v-model="priceMin"
+                  class="w-full number-input"
+                  size="xl"
+                  :increment="false"
+                  :decrement="false"
+                  :format-options="{
+                    useGrouping: false
+                  }"
+                  @change="adjustSlider"
+                />
+              </UFormField>
+              <UFormField label="Preço Máximo">
+                <UInputNumber
+                  v-model="priceMax"
+                  class="w-full number-input"
+                  size="xl"
+                  :increment="false"
+                  :decrement="false"
+                  :format-options="{
+                    useGrouping: false
+                  }"
+                  @change="adjustSlider"
+                />
+              </UFormField>
+            </div>
             <UButton
               variant="link"
               icon="i-lucide-eraser"
-              size="xl"
+              size="lg"
               @click="clearFilters()"
             >
               Limpar todos os filtros
@@ -190,3 +188,17 @@ function clearFilters() {
     </UContainer>
   </div>
 </template>
+
+<style>
+.number-input input {
+  padding-left: 2rem;
+}
+
+.number-input::before {
+  content: "R$";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--text-color-muted);
+  font-size: var(--text-sm);
+}
+</style>

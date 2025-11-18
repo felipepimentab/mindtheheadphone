@@ -100,7 +100,7 @@ function select(index: number) {
       <UButton
         to="https://kuba.audio"
         color="success"
-        variant="outline"
+        variant="solid"
         target="_blank"
         size="xl"
         class="max-lg:hidden mt-8"

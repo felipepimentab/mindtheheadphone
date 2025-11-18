@@ -48,7 +48,7 @@ export const useHeadphones = async () => {
 
   try {
     const response = await useFetch('/api/headphone');
-    headphones = response.data.value || [];
+    headphones = (response.data.value as Headphone[]) || [];
   } catch (error) {
     console.error('Failed to fetch headphones:', error);
     throw createError({

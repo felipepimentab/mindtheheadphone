@@ -5,7 +5,7 @@ const links: ButtonProps[] = [
   {
     label: 'Lista de Recomendações',
     to: '/recomendacoes',
-    variant: 'outline',
+    variant: 'solid',
     size: 'xl'
   }
 ];

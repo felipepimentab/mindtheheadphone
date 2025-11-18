@@ -5,7 +5,7 @@ const links: ButtonProps[] = [
   {
     label: 'WhatsApp',
     color: 'success',
-    variant: 'outline',
+    variant: 'soft',
     trailingIcon: 'i-simple-icons-whatsapp',
     size: 'xl',
     target: '_blank',
@@ -14,7 +14,7 @@ const links: ButtonProps[] = [
   {
     label: 'Telegram',
     color: 'secondary',
-    variant: 'outline',
+    variant: 'soft',
     trailingIcon: 'i-simple-icons-telegram',
     size: 'xl',
     target: '_blank',
