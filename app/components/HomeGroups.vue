@@ -24,12 +24,19 @@ const links: ButtonProps[] = [
 </script>
 
 <template>
-  <UPageSection :ui="{ container: 'px-0' }">
-    <UPageCTA
-      title="Entre no nosso grupo de promoções"
-      description="Participe da comunidade para receber ofertas e dicas de fones de ouvido em tempo real"
-      variant="outline"
-      :links="links"
-    />
+  <UPageSection
+    title="Entre no nosso grupo de promoções"
+    description="Participe da comunidade para receber ofertas e dicas de fones de ouvido em tempo real"
+    variant="naked"
+    :links="links"
+  >
+    <div class="flex justify-center items-center">
+      <NuxtImg
+        src="/image/mockup/portrait.png"
+        alt="Mockup"
+        height="650"
+        loading="lazy"
+      />
+    </div>
   </UPageSection>
 </template>
