@@ -14,6 +14,11 @@ export default defineAppConfig({
           soft: 'backdrop-blur'
         }
       }
+    },
+    blogPost: {
+      slots: {
+        title: 'line-clamp-3'
+      }
     }
   }
 });
