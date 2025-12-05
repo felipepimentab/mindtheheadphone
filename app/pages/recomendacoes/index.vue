@@ -27,7 +27,7 @@
           variant: 'ghost',
           trailingIcon: 'i-lucide-arrow-right'
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-black"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc"
       />
     </div>
     <div class="bg-cover bg-center bg-[url('/image/bg-recomendacoes.jpg')]">
@@ -41,7 +41,7 @@
           trailingIcon: 'i-lucide-arrow-right',
           disabled: true
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-r from-transparent to-black backdrop-brightness-85"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-r from-transparent to-bgc backdrop-brightness-85"
         :reverse="true"
       />
     </div>
@@ -56,7 +56,7 @@
           trailingIcon: 'i-lucide-arrow-right',
           disabled: true
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-black"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc"
       />
     </div>
   </div>

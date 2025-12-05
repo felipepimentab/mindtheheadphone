@@ -2,7 +2,7 @@
   <UPage>
     <HomeHero />
     <HomeQuemSouEu />
-    <HomeWelcome />
+    <!-- <HomeWelcome /> -->
     <div class="bg-default">
       <UContainer class="py-16 sm:py-24 flex flex-col lg:grid lg:grid-cols-3 gap-8 lg:gap-y-16">
         <ui-text
