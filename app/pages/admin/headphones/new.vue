@@ -1,14 +1,16 @@
 <script lang="ts" setup>
 import * as z from 'zod';
-import type { FormSubmitEvent, SelectItem } from '@nuxt/ui';
+import type { FormSubmitEvent } from '@nuxt/ui';
 
 const schema = z.object({
   name: z.string(),
   price: z.number().min(0),
-  description: z.string(),
+  overview: z.string(),
   review: z.url(),
   buy: z.url(),
-  image: z.file()
+  image: z.file(),
+  category: z.string(),
+  signature: z.string()
 });
 
 type Schema = z.output<typeof schema>;
@@ -16,23 +18,39 @@ type Schema = z.output<typeof schema>;
 const state = reactive<Partial<Schema>>({
   name: '',
   price: 0,
-  description: '',
+  overview: '',
   review: '',
   buy: '',
-  image: undefined
+  image: undefined,
+  category: '',
+  signature: ''
 });
 
 const toast = useToast();
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' });
-  console.log(event.data);
+  const formData = new FormData();
+  formData.append('name', event.data.name);
+  formData.append('price', event.data.price.toString());
+  formData.append('overview', event.data.overview);
+  formData.append('review', event.data.review);
+  formData.append('buy', event.data.buy);
+  formData.append('image', event.data.image);
+  formData.append('category', event.data.category);
+  formData.append('signature', event.data.signature);
+  try {
+    await $fetch('/api/headphone/create', {
+      method: 'POST',
+      body: formData
+    });
+    toast.add({
+      title: 'Sucesso',
+      description: 'Fone cadastrado com sucesso!',
+      color: 'success'
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
-
-const categories = ref<SelectItem[]>(['Intra-auricular', 'Earbud', 'Intra-auricular Bluetooth', 'Earbud Bluetooth', 'Headphone Cabeado', 'Headphone Bluetooth', 'Headphone Gamer']);
-const signatures = ref<SelectItem[]>(['Enérgico', 'Natural', 'Neutro-Quente', 'Analítico', 'Seco/Direto', 'Neutro-Frio', 'Musical', 'Basshead', 'V-Shaped Forte']);
-
-const category = ref();
-const signature = ref();
 
 definePageMeta({
   layout: 'dashboard'
@@ -46,7 +64,6 @@ definePageMeta({
         title="Headphones e Earphones"
         icon="i-lucide-headphones"
       />
-      <!-- <UDashboardToolbar /> -->
     </template>
 
     <template #body>
@@ -76,12 +93,12 @@ definePageMeta({
           </UFormField>
           <UFormField
             label="Descrição"
-            name="description"
+            name="overview"
             size="xl"
           >
-            <UInput
-              v-model="state.description"
-              type="text"
+            <UTextarea
+              v-model="state.overview"
+              autoresize
             />
           </UFormField>
           <UFormField
@@ -105,9 +122,9 @@ definePageMeta({
             size="xl"
           >
             <USelect
-              v-model="category"
+              v-model="state.category as HeadphoneCategory"
               value-key="id"
-              :items="categories"
+              :items="[...headphoneCategories]"
               class="w-[200px]"
             />
           </UFormField>
@@ -118,9 +135,9 @@ definePageMeta({
             size="xl"
           >
             <USelect
-              v-model="signature"
+              v-model="state.signature as SoundSignature"
               value-key="id"
-              :items="signatures"
+              :items="[...soundSignatures]"
               class="w-[200px]"
             />
           </UFormField>
@@ -131,6 +148,7 @@ definePageMeta({
             size="xl"
           >
             <UFileUpload
+              v-model="state.image"
               icon="i-lucide-image"
               label="Drop your image here"
               description="SVG, PNG, JPG or GIF (max. 2MB)"
@@ -138,7 +156,9 @@ definePageMeta({
             />
           </UFormField>
 
-          <UButton type="submit">
+          <UButton
+            type="submit"
+          >
             Submit
           </UButton>
         </UForm>

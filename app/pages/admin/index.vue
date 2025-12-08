@@ -2,17 +2,6 @@
 definePageMeta({
   layout: 'dashboard'
 });
-
-const list = headphones;
-
-async function send() {
-  for (const hp of list) {
-    await $fetch('/api/headphone/create', {
-      method: 'POST',
-      body: { ...hp }
-    });
-  }
-}
 </script>
 
 <template>
@@ -27,9 +16,7 @@ async function send() {
 
     <template #body>
       <Placeholder class="h-full" />
-      <button @click="send">
-        send
-      </button>
+      Admin
     </template>
   </UDashboardPanel>
 </template>
