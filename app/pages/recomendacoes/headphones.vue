@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { soundSignatures, type SoundSignature } from '~~/shared/types/soundSignatures';
+
 const { filteredHeadphones } = await useHeadphones();
 const MIN_RANGE = 0;
 const MAX_RANGE = 150;
@@ -58,12 +60,12 @@ function clearFilters() {
 
 <template>
   <div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/banner-kali.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/banner-suporte.jpg')]">
       <div class="bg-linear-to-b from-transparent to-default">
         <UPageSection>
           <template #title>
             <h1>
-              Headphones e Earphones
+              Headphones
             </h1>
           </template>
           <template #description>
