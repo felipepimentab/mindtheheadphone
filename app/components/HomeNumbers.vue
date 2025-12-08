@@ -16,7 +16,7 @@ const stats = [
 </script>
 
 <template>
-  <section class="from-default to-muted bg-gradient-to-b">
+  <section class="from-default to-muted bg-linear-to-b">
     <UContainer class="py-16 sm:py-24 lg:py-32">
       <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-3 lg:grid-rows-1">
         <article
