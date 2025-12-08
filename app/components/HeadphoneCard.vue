@@ -86,7 +86,7 @@ function signatureColor(signature: SoundSignature): string {
           <UBadge
             v-for="tag in headphone.tags"
             :key="tag"
-            variant="subtle"
+            variant="solid"
             :color="tag === 'Favorito do canal' ? 'primary' : 'secondary'"
             :icon="tag === 'Favorito do canal' ? 'i-lucide-heart' : ''"
             class="font-bold rounded-full"
