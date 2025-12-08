@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { soundSignatures, type SoundSignature } from '~~/shared/types/soundSignatures';
-
 const { filteredHeadphones } = await useHeadphones();
 const MIN_RANGE = 0;
 const MAX_RANGE = 150;
@@ -60,21 +58,11 @@ function clearFilters() {
 
 <template>
   <div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/banner-suporte.jpg')]">
-      <div class="bg-linear-to-b from-transparent to-default">
-        <UPageSection>
-          <template #title>
-            <h1>
-              Headphones
-            </h1>
-          </template>
-          <template #description>
-            <span class="text-highlighted">
-              Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada.
-            </span>
-          </template>
-        </UPageSection>
-      </div>
+    <div class="bg-cover bg-center bg-[url('/image/bg/headphones.jpg')]">
+      <RecommendationsHeader
+        title="Headphones"
+        description="Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada."
+      />
     </div>
     <UContainer class="py-4 sm:py-6 lg:py-8">
       <UPage>
