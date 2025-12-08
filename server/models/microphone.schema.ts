@@ -1,7 +1,7 @@
 import { defineMongooseModel } from '#nuxt/mongoose';
 
-export const HeadphoneSchema = defineMongooseModel<Headphone>({
-  name: 'Headphone',
+export const MicrophoneSchema = defineMongooseModel<Microphone>({
+  name: 'Microphone',
   schema: {
     name: {
       type: 'string',
@@ -20,10 +20,6 @@ export const HeadphoneSchema = defineMongooseModel<Headphone>({
     tags: {
       type: ['string'],
       required: false
-    },
-    signature: {
-      type: 'string',
-      required: true
     },
     category: {
       type: 'string',

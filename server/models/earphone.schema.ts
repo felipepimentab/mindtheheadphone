@@ -1,7 +1,7 @@
 import { defineMongooseModel } from '#nuxt/mongoose';
 
-export const HeadphoneSchema = defineMongooseModel<Headphone>({
-  name: 'Headphone',
+export const EarphoneSchema = defineMongooseModel<Earphone>({
+  name: 'Earphone',
   schema: {
     name: {
       type: 'string',
