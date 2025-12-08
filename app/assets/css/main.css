@@ -2,12 +2,7 @@
 @import "@nuxt/ui";
 
 @theme static {
-	/* --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-  --font-lato: "Lato", var(--font-sans);
-
-  --ui-container: 100rem;
   --color-bgc: oklch(0.15 0 67);
-  --ui-bg: var(--color-bgc);
 
   --color-mth-50: oklch(97.08% 0.01 28.11deg);
 	--color-mth-100: oklch(93.53% 0.03 25.91deg);
@@ -20,7 +15,12 @@
 	--color-mth-800: oklch(44.31% 0.17 27.89deg);
 	--color-mth-900: oklch(39.48% 0.12 27.99deg);
 	--color-mth-950: oklch(25.92% 0.09 28.45deg);
-
-	--ui-radius: 0.125rem;
 }
-/* oklch(63.7% 0.237 25.331) *
+
+:root {
+  --ui-container: 100rem;
+  --ui-radius: 0.125rem;
+  --ui-bg: var(--color-bgc);
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-lato: "Lato", var(--font-sans);
+}

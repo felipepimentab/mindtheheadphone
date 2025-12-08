@@ -11,7 +11,7 @@
           variant: 'link',
           trailingIcon: 'i-lucide-arrow-right'
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-85"
       />
     </div>
     <div class="bg-cover bg-center bg-[url('/image/bg/headphones.jpg')]">
@@ -38,7 +38,7 @@
           variant: 'link',
           trailingIcon: 'i-lucide-arrow-right'
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-85"
       />
     </div>
     <div class="bg-cover bg-center bg-[url('/image/bg/amplificadores.jpg')]">
@@ -65,7 +65,7 @@
           variant: 'link',
           trailingIcon: 'i-lucide-arrow-right'
         }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc"
+        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-85"
       />
     </div>
   </div>
