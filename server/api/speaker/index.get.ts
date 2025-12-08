@@ -1,3 +1,3 @@
 export default defineEventHandler(async (_event) => {
-  return await HeadphoneSchema.find();
-}); // 1 day
+  return await SpeakerSchema.find();
+});
