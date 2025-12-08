@@ -16,14 +16,14 @@
           class="text-center w-full"
         >
           Para parcerias e contatos comerciais, entre em contato via
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
+          <UButton
+            variant="link"
             href="mailto:comercial@mindtheheadphone.com.br"
-            class="text-primary cursor-pointer hover:underline"
+            target="_blank"
+            class="text-base lg:text-lg text-pretty tracking-tight font-bold -ml-2"
           >
             comercial@mindtheheadphone.com.br
-          </a>
+          </UButton>
         </UiText>
       </template>
     </UPageCard>
