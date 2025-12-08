@@ -1,4 +1,4 @@
-import type { Headphone, HeadphoneCategory, SoundSignature } from '~~/shared/types/headphone';
+import type { SoundSignature } from '~~/shared/types/soundSignatures';
 
 interface FilterParams {
   min?: number
