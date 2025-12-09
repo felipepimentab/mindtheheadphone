@@ -1,4 +1,5 @@
 import { Headphone, type HeadphoneCategory } from '~~/shared/types/headphone';
+import type { SoundSignature } from '../types/soundSignatures';
 
 export const headphones: Headphone[] = [
   {
@@ -475,7 +476,7 @@ export const headphones: Headphone[] = [
     category: 'Intra-auricular Bluetooth'
   },
   {
-    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/thuthear-zero-red.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/truthear-zero-red.png',
     tags: ['Favorito do canal'],
     name: 'Truthear Zero:RED',
     signature: 'Natural',
@@ -629,7 +630,7 @@ export const headphones: Headphone[] = [
     category: 'Earbud'
   },
   {
-    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kinera-celest--phoenixcall.png',
+    img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/kinera-celest-phoenixcall.png',
     tags: [],
     name: 'Kinera Celest Phoenixcall',
     signature: 'V-Shaped Forte',
@@ -1347,11 +1348,12 @@ export const headphones: Headphone[] = [
   return new Headphone(
     hp.name,
     hp.img,
-    hp.tags,
-    hp.signature,
-    (hp.category as HeadphoneCategory),
+    false,
     hp.price,
     hp.overview,
+    hp.signature as SoundSignature,
+    hp.category as HeadphoneCategory,
+    hp.tags,
     hp.buy,
     hp.review
   );
