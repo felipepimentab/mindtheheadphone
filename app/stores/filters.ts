@@ -11,19 +11,19 @@ interface Filters {
 
 export const useFiltersStore = defineStore('filters', () => {
   const search = ref('');
-  const order = ref('ascending');
+  const order = ref(DEFAULT_ORDER);
   const category = ref<string[]>([]);
   const signature = ref<string[]>([]);
-  const min = ref(0);
-  const max = ref(50625);
+  const min = ref(MIN_PRICE);
+  const max = ref(MAX_PRICE);
 
   function setFilters(p: Filters) {
     search.value = p.search || '';
     category.value = p.category || [];
     signature.value = p.signature || [];
-    min.value = p.min || 0;
-    max.value = p.max || 50625;
-    order.value = p.order || 'ascending';
+    min.value = p.min || MIN_PRICE;
+    max.value = p.max || MAX_PRICE;
+    order.value = p.order || DEFAULT_ORDER;
   }
 
   function clearFilters() {
@@ -31,9 +31,9 @@ export const useFiltersStore = defineStore('filters', () => {
       search: '',
       category: [],
       signature: [],
-      min: 0,
-      max: 50625,
-      order: 'ascending'
+      min: MIN_PRICE,
+      max: MAX_PRICE,
+      order: DEFAULT_ORDER
     });
   }
 

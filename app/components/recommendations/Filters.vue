@@ -1,29 +1,6 @@
 <script lang="ts" setup>
-import type { SelectItem } from '@nuxt/ui';
 import { useFiltersStore } from '~/stores/filters';
 
-const orders = [
-  {
-    label: 'Menor preço',
-    value: 'ascending',
-    icon: 'i-lucide-arrow-down-narrow-wide'
-  },
-  {
-    label: 'Maior preço',
-    value: 'descending',
-    icon: 'i-lucide-arrow-down-wide-narrow'
-  },
-  {
-    label: 'Alfabética',
-    value: 'alphabetic',
-    icon: 'i-lucide-arrow-down-a-z'
-  }
-] satisfies SelectItem[];
-const DEFAULT_ORDER = 'ascending';
-const MIN_RANGE = 0;
-const MAX_RANGE = 150;
-const MIN_PRICE = sliderToPrice(MIN_RANGE);
-const MAX_PRICE = sliderToPrice(MAX_RANGE);
 const orderIcon = computed(() => orders.find(item => item.value === order.value)?.icon);
 
 const { setFilters } = useFiltersStore();
@@ -39,14 +16,6 @@ defineProps<{
   categories: string[]
   signatures: string[]
 }>();
-
-function sliderToPrice(v: number) {
-  return Math.floor(Math.pow((v / 10), 4));
-}
-
-function priceToSlider(price: number) {
-  return Math.floor(Math.sqrt(Math.sqrt(price)) * 10);
-}
 
 watch(sliderRange, () => {
   let minPrice = sliderToPrice(sliderRange.value[0] || MIN_PRICE);
@@ -188,7 +157,7 @@ function updateFilters() {
           placeholder="Buscar..."
           class="w-full"
           size="xl"
-          @change="updateFilters"
+          @input="updateFilters"
         />
       </UFormField>
 
