@@ -36,6 +36,7 @@ const links: ButtonProps[] = [
         alt="Mockup"
         height="650"
         loading="lazy"
+        class="h-[650px]"
       />
     </div>
   </UPageSection>
