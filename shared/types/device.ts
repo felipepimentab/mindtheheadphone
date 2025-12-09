@@ -4,7 +4,7 @@ import { createSlugWithLimit } from '../utils/createSlug';
  * Base abstraction for any audio device stored in the system.
  * Concrete devices (headphones, microphones, etc.) extend this class.
  */
-export abstract class Device<T extends string> {
+export abstract class Device<T extends string = string> {
   /**
    * URL-friendly identifier automatically derived from the device name.
    */

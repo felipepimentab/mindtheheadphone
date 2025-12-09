@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
 
-const { getDevices } = await useGetDevices('/api/headphone');
+const { getDevices } = await useGetDevices('/api/speaker');
 const { min, max, search, category, order } = storeToRefs(useFiltersStore());
 const { clearFilters } = useFiltersStore();
 clearFilters();
@@ -21,9 +21,9 @@ const devices = computed<Device[]>(() => {
 
 <template>
   <div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/headphones.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/speaker.jpg')]">
       <RecommendationsHeader
-        title="Headphones"
+        title="Caixas de Som"
         description="Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada."
       />
     </div>
@@ -31,8 +31,8 @@ const devices = computed<Device[]>(() => {
       <UPage>
         <template #left>
           <RecommendationsFilters
-            :categories="[...headphoneCategories]"
-            :signatures="[...soundSignatures]"
+            :categories="[...speakerCategories]"
+            :signatures="[]"
           />
         </template>
 
@@ -67,17 +67,3 @@ const devices = computed<Device[]>(() => {
     </UContainer>
   </div>
 </template>
-
-<style>
-.number-input input {
-  padding-left: 2rem;
-}
-
-.number-input::before {
-  content: "R$";
-  position: absolute;
-  left: 0.5rem;
-  color: var(--text-color-muted);
-  font-size: var(--text-sm);
-}
-</style>

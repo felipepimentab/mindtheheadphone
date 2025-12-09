@@ -3,9 +3,9 @@ import type { SoundSignature } from './soundSignatures';
 
 /**
  * Base for any device meant for personal listening (headphones, earphones).
- * Adds sound-signature and tagging metadata on top of GenericDevice.
+ * Adds sound-signature on top of Device.
  */
-export abstract class Receiver<T extends string> extends Device<T> {
+export abstract class Receiver<T extends string = string> extends Device<T> {
   constructor(
     name: string,
     img: link,
