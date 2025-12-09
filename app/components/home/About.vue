@@ -24,61 +24,58 @@ const features = [
 </script>
 
 <template>
-  <!-- bg-[url('/image/bg-3.png')]  -->
-  <div class="bg-cover bg-center p-0 bg-default">
-    <UContainer class="py-16 sm:py-24 lg:py-32">
-      <UPageCard
-        class="p-0 sm:p-0 lg:p-0 lg:h-[450px] xl:h-[574px] overflow-visible"
-        spotlight
-        spotlight-color="primary"
-        orientation="horizontal"
-        reverse
-      >
-        <template #description>
-          <h2 class="text-3xl sm:text-4xl xl:text-6xl text-pretty tracking-tight font-bold text-highlighted">
-            {{ title }}
-          </h2>
-          <p class="text-base sm:text-lg xl:text-xl text-pretty text-toned mt-6">
-            {{ description }}
-          </p>
-          <div class="flex flex-col justify-center items-left">
-            <UPageFeature
-              v-for="feature in features"
-              :key="feature.title"
-              :icon="feature.icon"
-              :to="feature.to"
-              target="_blank"
-              class="mt-3 p-2 rounded-md"
-            >
-              <template #leading>
-                <Icon
-                  :name="feature.icon"
-                  class="text-primary size-5 xl:size-6"
-                />
-              </template>
-              <template #title>
-                <span class="lg:text-lg xl:text-xl">
-                  {{ feature.title }}
-                </span>
-              </template>
-              <template #description>
-                <span class="text-toned lg:text-base/6 xl:text-lg/6">
-                  {{ feature.description }}
-                </span>
-              </template>
-            </UPageFeature>
-          </div>
-        </template>
-        <template #default>
-          <NuxtImg
-            src="/image/ama.png"
-            format="webp"
-            alt="Leonardo Drummond"
-            sizes="sm:400px lg:500 xl:625"
-            class="rounded-lg overflow-visible max-sm:w-full sm:h-[400px] lg:h-[500px] lg:mt-[-50px] xl:h-[625px] xl:mt-[-75px] mx-auto bottom-1 shrink-0"
-          />
-        </template>
-      </UPageCard>
-    </UContainer>
-  </div>
+  <UContainer class="py-16 sm:py-24 lg:py-32">
+    <UPageCard
+      class="overflow-visible"
+      spotlight
+      spotlight-color="primary"
+      orientation="horizontal"
+      reverse
+    >
+      <template #description>
+        <h2 class="text-3xl sm:text-4xl xl:text-6xl text-pretty tracking-tight font-bold text-highlighted">
+          {{ title }}
+        </h2>
+        <p class="text-base sm:text-lg xl:text-xl text-pretty text-toned mt-6">
+          {{ description }}
+        </p>
+        <div class="flex flex-col justify-center items-left">
+          <UPageFeature
+            v-for="feature in features"
+            :key="feature.title"
+            :icon="feature.icon"
+            :to="feature.to"
+            target="_blank"
+            class="mt-3 p-2 rounded-md"
+          >
+            <template #leading>
+              <Icon
+                :name="feature.icon"
+                class="text-primary size-5 xl:size-6"
+              />
+            </template>
+            <template #title>
+              <span class="lg:text-lg xl:text-xl">
+                {{ feature.title }}
+              </span>
+            </template>
+            <template #description>
+              <span class="text-toned lg:text-base/6 xl:text-lg/6">
+                {{ feature.description }}
+              </span>
+            </template>
+          </UPageFeature>
+        </div>
+      </template>
+      <template #default>
+        <NuxtImg
+          src="/image/ama.png"
+          format="webp"
+          alt="Leonardo Drummond"
+          sizes="sm:400px lg:500 xl:625"
+          class="rounded-lg overflow-visible w-[400px] xl:w-[500px] 2xl:w-[625px] mx-auto shrink-0"
+        />
+      </template>
+    </UPageCard>
+  </UContainer>
 </template>
