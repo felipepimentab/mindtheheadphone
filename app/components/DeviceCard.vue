@@ -1,6 +1,9 @@
 <script lang="ts" setup>
+import type { Device } from '~~/shared/types/device';
+import type { Receiver } from '~~/shared/types/receiver';
+
 defineProps<{
-  headphone: Headphone
+  device: Device | Receiver
 }>();
 
 function priceColor(price: number): string {
@@ -76,15 +79,15 @@ function signatureColor(signature: SoundSignature): string {
   >
     <div class="bg-white flex justify-center h-52 lg:h-64 relative">
       <NuxtImg
-        :src="headphone.img"
-        :alt="headphone.name"
+        :src="device.img"
+        :alt="device.name"
         class="object-cover h-52 w-52 lg:w-64 lg:h-64"
         loading="lazy"
       />
       <div class="flex items-center justify-between w-full absolute px-3 py-2 gap-2">
         <div class="flex gap-2 flex-wrap">
           <UBadge
-            v-for="tag in headphone.tags"
+            v-for="tag in device.tags"
             :key="tag"
             variant="solid"
             :color="tag === 'Favorito do canal' ? 'primary' : 'secondary'"
@@ -94,50 +97,42 @@ function signatureColor(signature: SoundSignature): string {
             {{ tag }}
           </UBadge>
         </div>
-        <!-- <UBadge
-          variant="subtle"
-          color="warning"
-          class="items-center"
-          size="md"
-          trailing-icon="i-lucide-star"
-        >
-          <span class="text-black font-bold">
-            4
-          </span>
-        </UBadge> -->
       </div>
     </div>
     <div class="grid grid-cols-[1fr_auto] grid-rows-[auto_auto_auto_1fr] p-4 gap-x-2">
       <h3 class="text-xl font-semibold text-highlighted">
-        {{ headphone.name }}
+        {{ device.name }}
       </h3>
       <p
         class="text-lg font-bold"
-        :class="priceColor(headphone.price)"
+        :class="priceColor(device.price)"
       >
-        {{ formatBRL(headphone.price) }}
+        {{ formatBRL(device.price) }}
       </p>
       <p class="text-sm text-muted mb-2">
-        {{ headphone.category }}
+        {{ device.category }}
       </p>
-      <div class="mb-3 col-span-full">
+      <div
+        v-if="device.signature"
+        class="mb-3 col-span-full"
+      >
         <p
           class="text-xs px-2 py-1 rounded-lg w-fit font-semibold"
-          :class="signatureColor(headphone.signature)"
+          :class="signatureColor(device.signature)"
         >
-          {{ headphone.signature }}
+          {{ device.signature }}
         </p>
       </div>
       <p class="text-base col-span-full">
-        {{ headphone.overview }}
+        {{ device.overview }}
       </p>
     </div>
     <div class="w-full grid grid-cols-2 gap-2 p-2">
       <UButton
-        v-if="isValidUrl(headphone.buy || '')"
+        v-if="isValidUrl(device.buy || '')"
         variant="ghost"
         color="neutral"
-        :to="headphone.buy"
+        :to="device.buy"
         target="_blank"
         size="sm"
         class="justify-center"
@@ -145,10 +140,10 @@ function signatureColor(signature: SoundSignature): string {
         Comprar
       </UButton>
       <UButton
-        v-if="isValidUrl(headphone.review || '')"
+        v-if="isValidUrl(device.review || '')"
         variant="ghost"
         color="neutral"
-        :to="headphone.review"
+        :to="device.review"
         target="_blank"
         size="sm"
         class="justify-center"
