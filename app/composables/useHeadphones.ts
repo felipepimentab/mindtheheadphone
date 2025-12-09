@@ -1,5 +1,3 @@
-import type { SoundSignature } from '~~/shared/types/soundSignatures';
-
 interface FilterParams {
   min?: number
   max?: number
@@ -12,13 +10,13 @@ type FilterStrategy = (filterParams: FilterParams, headphones: Headphone[]) => H
 type FilterChain = FilterStrategy[];
 
 const filterByMin: FilterStrategy = (params, headphones) => {
-  const { min = 0 } = params;
+  const { min = MIN_PRICE } = params;
   return headphones.filter(hp => hp.price >= min);
 };
 
 const filterByMax: FilterStrategy = (params, headphones) => {
-  const { max = 50000 } = params;
-  return headphones.filter(hp => hp.price <= (max || 50000));
+  const { max = MAX_PRICE } = params;
+  return headphones.filter(hp => hp.price <= (max || MAX_PRICE));
 };
 
 const filterByCategory: FilterStrategy = (params, headphones) => {
