@@ -135,7 +135,7 @@ const items: NavigationMenuItem[][] = [[{
         }"
         :label="collapsed ? undefined : 'Benjamin'"
         color="neutral"
-        variant="ghost"
+        variant="soft"
         class="w-full"
         :block="collapsed"
       />

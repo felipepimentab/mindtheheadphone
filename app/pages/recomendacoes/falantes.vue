@@ -46,7 +46,7 @@ const devices = computed<Device[]>(() => {
         >
           <template #actions>
             <UButton
-              variant="link"
+              variant="soft"
               icon="i-lucide-eraser"
               size="xl"
               @click="clearFilters()"

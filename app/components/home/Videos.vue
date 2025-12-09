@@ -87,7 +87,7 @@ const videos = [
               target="_blank"
               color="primary"
               size="xl"
-              variant="ghost"
+              variant="link"
             >
               Ver Playlist
             </UButton>

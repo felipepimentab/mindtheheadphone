@@ -18,7 +18,7 @@
         loading="lazy"
       />
       <UButton
-        variant="subtle"
+        variant="soft"
         color="success"
         to="https://kuba.audio"
         target="_blank"

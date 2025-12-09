@@ -130,7 +130,7 @@ function signatureColor(signature: SoundSignature): string {
     <div class="w-full grid grid-cols-2 gap-2 p-2">
       <UButton
         v-if="isValidUrl(device.buy || '')"
-        variant="ghost"
+        variant="link"
         color="neutral"
         :to="device.buy"
         target="_blank"
@@ -141,7 +141,7 @@ function signatureColor(signature: SoundSignature): string {
       </UButton>
       <UButton
         v-if="isValidUrl(device.review || '')"
-        variant="ghost"
+        variant="link"
         color="neutral"
         :to="device.review"
         target="_blank"

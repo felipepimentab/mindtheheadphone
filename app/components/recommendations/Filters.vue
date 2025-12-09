@@ -162,7 +162,7 @@ function updateFilters() {
       </UFormField>
 
       <UButton
-        variant="link"
+        variant="soft"
         icon="i-lucide-eraser"
         size="lg"
         @click="clearFilters()"

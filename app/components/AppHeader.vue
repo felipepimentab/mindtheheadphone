@@ -47,7 +47,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
       <!-- <UColorModeButton /> -->
       <UButton
         color="neutral"
-        variant="ghost"
+        variant="link"
         to="https://youtube.com/c/mindtheheadphone"
         target="_blank"
         trailing-icon="i-lucide-youtube"
@@ -59,7 +59,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
       </UButton>
       <UButton
         color="neutral"
-        variant="ghost"
+        variant="link"
         to="https://kuba.audio"
         target="_blank"
         trailing-icon="i-lucide-headphones"

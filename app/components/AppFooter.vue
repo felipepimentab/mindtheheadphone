@@ -53,7 +53,7 @@ const footerLinks = [
         :icon="link.icon"
         :aria-label="link.label"
         color="neutral"
-        variant="ghost"
+        variant="link"
       />
     </template>
   </UFooter>
