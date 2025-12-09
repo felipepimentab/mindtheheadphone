@@ -15,10 +15,9 @@ const list = filteredHeadphones({
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Headphones e Earphones"
-        icon="i-lucide-headphones"
+        title="Microfones"
+        icon="i-lucide-mic-vocal"
       />
-      <UDashboardToolbar />
     </template>
 
     <template #body>

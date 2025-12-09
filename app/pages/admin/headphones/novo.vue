@@ -49,6 +49,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     });
   } catch (err) {
     console.error(err);
+    toast.add({
+      title: 'Erro',
+      description: err as string,
+      color: 'error'
+    });
   }
 }
 
@@ -61,7 +66,7 @@ definePageMeta({
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Headphones e Earphones"
+        title="Headphones"
         icon="i-lucide-headphones"
       />
     </template>
@@ -122,9 +127,9 @@ definePageMeta({
             size="xl"
           >
             <USelect
-              v-model="state.category as HeadphoneCategory"
+              v-model="state.category as EarphoneCategory"
               value-key="id"
-              :items="[...headphoneCategories]"
+              :items="[...earphoneCategories]"
               class="w-[200px]"
             />
           </UFormField>

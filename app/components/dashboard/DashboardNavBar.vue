@@ -4,22 +4,60 @@ import type { NavigationMenuItem } from '@nuxt/ui';
 // const route = useRoute();
 
 const items: NavigationMenuItem[][] = [[{
-  label: 'Headphones e Earphones',
+  label: 'Headphones',
   icon: 'i-lucide-headphones',
   defaultOpen: true,
   children: [{
     label: 'Todos',
-    to: '/admin/headphones/list'
+    to: '/admin/headphones'
   }, {
     label: 'Novo',
-    to: '/admin/headphones/new'
+    to: '/admin/headphones/novo'
+  }]
+}, {
+  label: 'Earphones',
+  icon: 'i-lucide-candy-cane',
+  defaultOpen: true,
+  children: [{
+    label: 'Todos',
+    to: '/admin/earphones'
+  }, {
+    label: 'Novo',
+    to: '/admin/earphones/novo'
   }]
 }, {
   label: 'Amplificadores e DACs',
-  icon: 'i-lucide-circuit-board'
+  icon: 'i-lucide-audio-waveform',
+  defaultOpen: true,
+  children: [{
+    label: 'Todos',
+    to: '/admin/amplificadores'
+  }, {
+    label: 'Novo',
+    to: '/admin/amplificadores/novo'
+  }]
 }, {
-  label: 'Microfones e Caixas de Som',
-  icon: 'i-lucide-speaker'
+  label: 'Caixas de Som',
+  icon: 'i-lucide-speaker',
+  defaultOpen: true,
+  children: [{
+    label: 'Todos',
+    to: '/admin/falantes'
+  }, {
+    label: 'Novo',
+    to: '/admin/falantes/novo'
+  }]
+}, {
+  label: 'Microfones',
+  icon: 'i-lucide-mic-vocal',
+  defaultOpen: true,
+  children: [{
+    label: 'Todos',
+    to: '/admin/microfones'
+  }, {
+    label: 'Novo',
+    to: '/admin/microfones/novo'
+  }]
 }], [{
   label: 'GitHub',
   icon: 'i-lucide-github',

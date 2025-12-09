@@ -2,20 +2,29 @@
 definePageMeta({
   layout: 'dashboard'
 });
+
+const { filteredHeadphones } = await useHeadphones();
+const list = filteredHeadphones({
+  search: '',
+  category: [],
+  signature: []
+});
 </script>
 
 <template>
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Headphones e Earphones"
+        title="Headphones"
         icon="i-lucide-headphones"
       />
     </template>
 
     <template #body>
-      <Placeholder class="h-full" />
-      Admin
+      <UTable
+        :data="list"
+        class="flex-1"
+      />
     </template>
   </UDashboardPanel>
 </template>
