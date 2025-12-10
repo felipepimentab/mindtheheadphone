@@ -1,75 +1,80 @@
+<script lang="ts" setup>
+const options: Record<string, ListOptions> = {
+  earphones: {
+    title: 'Earphones',
+    description: 'Os fones de ouvido que mais recomendo, organizados por categoria, assinatura sonora e faixa de preço.',
+    to: '/recomendacoes/earphones',
+    inverted: false,
+    enabled: true
+  },
+  headphones: {
+    title: 'Headphones',
+    description: 'Os fones de ouvido que mais recomendo, organizados por categoria, assinatura sonora e faixa de preço.',
+    to: '/recomendacoes/headphones',
+    inverted: true,
+    enabled: true
+  },
+  electronics: {
+    title: 'Eletrônicos',
+    description: 'Os fones de ouvido que mais recomendo, organizados por categoria, assinatura sonora e faixa de preço.',
+    to: '/recomendacoes/eletronicos',
+    inverted: false,
+    enabled: true
+  },
+  speakers: {
+    title: 'Caixas de Som',
+    description: 'As caixas de som que mais recomendo, incluido caixas Bluetooth e convencionais.',
+    to: '/recomendacoes/falantes',
+    inverted: false,
+    enabled: false
+  },
+  microphones: {
+    title: 'Microfones',
+    description: 'Os microfones que mais recomendo, incluindo microfones de mesa e para celular.',
+    to: '/recomendacoes/microfones',
+    inverted: false,
+    enabled: false
+  }
+} as const;
+</script>
+
 <template>
   <div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/earphones.jpg')]">
-      <UPageSection
-        title="Earphones"
-        description="Os fones de ouvido que mais recomendo, organizados por categoria, assinatura sonora e faixa de preço."
-        orientation="horizontal"
-        :links="[{
-          label: 'Ver lista de recomendações',
-          to: '/recomendacoes/earphones',
-          variant: 'link',
-          trailingIcon: 'i-lucide-arrow-right'
-        }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-55 lg:backdrop-brightness-85"
+    <div
+      v-if="options.earphones.enabled"
+      class="bg-cover bg-center bg-[url('/image/bg/earphones.jpg')]"
+    >
+      <RecommendationsSection
+        :options="options.earphones"
       />
     </div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/headphones.jpg')]">
-      <UPageSection
-        title="Headphones"
-        description="Os fones de ouvido que mais recomendo, organizados por categoria, assinatura sonora e faixa de preço."
-        orientation="horizontal"
-        :links="[{
-          label: 'Ver lista de recomendações',
-          to: '/recomendacoes/headphones',
-          variant: 'link',
-          trailingIcon: 'i-lucide-arrow-right'
-        }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l lg:bg-linear-to-r from-transparent to-bgc backdrop-brightness-55 lg:backdrop-brightness-85"
-        :reverse="true"
+    <div
+      v-if="options.headphones.enabled"
+      class="bg-cover bg-center bg-[url('/image/bg/headphones.jpg')]"
+    >
+      <RecommendationsSection
+        :options="options.headphones"
       />
     </div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/speaker.jpg')]">
-      <UPageSection
-        title="Caixas de Som"
-        description="As caixas de som que mais recomendo, organizadas por categoria e faixa de preço."
-        orientation="horizontal"
-        :links="[{
-          label: 'Ver lista de recomendações',
-          to: '/recomendacoes/falantes',
-          variant: 'link',
-          trailingIcon: 'i-lucide-arrow-right'
-        }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-45 lg:backdrop-brightness-85"
+    <div
+      v-if="options.speakers.enabled"
+      class="bg-cover bg-center bg-[url('/image/bg/speaker.jpg')]"
+    >
+      <RecommendationsSection
+        :options="options.speakers"
       />
     </div>
     <div class="bg-cover bg-center bg-[url('/image/bg/banner-ciclo.jpg')]">
-      <UPageSection
-        title="Amplificadores e DACs"
-        description="Os amplificadores e DACs que mais recomendo, organizados por categoria e faixa de preço."
-        orientation="horizontal"
-        :links="[{
-          label: 'Ver lista de recomendações',
-          to: '/recomendacoes/amplificadores',
-          variant: 'link',
-          trailingIcon: 'i-lucide-arrow-right'
-        }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l lg:bg-linear-to-r from-transparent to-bgc backdrop-brightness-45 lg:backdrop-brightness-85"
-        :reverse="true"
+      <RecommendationsSection
+        :options="options.electronics"
       />
     </div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/microfones.jpg')]">
-      <UPageSection
-        title="Microfones"
-        description="Os microfones que mais recomendo, organizados por categoria e faixa de preço."
-        orientation="horizontal"
-        :links="[{
-          label: 'Ver lista de recomendações',
-          to: '/recomendacoes/microfones',
-          variant: 'link',
-          trailingIcon: 'i-lucide-arrow-right'
-        }]"
-        class="py-4 sm:py-6 lg:py-8 bg-linear-to-l from-transparent to-bgc backdrop-brightness-55 lg:backdrop-brightness-85"
+    <div
+      v-if="options.microphones.enabled"
+      class="bg-cover bg-center bg-[url('/image/bg/microfones.jpg')]"
+    >
+      <RecommendationsSection
+        :options="options.microphones"
       />
     </div>
   </div>

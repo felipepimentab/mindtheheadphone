@@ -1,7 +1,7 @@
 import { defineMongooseModel } from '#nuxt/mongoose';
 
-export const AmplifierSchema = defineMongooseModel<Amplifier>({
-  name: 'Amplifier',
+export const ElectronicSchema = defineMongooseModel<Electronic>({
+  name: 'Electronic',
   schema: {
     name: {
       type: 'string',
