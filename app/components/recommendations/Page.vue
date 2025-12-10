@@ -44,8 +44,6 @@ const clearFilters = () => filtersRef.value.clearFilters();
         />
       </template>
 
-      <p>{{ filterParams }}</p>
-
       <UEmpty
         v-if="!devices.length"
         variant="soft"
