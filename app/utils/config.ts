@@ -31,3 +31,6 @@ export const orders = [
     icon: 'i-lucide-arrow-down-a-z'
   }
 ] satisfies SelectItem[];
+
+export const DEFAULT_EMPTY_TITLE = 'Nenhum resultado para a busca';
+export const DEFAULT_EMPTY_DESCRIPTION = 'Tente ajustar sua seleção ou clique em “Limpar filtros” para ver todos os modelos disponíveis.';
