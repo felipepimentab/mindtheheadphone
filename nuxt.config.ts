@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/recomendacoes': { prerender: true },
-    '/recomendacoes/amplificadores': { prerender: true },
+    '/recomendacoes/eletronicos': { prerender: true },
     '/recomendacoes/earphones': { prerender: true },
     '/recomendacoes/falantes': { prerender: true },
     '/recomendacoes/headphones': { prerender: true },
