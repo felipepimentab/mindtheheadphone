@@ -1,10 +1,5 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters';
-
-const orderIcon = computed(() => orders.find(item => item.value === order.value)?.icon);
-
-const { setFilters } = useFiltersStore();
-const order = ref(orders[0]?.value);
+const order = ref(DEFAULT_ORDER);
 const search = ref('');
 const category = ref([]);
 const signature = ref([]);
@@ -12,10 +7,12 @@ const sliderRange = ref([MIN_RANGE, MAX_RANGE]);
 const priceMin = ref(MIN_PRICE);
 const priceMax = ref(MAX_PRICE);
 
-defineProps<{
+withDefaults(defineProps<{
   categories: string[]
-  signatures: string[]
-}>();
+  signatures?: string[]
+}>(), {
+  signatures: () => []
+});
 
 watch(sliderRange, () => {
   let minPrice = sliderToPrice(sliderRange.value[0] || MIN_PRICE);
@@ -27,17 +24,14 @@ watch(sliderRange, () => {
 
   priceMin.value = minPrice;
   priceMax.value = maxPrice;
-
-  updateFilters();
 });
 
 function adjustSlider() {
   sliderRange.value[0] = priceToSlider(priceMin.value);
   sliderRange.value[1] = priceToSlider(priceMax.value);
-  updateFilters();
 }
 
-function clearFilters() {
+const clearFilters = () => {
   category.value = [];
   signature.value = [];
   sliderRange.value = [MIN_RANGE, MAX_RANGE];
@@ -45,18 +39,19 @@ function clearFilters() {
   priceMax.value = MAX_PRICE;
   search.value = '';
   order.value = DEFAULT_ORDER;
-}
+};
 
-function updateFilters() {
-  setFilters({
-    search: search.value,
-    category: category.value,
-    signature: signature.value,
-    min: priceMin.value,
-    max: priceMax.value,
-    order: order.value as string
-  });
-}
+defineExpose({
+  clearFilters,
+  category,
+  signature,
+  search,
+  min: priceMin,
+  max: priceMax,
+  order
+});
+
+const orderIcon = computed(() => orders.find(item => item.value === order.value)?.icon);
 </script>
 
 <template>
@@ -70,7 +65,6 @@ function updateFilters() {
           :icon="orderIcon"
           class="w-full"
           size="xl"
-          @change="updateFilters"
         />
       </UFormField>
 
@@ -87,7 +81,6 @@ function updateFilters() {
           placeholder="Todas"
           class="w-full"
           size="xl"
-          @change="updateFilters"
         />
       </UFormField>
 
@@ -102,7 +95,6 @@ function updateFilters() {
           placeholder="Todas"
           class="w-full"
           size="xl"
-          @change="updateFilters"
         />
       </UFormField>
 
@@ -114,7 +106,6 @@ function updateFilters() {
           :step="1"
           class="pt-1"
           size="xl"
-          @change="updateFilters"
         />
       </UFormField>
 
@@ -157,7 +148,6 @@ function updateFilters() {
           placeholder="Buscar..."
           class="w-full"
           size="xl"
-          @input="updateFilters"
         />
       </UFormField>
 
