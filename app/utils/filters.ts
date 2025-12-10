@@ -1,41 +1,40 @@
-import type { Device } from '~~/shared/types/device';
 import type { Receiver } from '~~/shared/types/receiver';
 
-export type FilterStrategy<T extends Device> = (params: FilterParams, devices: T[]) => T[];
-export type FilterChain<T extends Device> = FilterStrategy<T>[];
+export type FilterStrategy = (params: FilterParams, devices: Receiver[]) => Receiver[];
+export type FilterChain = FilterStrategy[];
 
-export const filterByMin: FilterStrategy<Device> = (params, devices) => {
+export const filterByMin: FilterStrategy = (params, devices) => {
   const { min = MIN_PRICE } = params;
   return devices.filter(d => d.price >= min);
 };
 
-export const filterByMax: FilterStrategy<Device> = (params, device) => {
+export const filterByMax: FilterStrategy = (params, device) => {
   const { max = MAX_PRICE } = params;
   return device.filter(d => d.price <= (max || MAX_PRICE));
 };
 
-export const filterByCategory: FilterStrategy<Device> = (params, devices) => {
+export const filterByCategory: FilterStrategy = (params, devices) => {
   const { category = [] } = params;
   if (!category.length) return devices;
 
   return devices.filter(d => category.includes(d.category));
 };
 
-export const filterBySignature: FilterStrategy<Receiver> = (params, devices) => {
+export const filterBySignature: FilterStrategy = (params, devices) => {
   const { signature = [] } = params;
   if (!signature.length) return devices;
 
   return devices.filter(d => signature.includes(d.signature));
 };
 
-export const filterBySearch: FilterStrategy<Device> = (params, devices) => {
+export const filterBySearch: FilterStrategy = (params, devices) => {
   const { search = '' } = params;
   if (!search.trim()) return devices;
 
   return devices.filter(hp => normalizeString(hp.name).includes(normalizeString(search)));
 };
 
-export const orderBy: FilterStrategy<Device> = (params, devices) => {
+export const orderBy: FilterStrategy = (params, devices) => {
   const { order = DEFAULT_ORDER } = params;
 
   return [...devices].sort((a, b) => {
