@@ -35,7 +35,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/recomendacoes': { prerender: true }
+    '/recomendacoes': { prerender: true },
+    '/recomendacoes/amplificadores': { prerender: true },
+    '/recomendacoes/earphones': { prerender: true },
+    '/recomendacoes/falantes': { prerender: true },
+    '/recomendacoes/headphones': { prerender: true },
+    '/recomendacoes/microfones': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
