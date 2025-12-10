@@ -15,7 +15,7 @@ const links: ButtonProps[] = [
   <div
     class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
   >
-    <div class="bg-linear-to-l from-transparent to-bgc">
+    <div class="bg-linear-to-b from-transparent to-bgc">
       <UPageHero
         title="Lista de Recomendações"
         orientation="horizontal"
