@@ -113,7 +113,7 @@ function signatureColor(signature: SoundSignature): string {
         {{ device.category }}
       </p>
       <div
-        v-if="device.signature"
+        v-if="'signature' in device && device.signature"
         class="mb-3 col-span-full"
       >
         <p
