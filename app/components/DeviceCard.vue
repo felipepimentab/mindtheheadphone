@@ -3,7 +3,7 @@ import type { Device } from '~~/shared/types/device';
 import type { Receiver } from '~~/shared/types/receiver';
 
 defineProps<{
-  device: Device | Receiver
+  device: Partial<Device | Receiver>
 }>();
 
 function priceColor(price: number): string {
@@ -105,9 +105,9 @@ function signatureColor(signature: SoundSignature): string {
       </h3>
       <p
         class="text-lg font-bold"
-        :class="priceColor(device.price)"
+        :class="priceColor(device.price || 0)"
       >
-        {{ formatBRL(device.price) }}
+        {{ formatBRL(device.price || 0) }}
       </p>
       <p class="text-sm text-muted mb-2">
         {{ device.category }}
