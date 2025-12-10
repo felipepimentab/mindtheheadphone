@@ -6,63 +6,31 @@ import type { NavigationMenuItem } from '@nuxt/ui';
 const items: NavigationMenuItem[][] = [[{
   label: 'Headphones',
   icon: 'i-lucide-headphones',
-  defaultOpen: true,
-  children: [{
-    label: 'Todos',
-    to: '/admin/headphones'
-  }, {
-    label: 'Novo',
-    to: '/admin/headphones/novo'
-  }]
+  to: '/admin/headphones'
 }, {
   label: 'Earphones',
-  icon: 'i-lucide-candy-cane',
-  defaultOpen: true,
-  children: [{
-    label: 'Todos',
-    to: '/admin/earphones'
-  }, {
-    label: 'Novo',
-    to: '/admin/earphones/novo'
-  }]
+  icon: 'i-lucide-ear',
+  to: '/admin/earphones'
 }, {
-  label: 'Amplificadores e DACs',
-  icon: 'i-lucide-audio-waveform',
-  defaultOpen: true,
-  children: [{
-    label: 'Todos',
-    to: '/admin/amplificadores'
-  }, {
-    label: 'Novo',
-    to: '/admin/amplificadores/novo'
-  }]
+  label: 'Eletrônicos',
+  icon: 'i-lucide-circuit-board',
+  to: '/admin/eletronicos'
 }, {
-  label: 'Caixas de Som',
-  icon: 'i-lucide-speaker',
-  defaultOpen: true,
-  children: [{
-    label: 'Todos',
-    to: '/admin/falantes'
-  }, {
-    label: 'Novo',
-    to: '/admin/falantes/novo'
-  }]
-}, {
-  label: 'Microfones',
-  icon: 'i-lucide-mic-vocal',
-  defaultOpen: true,
-  children: [{
-    label: 'Todos',
-    to: '/admin/microfones'
-  }, {
-    label: 'Novo',
-    to: '/admin/microfones/novo'
-  }]
+//   label: 'Caixas de Som',
+//   icon: 'i-lucide-speaker',
+//   to: '/admin/falantes'
+// }, {
+//   label: 'Microfones',
+//   icon: 'i-lucide-mic-vocal',
+//   to: '/admin/microfones'
+// }, {
+  label: 'Adicionar novo',
+  icon: 'i-lucide-circle-plus',
+  to: '/admin/novo'
 }], [{
-  label: 'GitHub',
-  icon: 'i-lucide-github',
-  to: 'https://github.com/nuxt-ui-templates/dashboard',
-  target: '_blank'
+  label: 'Voltar ao site',
+  icon: 'i-lucide-arrow-left-from-line',
+  to: '/'
 }]];
 </script>
 
@@ -128,7 +96,7 @@ const items: NavigationMenuItem[][] = [[{
       />
     </template>
 
-    <template #footer="{ collapsed }">
+    <!-- <template #footer="{ collapsed }">
       <UButton
         :avatar="{
           src: 'https://github.com/benjamincanac.png'
@@ -139,6 +107,6 @@ const items: NavigationMenuItem[][] = [[{
         class="w-full"
         :block="collapsed"
       />
-    </template>
+    </template> -->
   </UDashboardSidebar>
 </template>

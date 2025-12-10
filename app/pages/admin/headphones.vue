@@ -1,13 +1,14 @@
 <script lang="ts" setup>
+import type { Device } from '~~/shared/types/device';
+
 definePageMeta({
   layout: 'dashboard'
 });
 
-const { filteredHeadphones } = await useHeadphones();
-const list = filteredHeadphones({
-  search: '',
-  category: [],
-  signature: []
+const API_URL = '/api/headphone';
+const { getDevices } = await useGetDevices(API_URL);
+const list = computed<Device[]>(() => {
+  return getDevices({});
 });
 </script>
 
@@ -15,8 +16,8 @@ const list = filteredHeadphones({
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Microfones"
-        icon="i-lucide-mic-vocal"
+        title="Headphones"
+        icon="i-lucide-headphones"
       />
     </template>
 

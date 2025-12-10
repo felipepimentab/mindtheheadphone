@@ -2,9 +2,15 @@
 import * as z from 'zod';
 import type { FormSubmitEvent } from '@nuxt/ui';
 
+const toast = useToast();
+definePageMeta({
+  layout: 'dashboard'
+});
+
 const schema = z.object({
   name: z.string(),
   price: z.number().min(0),
+  imported: z.boolean,
   overview: z.string(),
   review: z.url(),
   buy: z.url(),
@@ -12,12 +18,11 @@ const schema = z.object({
   category: z.string(),
   signature: z.string()
 });
-
 type Schema = z.output<typeof schema>;
-
 const state = reactive<Partial<Schema>>({
   name: '',
   price: 0,
+  imported: false,
   overview: '',
   review: '',
   buy: '',
@@ -26,7 +31,6 @@ const state = reactive<Partial<Schema>>({
   signature: ''
 });
 
-const toast = useToast();
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   const formData = new FormData();
   formData.append('name', event.data.name);
@@ -37,6 +41,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   formData.append('image', event.data.image);
   formData.append('category', event.data.category);
   formData.append('signature', event.data.signature);
+
   try {
     await $fetch('/api/headphone/create', {
       method: 'POST',
@@ -56,18 +61,14 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     });
   }
 }
-
-definePageMeta({
-  layout: 'dashboard'
-});
 </script>
 
 <template>
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Headphones"
-        icon="i-lucide-headphones"
+        title="Adicionar novo dispositivo"
+        icon="i-lucide-plus-circle"
       />
     </template>
 
@@ -130,7 +131,7 @@ definePageMeta({
               v-model="state.category as EarphoneCategory"
               value-key="id"
               :items="[...earphoneCategories]"
-              class="w-[200px]"
+              class="w-full"
             />
           </UFormField>
 
@@ -143,7 +144,7 @@ definePageMeta({
               v-model="state.signature as SoundSignature"
               value-key="id"
               :items="[...soundSignatures]"
-              class="w-[200px]"
+              class="w-full"
             />
           </UFormField>
 
