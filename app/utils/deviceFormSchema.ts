@@ -13,12 +13,12 @@ export const deviceFormSchema = z.object({
   price: z.number().min(MIN_PRICE).max(MAX_PRICE),
   imported: z.boolean(),
   overview: z.string().min(10),
-  review: z.url(),
-  buy: z.url(),
+  review: z.optional(z.url()),
+  buy: z.optional(z.url()),
   tags: z.array(z.string()),
   image: z.instanceof(File),
   category: z.string(),
-  signature: z.string().optional()
+  signature: z.optional(z.string())
 });
 export type DeviceFormSchema = z.output<typeof deviceFormSchema>;
 

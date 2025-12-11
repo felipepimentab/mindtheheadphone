@@ -2,6 +2,7 @@
 import type { FormSubmitEvent } from '@nuxt/ui';
 import { availableTypes, type AvailableType } from '~/utils/deviceFormSchema';
 
+const toast = useToast();
 const state = reactive<Partial<DeviceFormSchema>>({
   type: 'Earphone',
   name: '',
@@ -52,6 +53,11 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
   try {
     await handleSubmit();
   } catch (error) {
+    toast.add({
+      title: 'Erro',
+      description: error as string,
+      color: 'error'
+    });
     console.error(error);
   }
 };
