@@ -56,7 +56,6 @@ export function useDeviceForm(event: FormSubmitEvent<DeviceFormSchema>) {
       throw new Error('Form is not valid');
     }
     const formData = buildFormData();
-    console.log('🔵 ~ formData:', formData);
     try {
       await $fetch('/api/devices/create', {
         method: 'POST',

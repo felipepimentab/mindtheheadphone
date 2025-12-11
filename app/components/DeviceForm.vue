@@ -47,7 +47,6 @@ defineExpose({
 
 async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
   const { handleSubmit } = useDeviceForm(event);
-  console.log(event);
 
   try {
     await handleSubmit();
