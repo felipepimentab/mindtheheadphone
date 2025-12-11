@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const deviceCategories = [...headphoneCategories];
 const deviceSignatures = [...soundSignatures];
-const apiURL = '/api/headphone';
+const apiURL = '/api/devices/headphones';
 
 const title = 'Headphones';
 const description = 'Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada.';

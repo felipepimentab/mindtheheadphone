@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const deviceCategories = [...electronicCategories];
-const apiURL = '/api/electronic';
+const apiURL = '/api/devices/electronics';
 
 const title = 'Eletrônicos';
 const description = 'Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada.';
@@ -9,7 +9,7 @@ const description = 'Abaixo estão os fones de ouvido que mais recomendo, de dif
 <template>
   <div>
     <!-- Background image must be "hard-coded" for pre-rendering -->
-    <div class="bg-cover bg-center bg-[url('/image/bg/eletronicos.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/banner-ciclo.jpg')]">
       <RecommendationsHeader
         :title="title"
         :description="description"

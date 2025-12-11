@@ -1,14 +1,8 @@
 import * as z from 'zod';
-
-export const availableTypes = [
-  'Earphone',
-  'Headphone',
-  'Eletrônico'
-] as const;
-export type AvailableType = typeof availableTypes[number];
+import { deviceTypes } from '~~/shared/types/device';
 
 export const deviceFormSchema = z.object({
-  type: z.enum(availableTypes),
+  type: z.enum(deviceTypes),
   name: z.string().min(1),
   price: z.number().min(MIN_PRICE).max(MAX_PRICE),
   imported: z.boolean(),

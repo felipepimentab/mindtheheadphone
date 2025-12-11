@@ -16,14 +16,6 @@ const items: NavigationMenuItem[][] = [[{
   icon: 'i-lucide-circuit-board',
   to: '/admin/eletronicos'
 }, {
-//   label: 'Caixas de Som',
-//   icon: 'i-lucide-speaker',
-//   to: '/admin/falantes'
-// }, {
-//   label: 'Microfones',
-//   icon: 'i-lucide-mic-vocal',
-//   to: '/admin/microfones'
-// }, {
   label: 'Adicionar novo',
   icon: 'i-lucide-circle-plus',
   to: '/admin/novo'

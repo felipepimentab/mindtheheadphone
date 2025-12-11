@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui';
-import { availableTypes, type AvailableType } from '~/utils/deviceFormSchema';
 
 const toast = useToast();
 const state = reactive<Partial<DeviceFormSchema>>({
@@ -17,9 +16,9 @@ const state = reactive<Partial<DeviceFormSchema>>({
   signature: ''
 });
 
-const types = [...availableTypes];
+const types = [...deviceTypes];
 const categories = computed<string[]>(() => {
-  return availableCategories[state.type as AvailableType] || [];
+  return availableCategories[state.type as DeviceType] || [];
 });
 
 function handleTypeChange() {

@@ -38,9 +38,7 @@ export default defineNuxtConfig({
     '/recomendacoes': { prerender: true },
     '/recomendacoes/eletronicos': { prerender: true },
     '/recomendacoes/earphones': { prerender: true },
-    '/recomendacoes/falantes': { prerender: true },
-    '/recomendacoes/headphones': { prerender: true },
-    '/recomendacoes/microfones': { prerender: true }
+    '/recomendacoes/headphones': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',

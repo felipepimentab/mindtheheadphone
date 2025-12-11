@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const deviceCategories = [...earphoneCategories];
 const deviceSignatures = [...soundSignatures];
-const apiURL = '/api/earphone';
+const apiURL = '/api/devices/earphones';
 
-const title = 'Esrphones';
+const title = 'Earphones';
 const description = 'Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada.';
 </script>
 

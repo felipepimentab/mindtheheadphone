@@ -1,20 +1,26 @@
-import { createSlugWithLimit } from '../utils/createSlug';
+import type { SoundSignature } from './soundSignatures';
+
+export const deviceTypes = [
+  'Earphone',
+  'Headphone',
+  'Eletrônico'
+] as const;
+export type DeviceType = typeof deviceTypes[number];
 
 /**
  * Base abstraction for any audio device stored in the system.
  * Concrete devices (headphones, microphones, etc.) extend this class.
  */
 export abstract class Device<T extends string = string> {
-  /**
-   * URL-friendly identifier automatically derived from the device name.
-   */
-  readonly slug: string;
-
   constructor(
     /**
      * Human-readable product name.
      */
     readonly name: string,
+    /**
+     * URL-friendly identifier automatically derived from the device name.
+     */
+    readonly slug: string,
     /**
      * Indicates whether the product is imported (true) or domestic (false).
      */
@@ -36,9 +42,17 @@ export abstract class Device<T extends string = string> {
      */
     readonly category: T,
     /**
-     * Searchable keywords (e.g., “portable”, “gaming”, “studio”).
+     * Additional tags for display.
      */
     readonly tags: string[],
+    /**
+     * Additional tags for display.
+     */
+    readonly type: DeviceType,
+    /**
+     * Device's Sound Signature
+     */
+    readonly signature?: SoundSignature,
     /**
      * Optional purchase link.
      */
@@ -47,7 +61,21 @@ export abstract class Device<T extends string = string> {
      * Optional review or article link.
      */
     readonly review?: link
-  ) {
-    this.slug = createSlugWithLimit(name);
-  }
+  ) {}
 }
+
+export enum DeviceFormKeys {
+  NAME = 'name',
+  PRICE = 'price',
+  IMAGE = 'image',
+  IMPORTED = 'imported',
+  CATEGORY = 'category',
+  OVERVIEW = 'overview',
+  REVIEW = 'review',
+  BUY = 'buy',
+  SIGNATURE = 'signature',
+  TYPE = 'type',
+  TAGS = 'tags'
+}
+
+export const DEVICES_FOLDER = 'devices';

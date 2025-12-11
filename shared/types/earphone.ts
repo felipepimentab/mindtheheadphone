@@ -1,4 +1,4 @@
-import { Receiver } from './receiver';
+import { Device } from './device';
 
 /**
  * Earphone categories available in the system.
@@ -18,4 +18,4 @@ export type EarphoneCategory = typeof earphoneCategories[number];
 /**
  * Represents an earphone device with its specific category.
  */
-export class Earphone extends Receiver<EarphoneCategory> {}
+export class Earphone extends Device<EarphoneCategory> {}

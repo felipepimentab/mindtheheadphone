@@ -1,7 +1,8 @@
 import { defineMongooseModel } from '#nuxt/mongoose';
+import type { Device } from '~~/shared/types/device';
 
-export const SpeakerSchema = defineMongooseModel<Speaker>({
-  name: 'Speaker',
+export const DeviceSchema = defineMongooseModel<Device>({
+  name: 'Device',
   schema: {
     name: {
       type: 'string',
@@ -19,6 +20,14 @@ export const SpeakerSchema = defineMongooseModel<Speaker>({
     },
     tags: {
       type: ['string'],
+      required: false
+    },
+    type: {
+      type: 'string',
+      required: true
+    },
+    signature: {
+      type: 'string',
       required: false
     },
     category: {

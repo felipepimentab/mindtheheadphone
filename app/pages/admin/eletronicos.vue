@@ -5,7 +5,7 @@ definePageMeta({
   layout: 'dashboard'
 });
 
-const API_URL = '/api/elecronic';
+const API_URL = '/api/devices/electronics';
 const { getDevices } = await useGetDevices(API_URL);
 const list = computed<Device[]>(() => {
   return getDevices({});

@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
-import type { Receiver } from '~~/shared/types/receiver';
 
 defineProps<{
-  device: Partial<Device | Receiver>
+  device: Partial<Device>
 }>();
 
 function priceColor(price: number): string {

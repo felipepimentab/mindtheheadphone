@@ -57,6 +57,14 @@ export function useDeviceForm(event: FormSubmitEvent<DeviceFormSchema>) {
     }
     const formData = buildFormData();
     console.log('🔵 ~ formData:', formData);
+    try {
+      await $fetch('/api/devices/create', {
+        method: 'POST',
+        body: formData
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return {
