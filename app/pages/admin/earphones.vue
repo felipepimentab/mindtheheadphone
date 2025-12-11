@@ -5,7 +5,7 @@ definePageMeta({
   layout: 'dashboard'
 });
 
-const API_URL = '/api/earphone';
+const API_URL = '/api/devices/earphones';
 const { getDevices } = await useGetDevices(API_URL);
 const list = computed<Device[]>(() => {
   return getDevices({});

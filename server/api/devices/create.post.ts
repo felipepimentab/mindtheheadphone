@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const { deviceData, imagePath, imageData } = useCreateDevice(form);
-    const { url } = await put(imagePath, imageData, { access: 'public' });
+    const { url } = await put(imagePath, imageData, { access: 'public', allowOverwrite: true });
     const newDevice = new DeviceSchema({
       ...deviceData,
       img: url
