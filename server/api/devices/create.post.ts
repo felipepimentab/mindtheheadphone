@@ -1,7 +1,7 @@
-import { put } from '@vercel/blob';
-// import { createError } from 'h3';
-import { DeviceSchema } from '~~/server/models/device.schema';
-import { useCreateDevice } from '~/composables/useCreateDevice';
+// import { put } from '@vercel/blob';
+// // import { createError } from 'h3';
+// import { DeviceSchema } from '~~/server/models/device.schema';
+// import { useCreateDevice } from '~/composables/useCreateDevice';
 
 export default defineEventHandler(async (event) => {
   const form = await readMultipartFormData(event);
@@ -9,15 +9,15 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
-  try {
-    const { deviceData, imagePath, imageData } = useCreateDevice(form);
-    const { url } = await put(imagePath, imageData, { access: 'public', allowOverwrite: true });
-    const newDevice = new DeviceSchema({
-      ...deviceData,
-      img: url
-    });
-    newDevice.save();
-  } catch (error) {
-    console.error(error);
-  }
+  // try {
+  //   const { deviceData, imagePath, imageData } = useCreateDevice(form);
+  //   const { url } = await put(imagePath, imageData, { access: 'public', allowOverwrite: true });
+  //   const newDevice = new DeviceSchema({
+  //     ...deviceData,
+  //     img: url
+  //   });
+  //   newDevice.save();
+  // } catch (error) {
+  //   console.error(error);
+  // }
 });
