@@ -8,7 +8,7 @@ export function useParseForm(form: MultiPartData[]) {
   function getNumber(n: string) {
     const s = form.find(field => field.name === n)?.data.toString();
     if (s) {
-      return parseInt(s);
+      return parseFloat(s);
     }
     return undefined;
   }
