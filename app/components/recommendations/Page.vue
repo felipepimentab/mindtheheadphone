@@ -21,7 +21,8 @@ const filterParams = computed<FilterParams>(() => {
     max: filtersRef?.value?.max || MAX_PRICE,
     category: filtersRef?.value?.category || [],
     signature: filtersRef?.value?.signature || [],
-    order: filtersRef?.value?.order || DEFAULT_ORDER
+    order: filtersRef?.value?.order || DEFAULT_ORDER,
+    search: filtersRef?.value?.search || ''
   };
 });
 
