@@ -1,66 +1,36 @@
 <script lang="ts" setup>
-import * as z from 'zod';
-import type { FormSubmitEvent } from '@nuxt/ui';
+import type { Receiver } from '~~/shared/types/receiver';
 
-const toast = useToast();
+// import type { FormSubmitEvent } from '@nuxt/ui';
+
+// const toast = useToast();
 definePageMeta({
   layout: 'dashboard'
 });
 
-const schema = z.object({
-  name: z.string(),
-  price: z.number().min(0),
-  imported: z.boolean,
-  overview: z.string(),
-  review: z.url(),
-  buy: z.url(),
-  image: z.file(),
-  category: z.string(),
-  signature: z.string()
-});
-type Schema = z.output<typeof schema>;
-const state = reactive<Partial<Schema>>({
-  name: '',
-  price: 0,
-  imported: false,
-  overview: '',
-  review: '',
-  buy: '',
-  image: undefined,
-  category: '',
-  signature: ''
+const deviceForm = ref();
+const formValues = computed(() => {
+  const values = { ...deviceForm?.value?.state };
+  return values as DeviceFormSchema;
 });
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  const formData = new FormData();
-  formData.append('name', event.data.name);
-  formData.append('price', event.data.price.toString());
-  formData.append('overview', event.data.overview);
-  formData.append('review', event.data.review);
-  formData.append('buy', event.data.buy);
-  formData.append('image', event.data.image);
-  formData.append('category', event.data.category);
-  formData.append('signature', event.data.signature);
-
-  try {
-    await $fetch('/api/headphone/create', {
-      method: 'POST',
-      body: formData
-    });
-    toast.add({
-      title: 'Sucesso',
-      description: 'Fone cadastrado com sucesso!',
-      color: 'success'
-    });
-  } catch (err) {
-    console.error(err);
-    toast.add({
-      title: 'Erro',
-      description: err as string,
-      color: 'error'
-    });
-  }
-}
+const device = computed<Partial<Receiver>>(() => {
+  const imageUrl = formValues.value.image ? URL.createObjectURL(formValues.value.image) : '/image/headphones.png';
+  const d: Partial<Receiver> = {
+    name: formValues.value.name || 'Nome do dispositivo',
+    imported: formValues.value.imported,
+    price: formValues.value.price,
+    overview: formValues.value.overview,
+    category: formValues.value.category,
+    signature: formValues.value.signature as SoundSignature,
+    tags: formValues.value.tags,
+    buy: formValues.value.buy,
+    review: formValues.value.review,
+    img: imageUrl,
+    slug: 'slug'
+  };
+  return d;
+});
 </script>
 
 <template>
@@ -73,101 +43,16 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </template>
 
     <template #body>
-      <div class="form">
-        <UForm
-          :schema="schema"
-          :state="state"
-          class="space-y-4"
-          @submit="onSubmit"
-        >
-          <UFormField
-            label="Nome"
-            name="name"
-            size="xl"
-          >
-            <UInput v-model="state.name" />
-          </UFormField>
-          <UFormField
-            label="Preço"
-            name="price"
-            size="xl"
-          >
-            <UInput
-              v-model="state.price"
-              type="number"
-            />
-          </UFormField>
-          <UFormField
-            label="Descrição"
-            name="overview"
-            size="xl"
-          >
-            <UTextarea
-              v-model="state.overview"
-              autoresize
-            />
-          </UFormField>
-          <UFormField
-            label="Comprar"
-            name="buy"
-            size="xl"
-          >
-            <UInput v-model="state.buy" />
-          </UFormField>
-          <UFormField
-            label="Review"
-            name="review"
-            size="xl"
-          >
-            <UInput v-model="state.review" />
-          </UFormField>
-
-          <UFormField
-            label="Categoria"
-            name="category"
-            size="xl"
-          >
-            <USelect
-              v-model="state.category as EarphoneCategory"
-              value-key="id"
-              :items="[...earphoneCategories]"
-              class="w-full"
-            />
-          </UFormField>
-
-          <UFormField
-            label="Assinatura Sonora"
-            name="signature"
-            size="xl"
-          >
-            <USelect
-              v-model="state.signature as SoundSignature"
-              value-key="id"
-              :items="[...soundSignatures]"
-              class="w-full"
-            />
-          </UFormField>
-
-          <UFormField
-            label="Imagem"
-            name="image"
-            size="xl"
-          >
-            <UFileUpload
-              v-model="state.image"
-              icon="i-lucide-image"
-              label="Drop your image here"
-              description="SVG, PNG, JPG or GIF (max. 2MB)"
-              class="w-96 min-h-48"
-            />
-          </UFormField>
-
-          <UButton
-            type="submit"
-          >
-            Submit
-          </UButton>
-        </UForm>
+      <div class="lg:grid lg:grid-cols-[500px_auto] space-x-8">
+        <DeviceForm
+          ref="deviceForm"
+        />
+        <div>
+          <DeviceCard
+            :device="device"
+            class="max-w-[450px] lg:sticky lg:top-0"
+          />
+        </div>
       </div>
     </template>
   </UDashboardPanel>
