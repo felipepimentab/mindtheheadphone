@@ -3,5 +3,4 @@ interface ListOptions {
   description: string
   to: link
   inverted: boolean
-  enabled: boolean
 }

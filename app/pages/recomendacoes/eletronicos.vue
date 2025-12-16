@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const deviceCategories = [...electronicCategories];
-const apiURL = '/api/devices/electronics';
+const deviceCategories = [...electronicsList.categories];
+const apiURL = electronicsList.apiUrl;
 
-const title = 'Eletrônicos';
-const description = 'Abaixo estão os fones de ouvido que mais recomendo, de diferentes tipos e faixas de preço. Basta selecionar a categoria, a assinatura sonora e a faixa de preço desejada.';
+const title = electronicsList.title;
+const description = electronicsList.description;
 </script>
 
 <template>
