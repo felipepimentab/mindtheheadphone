@@ -6,7 +6,7 @@ const features = [
     title: 'Blog',
     description: 'Em 2009, comecei a fazer avaliações de fones de ouvido no orkut e depois criei um blog.',
     icon: 'i-lucide-rss',
-    to: 'https://mindtheheadphone.com.br'
+    to: 'https://old.mindtheheadphone.com.br'
   },
   {
     title: 'YouTube',
