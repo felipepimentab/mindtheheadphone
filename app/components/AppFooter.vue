@@ -33,7 +33,7 @@ const footerLinks = [
         <span class="italic text-muted">
           - Feito por
           <a
-            href="https://github.com/felipepimentab/mindtheheadphone"
+            href="https://github.com/felipepimentab"
             target="_blank"
             rel="noopener noreferrer"
             class="hover:underline cursor-pointer"
