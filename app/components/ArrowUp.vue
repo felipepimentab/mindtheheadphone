@@ -17,7 +17,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll));
   <Transition name="fade">
     <div
       v-if="show"
-      class="fixed right-16 bottom-16 z-50"
+      class="fixed right-5 sm:right-7 lg:right-9 bottom-16 z-50"
     >
       <UButton
         icon="i-lucide-arrow-up"
