@@ -32,6 +32,23 @@ const devices = computed<Device[]>(() => {
 });
 
 const clearFilters = () => filtersRef.value.clearFilters();
+
+type ViewMode = 'grid' | 'list';
+
+const viewMode = ref<ViewMode>('grid');
+
+const viewOptions: { label: string; value: ViewMode; icon: string }[] = [
+  {
+    label: 'Grade',
+    value: 'grid',
+    icon: 'i-lucide-grid-2x2'
+  },
+  {
+    label: 'Lista',
+    value: 'list',
+    icon: 'i-lucide-list'
+  }
+];
 </script>
 
 <template>
@@ -65,13 +82,47 @@ const clearFilters = () => filtersRef.value.clearFilters();
         </template>
       </UEmpty>
 
-      <UPageGrid>
+      <div
+        v-if="devices.length"
+        class="flex items-center justify-end gap-2 mb-6"
+      >
+        <span class="text-sm text-muted hidden sm:inline">
+          Visualização:
+        </span>
+        <div class="inline-flex gap-2">
+          <UButton
+            v-for="option in viewOptions"
+            :key="option.value"
+            color="neutral"
+            size="sm"
+            :variant="viewMode === option.value ? 'soft' : 'ghost'"
+            :icon="option.icon"
+            :aria-pressed="viewMode === option.value"
+            @click="viewMode = option.value"
+          >
+            {{ option.label }}
+          </UButton>
+        </div>
+      </div>
+
+      <UPageGrid v-if="viewMode === 'grid'">
         <DeviceCard
           v-for="device in devices"
           :key="device.name"
           :device="device"
         />
       </UPageGrid>
+
+      <div
+        v-else
+        class="flex flex-col gap-4"
+      >
+        <DeviceCardList
+          v-for="device in devices"
+          :key="device.name"
+          :device="device"
+        />
+      </div>
     </UPage>
   </UContainer>
 </template>
