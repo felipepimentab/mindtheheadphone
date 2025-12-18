@@ -1,52 +1,34 @@
 # 🎧 Mind the Headphone
 
-<!-- <div style="display: inline">
-  <img src="https://img.shields.io/badge/bun-282a36?style=for-the-badge&logo=bun&logoColor=fbf0df" alt="Bun">
-  <img src="https://img.shields.io/badge/nuxt.js-020618?style=for-the-badge&logo=nuxt&logoColor=00dc82" alt="Nuxt Js">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
-</div> -->
-
-Headphone recommendation platform made as a free contribution to the **Mind the Headphone** YouTube channel and the audio enthusiast community.
-
-> [!IMPORTANT]
-> This project is for personal development and is not associated with the official Mind the Headphone brand or its creators in any way.
+Headphone recommendation platform and home for the [Mind the Headphone](https://www.youtube.com/@mindtheheadphone) YouTube channel.
+Made as a free contribution to the MTH community.
 
 ![Screenshot](screenshot.jpg)
 
-## 🔍 About
-
-This website was created as a **free contribution** to the [Mind the Headphone YouTube channel](https://youtube.com/@mindtheheadphone) to serve as a home for the channel and help viewers find the perfect headphones through the channel's list of recommendations.
+> [!TIP]
+> Watch the showcase and walkthrough of the website on [YouTube](https://www.youtube.com/watch?v=BNXL7RmmoP8).
 
 ## 🎯 Features
+- Smart filters: price range, sound signature, and category
+- Direct links to the channel's reviews and for buying
+- SSR for fast loads and SEO
+- Responsive, accessible UI
 
-- **Filtering**: Filter headphones by price range, sound signature, and category;
-- **Reviews**: Direct links to the channel's reviews;
-- **Responsive Design**: Works perfectly on all devices.
+## 🛠️ Stack
+- `Nuxt.js` and `Nuxt UI` with `TypeScript`
+- `Bun` for runtime/package manager
+- `MongoDB` for Object storage
+- `Vercel` for deployment and Blob storage
 
-## 🛠️ Tech Stack
-
-- **[Bun](https://bun.com/)** - JavaScript runtime and package manager
-- **[Nuxt.js](https://nuxt.com/)** - Fullstack Vue.js framework with SSR
-- **[Nuxt UI](https://ui.nuxt.com/)** - Beautiful and customizable UI components
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
-- **[Vercel](https://vercel.com/)** - Fast and easy deployment
-
-## 🚀 Getting Started
-
+## 🚀 Quick Start
 ```bash
-# Install dependencies
 bun install
-
-# Start development server
 bun run dev
-
-# Build for production
+# build
 bun run build
 ```
 
 ## 🔗 Links
-
-- **YouTube Channel**: [@mindtheheadphone](https://youtube.com/@mindtheheadphone)
-- **Original Blog**: [mindtheheadphone.com.br](https://old.mindtheheadphone.com.br)
-- **Kuba Audio**: [kuba.audio](https://kuba.audio) - Brazilian headphone brand
+- YouTube: [@mindtheheadphone](https://youtube.com/@mindtheheadphone)
+- Legacy Blog: [old.mindtheheadphone.com.br](https://old.mindtheheadphone.com.br)
+- Kuba Audio: [kuba.audio](https://kuba.audio)
