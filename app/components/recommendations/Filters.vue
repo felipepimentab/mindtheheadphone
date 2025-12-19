@@ -105,7 +105,7 @@ const orderIcon = computed(() => orders.find(item => item.value === order.value)
           :max="MAX_RANGE"
           :step="1"
           class="pt-1"
-          size="xl"
+          size="sm"
         />
       </UFormField>
 
