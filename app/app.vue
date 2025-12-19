@@ -1,4 +1,6 @@
 <script setup>
+import { SpeedInsights } from '@vercel/speed-insights/nuxt';
+
 const title = 'Mind the Headphone';
 const description = 'O maior canal dedicado a fones de ouvido do mundo.';
 
@@ -15,6 +17,7 @@ useSeoMeta({
 
 <template>
   <NuxtLayout>
+    <SpeedInsights />
     <NuxtPage />
   </NuxtLayout>
 </template>
