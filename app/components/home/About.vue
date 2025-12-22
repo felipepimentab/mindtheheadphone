@@ -26,7 +26,7 @@ const features = [
 <template>
   <UContainer class="py-16 sm:py-24 lg:py-32">
     <UPageCard
-      class="overflow-visible"
+      class="overflow-visible bg-accented"
       spotlight
       spotlight-color="primary"
       orientation="horizontal"
