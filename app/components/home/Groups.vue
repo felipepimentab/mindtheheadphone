@@ -29,6 +29,9 @@ const links: ButtonProps[] = [
     description="Participe da comunidade para receber ofertas e dicas de fones de ouvido em tempo real"
     variant="naked"
     :links="links"
+    :ui="{
+      description: 'font-medium'
+    }"
   >
     <div class="flex justify-center items-center">
       <NuxtImg

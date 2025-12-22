@@ -2,6 +2,7 @@
   <UContainer>
     <UPageCard
       orientation="vertical"
+      variant="soft"
       class="my-16"
     >
       <template #default>
@@ -12,15 +13,14 @@
           Parcerias comerciais
         </UiText>
         <UiText
-          type="h5"
-          class="text-center w-full"
+          class="text-center w-full font-medium"
         >
           Para parcerias e contatos comerciais, entre em contato via
           <UButton
             variant="link"
             href="mailto:comercial@mindtheheadphone.com.br"
             target="_blank"
-            class="text-base lg:text-lg text-pretty tracking-tight font-bold -ml-2"
+            class="text-base lg:text-lg text-pretty tracking-tight font-medium -ml-2"
           >
             comercial@mindtheheadphone.com.br
           </UButton>

@@ -20,6 +20,9 @@ const links: ButtonProps[] = [
     description="O blog Mind the Headphone foi o início de tudo – e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
     orientation="vertical"
     :links="links"
+    :ui="{
+      description: 'font-medium'
+    }"
   >
     <NuxtImg
       src="/image/blog-screenshot.png"
