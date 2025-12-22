@@ -10,10 +10,17 @@ export default defineAppConfig({
       },
       variants: {
         variant: {
-          subtle: 'backdrop-blur',
-          soft: 'backdrop-blur'
+          subtle: 'backdrop-blur-xs',
+          soft: 'backdrop-blur-xs'
         }
-      }
+      },
+      compoundVariants: [
+        {
+          color: 'primary',
+          variant: 'soft',
+          class: 'bg-primary/15 hover:bg-primary/20 backdrop-brightness-90 text-shadow-lg'
+        }
+      ]
     },
     blogPost: {
       slots: {
