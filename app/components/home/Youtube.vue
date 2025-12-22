@@ -24,11 +24,58 @@ const posts = computed<BlogPostProps[]>(() => {
       : undefined
   }));
 });
+
+const fallbackPosts: BlogPostProps[] = [
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  },
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  },
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  },
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  },
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  },
+  {
+    title: '',
+    image: '',
+    date: '',
+    variant: 'soft'
+  }
+];
 </script>
 
 <template>
-  <UBlogPosts
-    :posts="posts"
-    class="col-span-2"
-  />
+  <ClientOnly>
+    <UBlogPosts
+      :posts="posts"
+      class="col-span-2"
+    />
+    <template #fallback>
+      <UBlogPosts
+        :posts="fallbackPosts"
+        class="col-span-2"
+      />
+    </template>
+  </ClientOnly>
 </template>
