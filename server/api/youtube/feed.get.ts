@@ -1,6 +1,8 @@
 import type { YouTubeVideo } from '../../../shared/types/youtube';
 
-export default defineEventHandler(async (event) => {
+const MAX_AGE = 60 * 60; // 1 hour
+
+export default defineCachedEventHandler(async (event) => {
   const channelId = 'UC7fN3sq7h2BDFtBrzXWo4Zg'; // Mind the Headphone channel ID
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
@@ -18,7 +20,7 @@ export default defineEventHandler(async (event) => {
     // Parse XML manually to extract video data
     const videos = parseYouTubeRSS(response as string);
 
-    setHeader(event, 'Cache-Control', 'max-age=3600, s-maxage=3600, stale-while-revalidate=86400');
+    setHeader(event, 'Cache-Control', `max-age=${MAX_AGE}, s-maxage=${MAX_AGE}, stale-while-revalidate=86400`);
 
     return videos.slice(0, limit); // Return specified number of videos
   } catch (error) {
@@ -28,7 +30,7 @@ export default defineEventHandler(async (event) => {
       statusMessage: 'Failed to fetch YouTube feed'
     });
   }
-}); // 1 hour
+}, { maxAge: MAX_AGE });
 
 function parseYouTubeRSS(xmlString: string): YouTubeVideo[] {
   const videos = [];
