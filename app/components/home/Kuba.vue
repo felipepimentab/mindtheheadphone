@@ -54,26 +54,27 @@ function select(index: number) {
       <UButton
         to="https://kuba.audio"
         color="success"
-        variant="outline"
+        variant="soft"
         target="_blank"
         size="xl"
         class="w-fit lg:hidden mt-8"
+        trailing-icon="i-lucide-external-link"
       >
         Conheça
       </UButton>
     </div>
 
     <template #description>
-      <h4 class="my-3 text-2xl font-bold">
+      <h4 class="my-3 text-muted text-2xl font-bold">
         A Primeira Marca Brasileira de Headphones
       </h4>
-      <p class="my-3 text-highlighted">
+      <p class="my-3 text-default">
         A Kuba Audio é uma marca criada por mim e pela minha sócia, a Eduarda, em 2016.
         <span class="font-black">
           Desenvolvemos fones de ouvido de alta fidelidade, totalmente modulares e feitos para durar.
         </span>
       </p>
-      <p class="my-3 text-highlighted">
+      <p class="my-3 text-default">
         Até hoje, já ultrapassamos 40.000 unidades vendidas, conquistando não só o público geral como o profissional e o entusiasta.
       </p>
     </template>
@@ -104,6 +105,7 @@ function select(index: number) {
         target="_blank"
         size="xl"
         class="max-lg:hidden mt-8"
+        trailing-icon="i-lucide-external-link"
       >
         Conheça
       </UButton>

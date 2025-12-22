@@ -88,6 +88,7 @@ const videos = [
               color="primary"
               size="xl"
               variant="link"
+              trailing-icon="i-lucide-external-link"
             >
               Ver Playlist
             </UButton>

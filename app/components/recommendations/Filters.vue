@@ -152,7 +152,7 @@ const orderIcon = computed(() => orders.find(item => item.value === order.value)
       </UFormField>
 
       <UButton
-        variant="soft"
+        variant="ghost"
         icon="i-lucide-eraser"
         size="lg"
         @click="clearFilters()"

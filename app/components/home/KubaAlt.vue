@@ -23,6 +23,7 @@
         to="https://kuba.audio"
         target="_blank"
         size="xl"
+        trailing-icon="i-lucide-external-link"
       >
         Acesse o site
       </UButton>
