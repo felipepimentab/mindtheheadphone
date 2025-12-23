@@ -1,3 +1,4 @@
+import { defineOrganization } from 'nuxt-schema-org/schema';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config'],
@@ -77,6 +78,24 @@ export default defineNuxtConfig({
 
   robots: {
     disallow: ['/admin/**', '/faq', '/sobre']
+  },
+
+  schemaOrg: {
+    identity: defineOrganization({
+      name: 'Mind the Headphone',
+      url: 'https://www.mindtheheadphone.com.br',
+      description: 'O maior canal dedicado a fones de ouvido do mundo',
+      email: 'comercial@mindtheheadphone.com.br',
+      foundingDate: '2014-10-10',
+      sameAs: ['https://www.youtube.com/@MINDTHEHEADPHONE'],
+      logo: {
+        '@type': 'ImageObject',
+        'url': '/icon-512.png'
+      },
+      founder: {
+        '@id': '#leonardo-drummond'
+      }
+    })
   },
 
   seo: {
