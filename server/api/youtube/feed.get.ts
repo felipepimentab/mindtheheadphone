@@ -2,7 +2,7 @@ import type { YouTubeVideo } from '../../../shared/types/youtube';
 
 const MAX_AGE = 60 * 60; // 1 hour
 
-export default defineCachedEventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const channelId = 'UC7fN3sq7h2BDFtBrzXWo4Zg'; // Mind the Headphone channel ID
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
@@ -30,7 +30,7 @@ export default defineCachedEventHandler(async (event) => {
       statusMessage: 'Failed to fetch YouTube feed'
     });
   }
-}, { maxAge: MAX_AGE });
+});
 
 function parseYouTubeRSS(xmlString: string): YouTubeVideo[] {
   const videos = [];
