@@ -1,6 +1,7 @@
 import type { YouTubeVideo } from '../../../shared/types/youtube';
 
 const MAX_AGE = 60 * 60; // 1 hour
+export const prerender = false;
 
 export default defineEventHandler(async (event) => {
   const channelId = 'UC7fN3sq7h2BDFtBrzXWo4Zg'; // Mind the Headphone channel ID
