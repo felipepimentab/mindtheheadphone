@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+definePageMeta({
+  title: 'Listas de Recomendações',
+  description: 'Está procurando um fone e não sabe por onde começar? Conheça minhas listas de recomendações!'
+});
+</script>
+
 <template>
   <div>
     <div class="bg-cover bg-center bg-[url('/image/bg/earphones.jpg')]">

@@ -13,7 +13,7 @@ const links: ButtonProps[] = [
 
 <template>
   <div
-    class="bg-cover bg-center bg-[url('/image/bg-disco.jpg')]"
+    class="bg-cover bg-center bg-[url('/image/bg/home.jpg')]"
   >
     <div class="bg-linear-to-b from-transparent to-bgc backdrop-brightness-75">
       <UPageHero
