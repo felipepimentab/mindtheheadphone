@@ -43,14 +43,11 @@ function parseYouTubeRSS(xmlString: string): YouTubeVideo[] {
     const title = entry.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1]
       || entry.match(/<title>(.*?)<\/title>/)?.[1];
     const published = entry.match(/<published>(.*?)<\/published>/)?.[1];
-    const description = entry.match(/<media:description><!\[CDATA\[(.*?)\]\]><\/media:description>/)?.[1]
-      || entry.match(/<media:description>(.*?)<\/media:description>/)?.[1] || '';
 
     if (videoId && title) {
       videos.push({
         id: videoId,
         title: decodeHtmlEntities(title),
-        description: decodeHtmlEntities(description),
         publishedAt: published,
         thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
         url: `https://www.youtube.com/watch?v=${videoId}`

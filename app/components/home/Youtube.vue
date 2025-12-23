@@ -2,7 +2,10 @@
 import type { BlogPostProps } from '@nuxt/ui';
 
 // Fetch YouTube videos from RSS feed
-const { data: videos } = await useFetch('/api/youtube/feed');
+const { data: videos } = await useFetch('/api/youtube/feed', {
+  lazy: true,
+  server: false
+});
 
 // Transform YouTube videos to BlogPostProps format
 const posts = computed<BlogPostProps[]>(() => {
