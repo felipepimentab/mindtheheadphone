@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 useSeoMeta({
   title: earphonesList.title,
-  description: earphonesList.description
+  description: earphonesList.description,
+  ogImage: '/image/og/earphones.png'
 });
 const deviceCategories = [...earphonesList.categories];
 const deviceSignatures = [...soundSignatures];

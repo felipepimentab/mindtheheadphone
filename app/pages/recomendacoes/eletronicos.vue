@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 useSeoMeta({
   title: electronicsList.title,
-  description: electronicsList.description
+  description: electronicsList.description,
+  ogImage: '/image/og/electronics.png'
 });
 const deviceCategories = [...electronicsList.categories];
 const apiURL = electronicsList.apiUrl;

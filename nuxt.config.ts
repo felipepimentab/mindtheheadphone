@@ -71,7 +71,8 @@ export default defineNuxtConfig({
 
   seo: {
     meta: {
-      twitterCreator: '@mindheadphone'
+      twitterCreator: '@mindheadphone',
+      author: 'Leonardo Drummond'
     }
   },
 
