@@ -44,6 +44,8 @@ export default defineNuxtConfig({
     '/recomendacoes/headphones': { prerender: true }
   },
 
+  sourcemap: false,
+
   compatibilityDate: '2025-01-15',
 
   eslint: {
@@ -52,6 +54,14 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  image: {
+    format: ['webp'],
+    domains: ['https://3owp1lqte78l9dxq.public.blob.vercel-storage.com'],
+    vercel: {
+      formats: ['image/webp', 'image/avif']
     }
   },
 
