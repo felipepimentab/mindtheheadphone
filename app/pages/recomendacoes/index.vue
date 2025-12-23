@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-definePageMeta({
-  title: 'Listas de Recomendações',
+useSeoMeta({
+  title: 'Recomendações',
   description: 'Está procurando um fone e não sabe por onde começar? Conheça minhas listas de recomendações!'
 });
 </script>

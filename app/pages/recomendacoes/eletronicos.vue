@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+useSeoMeta({
+  title: electronicsList.title,
+  description: electronicsList.description
+});
 const deviceCategories = [...electronicsList.categories];
 const apiURL = electronicsList.apiUrl;
 

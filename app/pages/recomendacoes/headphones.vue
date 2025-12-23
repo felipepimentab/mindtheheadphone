@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+useSeoMeta({
+  title: headphonesList.title,
+  description: headphonesList.description
+});
 const deviceCategories = [...headphonesList.categories];
 const deviceSignatures = [...soundSignatures];
 const apiURL = headphonesList.apiUrl;
