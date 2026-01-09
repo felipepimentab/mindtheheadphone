@@ -33,7 +33,7 @@ const footerLinks = [
         <span class="italic text-muted">
           - Feito por
           <a
-            href="https://github.com/felipepimentab"
+            href="https://felipepimenta.dev"
             target="_blank"
             rel="noopener noreferrer"
             class="hover:underline cursor-pointer"
