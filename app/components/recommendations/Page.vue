@@ -64,13 +64,16 @@ const clearFilters = () => filtersRef.value.clearFilters();
         </template>
       </UEmpty>
 
-      <UPageGrid v-if="viewMode === 'grade'">
+      <div
+        v-if="viewMode === 'grade'"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      >
         <DeviceCard
           v-for="device in devices"
           :key="device.name"
           :device="device"
         />
-      </UPageGrid>
+      </div>
       <div
         v-else
         class="flex flex-col gap-y-2"
