@@ -56,7 +56,7 @@ const clearFilters = () => filtersRef.value.clearFilters();
           <UButton
             variant="soft"
             icon="i-lucide-eraser"
-            size="xl"
+            size="md"
             @click="clearFilters()"
           >
             Limpar filtros

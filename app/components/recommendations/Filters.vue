@@ -206,7 +206,7 @@ const FIELD_STYLE = 'soft' as const;
           size="xs"
           @click="clearFilters()"
         >
-          Limpar tudo
+          Limpar filtros
         </UButton>
       </div>
 
