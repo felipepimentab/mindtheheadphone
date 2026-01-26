@@ -60,15 +60,16 @@ const videos = [
       >
         Mais vídeos
       </ui-text>
-      <UPageGrid class="grid-cols-2 lg:grid-cols-4">
+      <UPageGrid class="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <UCard
           v-for="item in videos"
           :key="item.title"
           variant="soft"
+          :ui="{
+            body: 'h-full grid grid-rows-[200px_auto_32px] gap-4'
+          }"
         >
-          <div
-            class="flex flex-col items-center justify-center gap-4"
-          >
+          <div class="flex justify-center w-full">
             <NuxtImg
               :src="item.image"
               :alt="item.alt"
@@ -77,22 +78,23 @@ const videos = [
               class="rounded-md"
               loading="lazy"
             />
-
-            <h4 class="text-lg lg:text-xl font-bold text-center">
-              {{ item.title }}
-            </h4>
-
-            <UButton
-              :to="item.url"
-              target="_blank"
-              color="primary"
-              size="xl"
-              variant="link"
-              trailing-icon="i-lucide-external-link"
-            >
-              Ver Playlist
-            </UButton>
           </div>
+
+          <h4 class="text-lg lg:text-xl font-bold text-center">
+            {{ item.title }}
+          </h4>
+
+          <UButton
+            :to="item.url"
+            target="_blank"
+            color="primary"
+            size="md"
+            variant="link"
+            trailing-icon="i-lucide-external-link"
+            class="justify-center"
+          >
+            Ver Playlist
+          </UButton>
         </UCard>
       </UPageGrid>
     </UContainer>
