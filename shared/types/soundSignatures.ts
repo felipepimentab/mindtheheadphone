@@ -42,6 +42,22 @@ export const colorReference: Record<SoundSignature, string[]> = {
   ]
 };
 
+export const colorName: Record<SoundSignature, SoundSignatureSemanticColor> = {
+  'Enérgico': 'ss-energetico',
+  'Natural': 'ss-natural',
+  'Neutro-Quente': 'ss-neutro-quente',
+  'Neutro-Frio': 'ss-neutro-frio',
+  'Musical': 'ss-musical',
+  'Basshead': 'ss-basshead',
+  'V-Shaped Forte': 'ss-v-shaped'
+} as const;
+
+type SoundSignatureSemanticColor = 'ss-energetico' | 'ss-natural' | 'ss-neutro-quente' | 'ss-neutro-frio' | 'ss-musical' | 'ss-basshead' | 'ss-v-shaped';
+
+export function semanticColor(s: SoundSignature): SoundSignatureSemanticColor {
+  return colorName[s];
+}
+
 /**
  * Union of all possible sound signature keys.
  */

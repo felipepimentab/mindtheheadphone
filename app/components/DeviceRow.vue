@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
+import { semanticColor } from '~~/shared/types/soundSignatures';
 
 defineProps<{
   device: Partial<Device>
@@ -28,9 +29,9 @@ function formatBRL(amount: number): string {
   }).format(amount);
 }
 
-function signatureColor(signature: SoundSignature): string {
-  return (colorReference[signature] as string[]).join(' ');
-}
+// function signatureColor(signature: SoundSignature): string {
+//   return (colorReference[signature] as string[]).join(' ');
+// }
 </script>
 
 <template>
@@ -62,13 +63,15 @@ function signatureColor(signature: SoundSignature): string {
       <div
         class="flex flex-col items-start gap-y-1 sm:max-md:row-span-2 justify-center max-sm:flex-row max-sm:col-span-2 max-sm:justify-between"
       >
-        <p
+        <!-- class="text-xs px-1 lg:px-2 py-0 lg:py-1 rounded-sm lg:rounded-lg w-fit font-semibold whitespace-nowrap"
+        :class="signatureColor(device.signature)" -->
+        <UBadge
           v-if="'signature' in device && device.signature"
-          class="text-xs px-1 lg:px-2 py-0 lg:py-1 rounded-sm lg:rounded-lg w-fit font-semibold whitespace-nowrap"
-          :class="signatureColor(device.signature)"
+          variant="soft"
+          :color="semanticColor(device.signature)"
         >
           {{ device.signature }}
-        </p>
+        </UBadge>
         <p class="text-xs text-dimmed lg:whitespace-nowrap">
           {{ device.category }}
         </p>
