@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
 
-const { apiUrl } = withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   deviceCategories: string[]
   deviceSignatures?: string[]
   apiUrl: string
@@ -25,8 +25,9 @@ const filterParams = computed<FilterParams>(() => {
     search: filtersRef?.value?.search || ''
   };
 });
+const viewMode = computed(() => filtersRef?.value?.viewMode);
 
-const { getDevices } = await useGetDevices(apiUrl);
+const { getDevices } = await useGetDevices(props.apiUrl);
 const devices = computed<Device[]>(() => {
   return getDevices(filterParams.value);
 });
@@ -37,13 +38,11 @@ const clearFilters = () => filtersRef.value.clearFilters();
 <template>
   <UContainer class="py-4 sm:py-6 lg:py-8">
     <UPage>
-      <template #left>
-        <RecommendationsFilters
-          ref="filtersRef"
-          :categories="[...deviceCategories]"
-          :signatures="[...deviceSignatures]"
-        />
-      </template>
+      <RecommendationsFilters
+        ref="filtersRef"
+        :categories="[...deviceCategories]"
+        :signatures="[...deviceSignatures]"
+      />
 
       <UEmpty
         v-if="!devices.length"
@@ -65,13 +64,23 @@ const clearFilters = () => filtersRef.value.clearFilters();
         </template>
       </UEmpty>
 
-      <UPageGrid>
+      <UPageGrid v-if="viewMode === 'grade'">
         <DeviceCard
           v-for="device in devices"
           :key="device.name"
           :device="device"
         />
       </UPageGrid>
+      <div
+        v-else
+        class="flex flex-col gap-y-2"
+      >
+        <DeviceRow
+          v-for="device in devices"
+          :key="device.name"
+          :device="device"
+        />
+      </div>
     </UPage>
   </UContainer>
 </template>

@@ -39,7 +39,24 @@ export default defineNuxtConfig({
   },
 
   ui: {
-    fonts: false
+    fonts: false,
+    theme: {
+      colors: [
+        'primary',
+        'secondary',
+        'info',
+        'success',
+        'warning',
+        'error',
+        'ss-energetico',
+        'ss-natural',
+        'ss-neutro-quente',
+        'ss-neutro-frio',
+        'ss-musical',
+        'ss-basshead',
+        'ss-v-shaped'
+      ]
+    }
   },
 
   routeRules: {
