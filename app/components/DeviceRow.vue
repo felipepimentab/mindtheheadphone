@@ -44,45 +44,42 @@ function signatureColor(signature: SoundSignature): string {
       />
     </div>
     <article
-      class="w-full grid grid-rows-2 grid-cols-6 gap-x-2 p-2 bg-neutral-900"
+      class="w-full grid gap-y-1 grid-cols-[auto_100px] sm:grid-cols-[auto_100px_150px_56px] md:grid-cols-[20%_100px_150px_auto_56px] gap-x-4 p-2 bg-neutral-900"
     >
-      <div class="col-span-4 lg:col-span-2 flex items-center">
-        <h3 class="text-sm font-semibold text-highlighted">
+      <div class="flex items-center">
+        <h3 class="text-sm font-semibold text-highlighted xl:text-base">
           {{ device.name }}
         </h3>
       </div>
-      <div class="col-span-2 lg:col-span-1 flex max-lg:flex-row-reverse items-center">
+      <div class="flex items-center max-sm:flex-row-reverse">
         <p
-          class="text-sm font-bold"
+          class="text-sm font-bold xl:text-base"
           :class="priceColor(device.price || 0)"
         >
           {{ formatBRL(device.price || 0) }}
         </p>
       </div>
       <div
-        class="col-span-3 lg:col-span-1 flex items-center lg:flex-row-reverse"
+        class="flex flex-col items-start gap-y-1 sm:max-md:row-span-2 justify-center max-sm:flex-row max-sm:col-span-2 max-sm:justify-between"
       >
         <p
           v-if="'signature' in device && device.signature"
-          class="text-xs px-1 lg:px-2 py-0 lg:py-1 rounded-sm lg:rounded-lg w-fit font-semibold"
+          class="text-xs px-1 lg:px-2 py-0 lg:py-1 rounded-sm lg:rounded-lg w-fit font-semibold whitespace-nowrap"
           :class="signatureColor(device.signature)"
         >
           {{ device.signature }}
         </p>
-      </div>
-      <div class="col-span-3 lg:col-span-1 flex items-center max-lg:flex-row-reverse">
         <p class="text-xs text-dimmed lg:whitespace-nowrap">
           {{ device.category }}
         </p>
       </div>
-      <div class="col-span-5 flex items-center">
-        <p class="text-xs text-muted">
+      <div class="flex items-center sm:max-md:row-start-2 sm:max-md:col-span-2">
+        <p class="text-xs text-muted xl:text-sm">
           {{ device.overview }}
         </p>
       </div>
-      <div class="flex justify-around -col-end-1 lg:row-start-1 lg:row-span-2">
+      <div class="flex justify-around sm:max-md:row-span-2 max-sm:justify-end gap-x-2">
         <UTooltip
-          v-if="isValidUrl(device.buy || '')"
           :delay-duration="0"
           text="Comprar"
         >
@@ -95,10 +92,10 @@ function signatureColor(signature: SoundSignature): string {
             class="justify-center"
             aria-label="Comprar"
             icon="i-lucide-shopping-cart"
+            :disabled="!isValidUrl(device.buy || '')"
           />
         </UTooltip>
         <UTooltip
-          v-if="isValidUrl(device.review || '')"
           :delay-duration="0"
           text="Review"
         >
@@ -111,6 +108,7 @@ function signatureColor(signature: SoundSignature): string {
             class="justify-center"
             aria-label="Review"
             icon="i-lucide-youtube"
+            :disabled="!isValidUrl(device.review || '')"
           />
         </UTooltip>
       </div>
