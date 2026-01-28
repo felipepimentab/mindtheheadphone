@@ -19,13 +19,18 @@ const links: ButtonProps[] = [
       <UPageHero
         title="Lista de Recomendações"
         orientation="horizontal"
-        description="Está procurando um fone e não sabe por onde começar? Conheça minhas listas de recomendações!"
         :links="links"
         :ui="{
           title: 'text-shadow-[0_0_20px] text-shadow-bgc',
           description: 'text-shadow-[0_0_10px] text-shadow-bgc font-medium'
         }"
-      />
+      >
+        <template #description>
+          <p>
+            Está procurando um fone e não sabe por onde começar? Conheça minhas listas de recomendações!
+          </p>
+        </template>
+      </UPageHero>
     </div>
   </div>
 </template>
