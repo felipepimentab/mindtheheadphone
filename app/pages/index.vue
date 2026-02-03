@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 useSeoMeta({
-  titleTemplate: '%s'
+  titleTemplate: 'Mind the Headphone | %s',
+  title: 'Site oficial e Listas de Recomendações'
 });
 </script>
 
