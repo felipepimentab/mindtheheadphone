@@ -39,6 +39,8 @@ useSchemaOrg([
 useSeoMeta({
   titleTemplate: '%s | Mind the Headphone'
 });
+
+useBreadcrumbItems();
 </script>
 
 <template>
