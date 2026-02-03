@@ -2,7 +2,7 @@ import { defineOrganization } from 'nuxt-schema-org/schema';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config', '@nuxtjs/mdc'],
 
   devtools: {
     enabled: true
@@ -134,7 +134,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ['/admin/**', '/faq', '/sobre'],
-    include: ['/', '/recomendacoes/**'],
+    include: ['/', '/recomendacoes/**', '/politica-de-privacidade', '/termos-de-uso'],
     zeroRuntime: true
   }
 });
