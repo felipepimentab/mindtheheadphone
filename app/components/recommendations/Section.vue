@@ -13,9 +13,9 @@ defineProps<{
     :description="description"
     orientation="horizontal"
     :links="[{
-      label: 'Ver lista de recomendações',
+      label: `Ver lista de ${title.toLowerCase()}`,
       to: to,
-      variant: 'link',
+      variant: 'ghost',
       trailingIcon: 'i-lucide-chevron-right'
     }]"
     class="py-4 sm:py-6 lg:py-8 from-transparent to-bgc backdrop-brightness-55 lg:backdrop-brightness-85"

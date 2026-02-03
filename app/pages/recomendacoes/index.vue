@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 useSeoMeta({
-  title: 'Recomendações',
+  title: 'Listas de Recomendações',
   description: 'Está procurando um fone e não sabe por onde começar? Conheça minhas listas de recomendações!',
   ogImage: '/image/og/lists.png'
 });

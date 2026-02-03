@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+useSeoMeta({
+  titleTemplate: '%s'
+});
+</script>
+
 <template>
   <UPage>
     <HomeHero />

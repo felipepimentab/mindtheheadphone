@@ -1,5 +1,9 @@
 import { defineOrganization } from 'nuxt-schema-org/schema';
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+const SEO_NAME = 'Mind the Headphone | Casa Oficial e Recomendações de Fones';
+const SEO_DESCRIPTION = 'Bem-vindo à casa oficial do Mind the Headphone, o maior canal de fones de ouvido do mundo. Acesse as listas de recomendações e encontre o seu fone de ouvido ideal.';
+
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config'],
 
@@ -27,8 +31,8 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://www.mindtheheadphone.com.br',
-    name: 'Mind the Headphone',
-    description: 'O maior canal dedicado a fones de ouvido do mundo!',
+    name: SEO_NAME,
+    description: SEO_DESCRIPTION,
     defaultLocale: 'pt-BR'
   },
 
@@ -110,16 +114,16 @@ export default defineNuxtConfig({
     identity: defineOrganization({
       name: 'Mind the Headphone',
       url: 'https://www.mindtheheadphone.com.br',
-      description: 'O maior canal dedicado a fones de ouvido do mundo',
+      description: SEO_DESCRIPTION,
       email: 'comercial@mindtheheadphone.com.br',
       foundingDate: '2014-10-10',
-      sameAs: ['https://www.youtube.com/@MINDTHEHEADPHONE'],
-      logo: {
-        '@type': 'ImageObject',
-        'url': '/icon-512.png'
-      },
+      sameAs: [
+        'https://www.youtube.com/@MINDTHEHEADPHONE',
+        'https://www.instagram.com/mind.the.headphone/'
+      ],
+      logo: '/icon-512.png',
       founder: {
-        '@id': '#leonardo-drummond'
+        '@id': '#/schema/person/#leonardo-drummond'
       }
     })
   },
