@@ -2,7 +2,7 @@ import { defineOrganization } from 'nuxt-schema-org/schema';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config', '@nuxtjs/mdc'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', 'nuxt-mongoose', '@pinia/nuxt', '@nuxtjs/seo', 'nuxt-site-config', '@nuxtjs/mdc', 'nuxt-gtag'],
 
   devtools: {
     enabled: true
@@ -83,6 +83,10 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  gtag: {
+    id: process.env.GTAG_ID
   },
 
   image: {
