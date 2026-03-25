@@ -22,7 +22,9 @@ const tabs: TabsItem[] = [
     value: 'lista'
   }
 ];
-const viewMode = ref('lista');
+const viewMode = ref<'grade' | 'lista'>('lista');
+const VIEW_MODE_STORAGE_KEY = 'recommendations:view-mode';
+const availableViewModes = new Set(['grade', 'lista']);
 
 withDefaults(defineProps<{
   categories: string[]
@@ -41,6 +43,20 @@ watch(sliderRange, () => {
 
   priceMin.value = minPrice;
   priceMax.value = maxPrice;
+});
+
+onMounted(() => {
+  const storedValue = localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+  if (storedValue && availableViewModes.has(storedValue)) {
+    viewMode.value = storedValue as 'grade' | 'lista';
+  }
+});
+
+watch(viewMode, (value) => {
+  if (!import.meta.client)
+    return;
+
+  localStorage.setItem(VIEW_MODE_STORAGE_KEY, value);
 });
 
 function adjustSlider() {
