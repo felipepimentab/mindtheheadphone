@@ -1,7 +1,4 @@
 <script setup>
-import { SpeedInsights } from '@vercel/speed-insights/nuxt';
-import { Analytics } from '@vercel/analytics/nuxt';
-
 useSchemaOrg([
   definePerson({
     '@id': '#leonardo-drummond',
@@ -46,7 +43,5 @@ useBreadcrumbItems();
 <template>
   <NuxtLayout>
     <NuxtPage />
-    <SpeedInsights />
-    <Analytics />
   </NuxtLayout>
 </template>
