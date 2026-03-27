@@ -4,7 +4,6 @@
     <UMain>
       <slot />
     </UMain>
-    <USeparator />
     <ArrowUp />
     <AppFooter />
   </UApp>
