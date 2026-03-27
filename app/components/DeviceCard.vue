@@ -76,6 +76,7 @@ function formatBRL(amount: number): string {
         <UBadge
           variant="soft"
           :color="semanticColor(device.signature)"
+          size="lg"
         >
           {{ device.signature }}
         </UBadge>
@@ -93,9 +94,9 @@ function formatBRL(amount: number): string {
         target="_blank"
         size="sm"
         class="justify-center"
-      >
-        Comprar
-      </UButton>
+        label="Comprar"
+        icon="i-lucide-shopping-cart"
+      />
       <UButton
         v-if="isValidUrl(device.review || '')"
         variant="link"
@@ -104,9 +105,9 @@ function formatBRL(amount: number): string {
         target="_blank"
         size="sm"
         class="justify-center"
-      >
-        Review
-      </UButton>
+        label="Review"
+        icon="i-lucide-youtube"
+      />
     </div>
   </article>
 </template>

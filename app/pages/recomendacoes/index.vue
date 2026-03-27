@@ -24,7 +24,7 @@ useSeoMeta({
         :inverted="headphonesList.inverted"
       />
     </div>
-    <div class="bg-cover bg-center bg-[url('/image/bg/banner-ciclo.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/valves.jpg')]">
       <RecommendationsSection
         :title="electronicsList.title"
         :description="electronicsList.description"

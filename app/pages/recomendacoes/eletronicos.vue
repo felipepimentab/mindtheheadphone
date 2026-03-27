@@ -14,7 +14,7 @@ const description = electronicsList.description;
 <template>
   <div>
     <!-- Background image must be "hard-coded" for pre-rendering -->
-    <div class="bg-cover bg-center bg-[url('/image/bg/banner-ciclo.jpg')]">
+    <div class="bg-cover bg-center bg-[url('/image/bg/valves.jpg')]">
       <RecommendationsHeader
         :title="title"
         :description="description"

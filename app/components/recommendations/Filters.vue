@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { SelectItem, TabsItem } from '@nuxt/ui';
 
+const showFilters = ref(false);
 const order = ref(DEFAULT_ORDER);
 const search = ref('');
 const category = ref([]);
@@ -22,7 +23,9 @@ const tabs: TabsItem[] = [
     value: 'lista'
   }
 ];
-const viewMode = ref('lista');
+const viewMode = ref<'grade' | 'lista'>('lista');
+const VIEW_MODE_STORAGE_KEY = 'recommendations:view-mode';
+const availableViewModes = new Set(['grade', 'lista']);
 
 withDefaults(defineProps<{
   categories: string[]
@@ -41,6 +44,20 @@ watch(sliderRange, () => {
 
   priceMin.value = minPrice;
   priceMax.value = maxPrice;
+});
+
+onMounted(() => {
+  const storedValue = localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+  if (storedValue && availableViewModes.has(storedValue)) {
+    viewMode.value = storedValue as 'grade' | 'lista';
+  }
+});
+
+watch(viewMode, (value) => {
+  if (!import.meta.client)
+    return;
+
+  localStorage.setItem(VIEW_MODE_STORAGE_KEY, value);
 });
 
 function adjustSlider() {
@@ -83,6 +100,10 @@ function addColorToSignatures(list: string[]): SelectItem[] {
   });
 }
 
+function toggleShowFilters() {
+  showFilters.value = !showFilters.value;
+}
+
 function signatureColor(sig: SoundSignature) {
   switch (sig) {
     case 'Enérgico':
@@ -104,135 +125,192 @@ function signatureColor(sig: SoundSignature) {
   }
 }
 
-const FIELD_SIZE = 'md' as const;
+const FIELD_SIZE = 'lg' as const;
 const FIELD_STYLE = 'soft' as const;
 </script>
 
 <template>
-  <div>
-    <UForm class="gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:gap-4">
-      <UFormField
-        label="Buscar por nome"
-        orientation="vertical"
-        class=""
+  <div class="mb-4">
+    <UForm class="flex flex-col">
+      <div class="grid grid-cols-[1fr_auto] gap-x-2 w-full max-w-125" />
+      <UCollapsible
+        v-model:open="showFilters"
+        :unmount-on-hide="false"
+        :ui="{
+          content: 'overflow-visible flex flex-col gap-y-2 gap-x-3 w-full max-w-250 lg:grid lg:grid-cols-3 mb-8'
+        }"
       >
-        <UInput
-          v-model="search"
-          icon="i-lucide-search"
-          :variant="FIELD_STYLE"
-          placeholder="Buscar..."
-          class="w-full"
-          :size="FIELD_SIZE"
-        />
-      </UFormField>
+        <template #content>
+          <!-- Assinatura Sonora -->
+          <UFormField
+            label="Assinatura Sonora"
+            class="order-2"
+          >
+            <USelect
+              v-model="signature"
+              multiple
+              :items="[...addColorToSignatures(signatures)]"
+              :disabled="!signatures.length"
+              placeholder="Todas"
+              class="w-full"
+              :size="FIELD_SIZE"
+              :variant="FIELD_STYLE"
+            />
+          </UFormField>
 
-      <div class="grid grid-cols-2 gap-2">
-        <UFormField label="Preço Mínimo">
-          <UInputNumber
-            v-model="priceMin"
-            class="w-full number-input"
-            :size="FIELD_SIZE"
-            :variant="FIELD_STYLE"
-            :increment="false"
-            :decrement="false"
-            :format-options="{
-              useGrouping: false
-            }"
-            @change="adjustSlider"
-          />
-        </UFormField>
-        <UFormField label="Preço Máximo">
-          <UInputNumber
-            v-model="priceMax"
-            class="w-full number-input"
-            :size="FIELD_SIZE"
-            :variant="FIELD_STYLE"
-            :increment="false"
-            :decrement="false"
-            :format-options="{
-              useGrouping: false
-            }"
-            @change="adjustSlider"
-          />
-        </UFormField>
-        <UFormField
-          class="col-span-2"
-        >
-          <USlider
-            v-model="sliderRange"
-            :min="MIN_RANGE"
-            :max="MAX_RANGE"
-            :step="1"
-            class="pt-1"
-            size="xs"
-          />
-        </UFormField>
-      </div>
+          <!-- Categoria -->
+          <UFormField
+            label="Categoria"
+            class="order-3"
+          >
+            <USelect
+              v-model="category"
+              multiple
+              :items="[...categories]"
+              :disabled="!categories.length"
+              placeholder="Todas"
+              class="w-full"
+              :size="FIELD_SIZE"
+              :variant="FIELD_STYLE"
+            />
+          </UFormField>
 
-      <UFormField
-        label="Assinatura Sonora"
-      >
-        <USelect
-          v-model="signature"
-          multiple
-          :items="[...addColorToSignatures(signatures)]"
-          :disabled="!signatures.length"
-          placeholder="Todas"
-          class="w-full"
-          :size="FIELD_SIZE"
-          :variant="FIELD_STYLE"
-        />
-      </UFormField>
+          <!-- Preço -->
+          <div class="flex flex-col justify-between gap-2 order-5">
+            <UFormField
+              class="order-1 mt-2"
+            >
+              <USlider
+                v-model="sliderRange"
+                :min="MIN_RANGE"
+                :max="MAX_RANGE"
+                :step="1"
+                size="xs"
+              />
+            </UFormField>
+            <div class="flex justify-between gap-x-2 order-2">
+              <UFormField
+                label="De"
+                orientation="horizontal"
+                class="w-32"
+                :size="FIELD_SIZE"
+              >
+                <UInputNumber
+                  v-model="priceMin"
+                  class="number-input"
+                  :variant="FIELD_STYLE"
+                  :increment="false"
+                  :decrement="false"
+                  :format-options="{
+                    notation: 'standard',
+                    currency: 'BRL',
+                    currencyDisplay: 'symbol',
+                    currencySign: 'standard',
+                    style: 'currency',
+                    maximumFractionDigits: 0
+                  }"
+                  @change="adjustSlider"
+                />
+              </UFormField>
+              <UFormField
+                label="Até"
+                orientation="horizontal"
+                class="w-32"
+                :size="FIELD_SIZE"
+              >
+                <UInputNumber
+                  v-model="priceMax"
+                  class="number-input"
+                  :variant="FIELD_STYLE"
+                  :increment="false"
+                  :decrement="false"
+                  :format-options="{
+                    notation: 'standard',
+                    currency: 'BRL',
+                    currencyDisplay: 'symbol',
+                    currencySign: 'accounting',
+                    style: 'currency',
+                    maximumFractionDigits: 0
+                  }"
+                  @change="adjustSlider"
+                />
+              </UFormField>
+            </div>
+          </div>
 
-      <UFormField
-        label="Categoria"
-      >
-        <USelect
-          v-model="category"
-          multiple
-          :items="[...categories]"
-          :disabled="!categories.length"
-          placeholder="Todas"
-          class="w-full"
-          :size="FIELD_SIZE"
-          :variant="FIELD_STYLE"
-        />
-      </UFormField>
+          <UFormField
+            orientation="vertical"
+            label="Ordenar por"
+            class="order-4"
+          >
+            <USelect
+              v-model="order"
+              :items="orders"
+              value-key="value"
+              :icon="orderIcon"
+              class="w-full"
+              :size="FIELD_SIZE"
+              :variant="FIELD_STYLE"
+            />
+          </UFormField>
 
-      <div class="flex items-center">
+          <!-- Buscar -->
+          <UFormField
+            orientation="vertical"
+            label="Buscar por nome"
+            class="w-full order-1"
+          >
+            <UInput
+              v-model="search"
+              icon="i-lucide-search"
+              :variant="FIELD_STYLE"
+              placeholder="Buscar..."
+              :size="FIELD_SIZE"
+              class="w-full"
+            />
+          </UFormField>
+
+          <!-- Limpar -->
+          <div class="flex flex-col-reverse w-fit order-6">
+            <UButton
+              variant="ghost"
+              icon="i-lucide-eraser"
+              :size="FIELD_SIZE"
+              @click="clearFilters()"
+            >
+              Limpar
+            </UButton>
+          </div>
+        </template>
+      </UCollapsible>
+
+      <!-- Ordenar -->
+      <div class="grid grid-cols-2 gap-x-2 lg:flex items-center justify-between">
+        <!-- Filtros -->
         <UButton
-          variant="link"
-          icon="i-lucide-eraser"
-          size="xs"
-          @click="clearFilters()"
-        >
-          Limpar filtros
-        </UButton>
-      </div>
-
-      <div class="flex items-center w-full justify-between gap-x-4 mt-2 col-span-full">
-        <UFormField
-          orientation="vertical"
-        >
-          <USelect
-            v-model="order"
-            :items="orders"
-            value-key="value"
-            :icon="orderIcon"
-            class="w-full"
+          :trailing-icon="showFilters ? 'i-lucide-filter-x' : 'i-lucide-filter'"
+          class="w-fit"
+          size="md"
+          variant="soft"
+          :label="showFilters ? 'Ocultar' : 'Filtrar'"
+          @click="toggleShowFilters"
+        />
+        <UFormField>
+          <UTabs
+            v-model="viewMode"
+            :items="tabs"
+            :content="false"
+            variant="pill"
             size="sm"
-            variant="ghost"
+            :ui="{
+              label: '',
+              list: 'bg-neutral-900',
+              indicator: 'bg-primary/20 backdrop-blur-md',
+              trigger: 'data-[state=active]:text-primary'
+            }"
           />
         </UFormField>
-        <UTabs
-          v-model="viewMode"
-          :items="tabs"
-          :content="false"
-          variant="link"
-          size="sm"
-        />
       </div>
     </UForm>
-    <USeparator class="mb-4" />
   </div>
 </template>
