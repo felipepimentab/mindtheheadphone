@@ -25,7 +25,12 @@ const items = computed<NavigationMenuItem[]>(() => [{
 </script>
 
 <template>
-  <UHeader mode="slideover">
+  <UHeader
+    mode="slideover"
+    :ui="{
+      root: 'border-none backdrop-blur-2xl'
+    }"
+  >
     <template #title>
       <LogoMTH />
     </template>
