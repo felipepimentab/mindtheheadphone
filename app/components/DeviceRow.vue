@@ -48,13 +48,13 @@ function formatBRL(amount: number): string {
       class="w-full grid gap-y-1 grid-cols-[auto_100px] sm:grid-cols-[auto_100px_150px_56px] md:grid-cols-[20%_100px_150px_auto_56px] gap-x-4 p-2 bg-neutral-900"
     >
       <div class="flex items-center">
-        <h3 class="text-sm font-semibold text-highlighted xl:text-base">
+        <h3 class="text-sm font-semibold text-highlighted lg:text-lg xl:text-lg">
           {{ device.name }}
         </h3>
       </div>
       <div class="flex items-center max-sm:flex-row-reverse">
         <p
-          class="text-sm font-bold xl:text-base"
+          class="text-sm font-bold lg:text-base xl:text-lg"
           :class="priceColor(device.price || 0)"
         >
           {{ formatBRL(device.price || 0) }}
@@ -68,16 +68,17 @@ function formatBRL(amount: number): string {
         <UBadge
           v-if="'signature' in device && device.signature"
           variant="soft"
+          size="lg"
           :color="semanticColor(device.signature)"
         >
           {{ device.signature }}
         </UBadge>
-        <p class="text-xs text-dimmed lg:whitespace-nowrap">
+        <p class="text-xs lg:text-sm text-muted lg:whitespace-nowrap">
           {{ device.category }}
         </p>
       </div>
       <div class="flex items-center sm:max-md:row-start-2 sm:max-md:col-span-2">
-        <p class="text-xs text-muted xl:text-sm">
+        <p class="text-xs text-default lg:text-sm xl:text-base">
           {{ device.overview }}
         </p>
       </div>
