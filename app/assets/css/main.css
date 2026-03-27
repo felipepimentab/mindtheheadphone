@@ -1,27 +1,46 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+/* https://www.tints.dev/palette/v1:bXRofEE1MkIxM3w3MDB8cHwwfDB8OHw5Mnxh */
 
 @theme static {
   --color-bgc: oklch(0.15 0 67);
 
-  --color-mth-50: oklch(97.08% 0.01 28.11deg);
-	--color-mth-100: oklch(93.53% 0.03 25.91deg);
-	--color-mth-200: oklch(88.5% 0.06 27.89deg);
-	--color-mth-300: oklch(80.83% 0.11 27.98deg);
-	--color-mth-400: oklch(70.36% 0.18 27.71deg);
-	--color-mth-500: oklch(60.99% 0.22 28.02deg);
-	--color-mth-600: oklch(57.7% 0.23 28.02deg);
-	--color-mth-700: oklch(50.56% 0.2 28.03deg);
-	--color-mth-800: oklch(44.31% 0.17 27.89deg);
-	--color-mth-900: oklch(39.48% 0.12 27.99deg);
-	--color-mth-950: oklch(25.92% 0.09 28.45deg);
+  --color-mth-50: oklch(0.968 0.015 33.16);
+  --color-mth-100: oklch(0.925 0.035 26.57);
+  --color-mth-200: oklch(0.853 0.075 28.95);
+  --color-mth-300: oklch(0.78 0.121 30.01);
+  --color-mth-400: oklch(0.709 0.174 32.81);
+  --color-mth-500: oklch(0.634 0.201 35.54);
+  --color-mth-600: oklch(0.554 0.181 34.17);
+  --color-mth-700: oklch(0.479 0.162 32.89);
+  --color-mth-800: oklch(0.368 0.12 34.28);
+  --color-mth-900: oklch(0.251 0.08 35.16);
+  --color-mth-950: oklch(0.195 0.06 38.09);
+
+  /* orange variant */
+  /* --color-mth-50: oklch(0.967 0.015 37.95);
+  --color-mth-100: oklch(0.926 0.035 35.37);
+  --color-mth-200: oklch(0.854 0.076 35.89);
+  --color-mth-300: oklch(0.78 0.123 35.81);
+  --color-mth-400: oklch(0.708 0.177 38.51);
+  --color-mth-500: oklch(0.633 0.189 38.06);
+  --color-mth-600: oklch(0.554 0.175 35.57);
+  --color-mth-700: oklch(0.479 0.162 32.89);
+  --color-mth-800: oklch(0.367 0.116 35.51);
+  --color-mth-900: oklch(0.251 0.075 38.42);
+  --color-mth-950: oklch(0.194 0.055 42.24); */
 }
 
 :root {
   --ui-container: 100rem;
-  --ui-radius: 0.25rem;
+  --ui-radius: 0.375rem;
   --ui-bg: var(--color-bgc);
   --font-sans: 'Helvetica Neue', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-lato: "Lato", var(--font-sans);
   --ui-header-height: --spacing(14);
+
+  --ui-border: var(--color-bgc);
+  --ui-border-muted: var(--color-bgc);
+  --ui-border-accented: var(--color-bgc);
+  --ui-border-inverted: var(--color-bgc);
 }
