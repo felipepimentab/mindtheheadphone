@@ -27,3 +27,21 @@ defineProps<{
     }"
   />
 </template>
+
+<style>
+.fading-blur-left {
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to left, transparent, black 80%, black);
+  /* -webkit-mask-image: linear-gradient(to left, transparent, black); Vendor prefix for compatibility */
+}
+
+.fading-blur-right {
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to right, transparent, black 80%, black);
+}
+
+.fading-blur-bottom {
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, transparent, black 80%, black);
+}
+</style>
