@@ -15,7 +15,7 @@ const links: ButtonProps[] = [
   <div
     class="bg-cover bg-center bg-[url('/image/bg/home.jpg')]"
   >
-    <div class="bg-linear-to-b from-transparent to-bgc backdrop-brightness-75">
+    <div class="bg-linear-to-b from-bgc/60 to-bgc max-lg:backdrop-blur-xs">
       <UPageHero
         title="Lista de Recomendações"
         orientation="horizontal"

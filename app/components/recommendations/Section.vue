@@ -15,11 +15,11 @@ defineProps<{
     :links="[{
       label: `Ver lista de ${title.toLowerCase()}`,
       to: to,
-      variant: 'ghost',
-      trailingIcon: 'i-lucide-chevron-right'
+      variant: 'soft',
+      trailingIcon: 'i-lucide-arrow-right'
     }]"
-    class="py-4 sm:py-6 lg:py-8 from-transparent to-bgc backdrop-brightness-55 lg:backdrop-brightness-85"
-    :class="inverted ? 'bg-linear-to-l lg:bg-linear-to-r' : 'bg-linear-to-l'"
+    class="py-4 sm:py-6 lg:py-8 max-lg:backdrop-blur-xs from-bgc/60 lg:from-bgc/40 to-bgc bg-linear-to-bl"
+    :class="inverted ? 'lg:bg-linear-to-r' : 'lg:bg-linear-to-l'"
     :reverse="inverted"
     :ui="{
       title: 'text-shadow-[0_0_20px] text-shadow-bgc',
