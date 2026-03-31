@@ -7,7 +7,7 @@ const links: ButtonProps[] = [
     to: 'https://old.mindtheheadphone.com.br/',
     target: '_blank',
     color: 'primary',
-    variant: 'link',
+    variant: 'soft',
     size: 'xl',
     trailingIcon: 'i-lucide-external-link'
   }
@@ -17,7 +17,7 @@ const links: ButtonProps[] = [
 <template>
   <UPageSection
     title="Como tudo começou..."
-    description="O blog Mind the Headphone foi o início de tudo – e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
+    description="O blog Mind the Headphone foi o início de tudo &mdash; e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
     orientation="vertical"
     :links="links"
     :ui="{
