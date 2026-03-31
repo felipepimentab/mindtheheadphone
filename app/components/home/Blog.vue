@@ -26,10 +26,10 @@ const links: ButtonProps[] = [
   >
     <NuxtImg
       src="/image/blog-screenshot.png"
-      width="1216"
-      height="800"
+      width="896"
+      height="590"
       alt="Captura de tela do blog antigo"
-      class="w-full h-fit rounded-lg"
+      class="w-full max-w-4xl mx-auto h-fit rounded-lg"
       loading="lazy"
     />
   </UPageSection>
