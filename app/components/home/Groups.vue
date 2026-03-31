@@ -27,10 +27,12 @@ const links: ButtonProps[] = [
   <UPageSection
     title="Entre no nosso grupo de promoções"
     description="Participe da comunidade para receber ofertas e dicas de fones de ouvido em tempo real"
-    variant="naked"
+    orientation="horizontal"
+    reverse
     :links="links"
     :ui="{
-      description: 'font-medium'
+      description: 'font-medium',
+      container: 'flex-col-reverse'
     }"
   >
     <div class="flex justify-center items-center">
