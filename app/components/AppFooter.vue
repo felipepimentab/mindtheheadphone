@@ -111,7 +111,7 @@ const columns: FooterColumn<FooterColumnLink>[] = [
         class="text-sm italic"
         external
       >
-        Feito por Felipe Pimenta.
+        Desenvolvido por Felipe Pimenta.
       </ULink>
     </template>
   </UFooter>
