@@ -1,5 +1,9 @@
 <template>
-  <UCard variant="soft">
+  <UPageCard
+    variant="soft"
+    to="https://kuba.audio"
+    target="_blank"
+  >
     <div class="flex flex-col justify-center items-center gap-y-5 lg:gap-y-12">
       <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-toned">
         Conheça minha marca de fones
@@ -17,16 +21,6 @@
         height="336"
         loading="lazy"
       />
-      <UButton
-        variant="soft"
-        color="success"
-        to="https://kuba.audio"
-        target="_blank"
-        size="xl"
-        trailing-icon="i-lucide-external-link"
-      >
-        Acesse o site
-      </UButton>
     </div>
-  </UCard>
+  </UPageCard>
 </template>
