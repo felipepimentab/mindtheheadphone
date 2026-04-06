@@ -90,7 +90,7 @@ const IMAGE_SIZE = 448 as const;
           <div
             v-for="(item, index) in items"
             :key="index"
-            class="size-16 opacity-25 hover:opacity-100 transition-opacity"
+            class="size-16 opacity-25 hover:opacity-100 transition-opacity cursor-pointer"
             :class="{ 'opacity-100': activeIndex === index }"
             @click="select(index)"
           >
