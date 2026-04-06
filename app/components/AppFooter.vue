@@ -78,7 +78,7 @@ const columns: FooterColumn<FooterColumnLink>[] = [
 </script>
 
 <template>
-  <UFooter class="lg:bg-linear-to-b from-bgc to-muted/30">
+  <UFooter>
     <template #top>
       <UContainer>
         <UFooterColumns :columns="columns">
