@@ -5,10 +5,10 @@
     target="_blank"
     class="group"
   >
-    <div class="flex flex-col justify-center items-center gap-y-5 lg:gap-y-12">
-      <h2 class="text-2xl sm:text-3xl text-pretty tracking-tight font-bold text-center text-toned">
+    <div class="flex flex-col justify-around items-center gap-y-4">
+      <h3 class="text-2xl sm:text-3xl xl:text-4xl text-pretty tracking-tight font-bold text-center text-toned">
         Conheça minha marca de fones
-      </h2>
+      </h3>
       <NuxtImg
         src="/image/kuba/hp-d2.png"
         alt="Headphone Kuba Disco 2"
@@ -20,7 +20,7 @@
       <NuxtImg
         src="/image/kuba/logo-white.png"
         alt="Logo Kuba"
-        class="w-24 sm:w-32"
+        class="w-32 lg:w-40"
         loading="lazy"
       />
     </div>
