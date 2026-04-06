@@ -59,6 +59,8 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
     console.error(error);
   }
 };
+
+const FORM_STYLE = 'soft' as const;
 </script>
 
 <template>
@@ -79,6 +81,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
         value-key="id"
         :items="[...types]"
         class="w-full"
+        :variant="FORM_STYLE"
         @change="handleTypeChange"
       />
     </UFormField>
@@ -93,6 +96,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
       <UInput
         v-model="state.name"
         class="w-full"
+        :variant="FORM_STYLE"
       />
     </UFormField>
     <UFormField
@@ -105,6 +109,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
       <UTextarea
         v-model="state.overview"
         class="w-full"
+        :variant="FORM_STYLE"
         autoresize
       />
     </UFormField>
@@ -121,6 +126,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
         value-key="id"
         :items="[...categories]"
         class="w-full"
+        :variant="FORM_STYLE"
       />
     </UFormField>
     <UFormField
@@ -135,6 +141,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
         value-key="id"
         :items="[...soundSignatures]"
         class="w-full"
+        :variant="FORM_STYLE"
       />
     </UFormField>
     <USeparator />
@@ -148,13 +155,21 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
       <UInput
         v-model="state.price"
         type="number"
+        :variant="FORM_STYLE"
         class="w-full"
       />
     </UFormField>
-    <UCheckbox
-      v-model="state.imported"
-      label="Importado"
-    />
+    <UFormField
+      name="imported"
+      size="xl"
+      class="w-full"
+    >
+      <UCheckbox
+        v-model="state.imported"
+        label="Importado"
+        size="xl"
+      />
+    </UFormField>
     <USeparator />
     <UFormField
       label="Link para comprar"
@@ -165,6 +180,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
       <UInput
         v-model="state.buy"
         class="w-full"
+        :variant="FORM_STYLE"
       />
     </UFormField>
     <UFormField
@@ -176,6 +192,7 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
       <UInput
         v-model="state.review"
         class="w-full"
+        :variant="FORM_STYLE"
       />
     </UFormField>
 
@@ -191,14 +208,17 @@ async function onSubmit(event: FormSubmitEvent<DeviceFormSchema>) {
         icon="i-lucide-image"
         label="Arraste a sua imagem aqui"
         description="PNG e JPG"
-        class="h-60"
+        class="h-40"
+        variant="area"
+        :interactive="true"
+        layout="grid"
       />
     </UFormField>
 
     <div class="flex items-center justify-between">
       <UButton
         class="w-fit"
-        variant="ghost"
+        :variant="FORM_STYLE"
         color="error"
         trailing-icon="i-lucide-eraser"
       >

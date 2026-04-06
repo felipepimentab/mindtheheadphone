@@ -9,17 +9,16 @@ useSeoMeta({
   <UPage>
     <HomeHero />
     <HomeAbout />
+    <!-- <HomeColors /> -->
     <div class="bg-default">
-      <UContainer class="py-16 sm:py-24 flex flex-col lg:grid lg:grid-cols-3 gap-8 lg:gap-y-16">
-        <ui-text
-          type="h2"
-          class="text-center col-span-full"
-        >
-          Últimos vídeos
-        </ui-text>
-        <HomeYoutube />
-        <HomeKubaAlt />
-      </UContainer>
+      <UPageSection title="Últimos vídeos">
+        <template #default>
+          <div class="flex flex-col lg:grid lg:grid-cols-3 gap-8">
+            <HomeYoutube />
+            <HomeKubaAlt />
+          </div>
+        </template>
+      </UPageSection>
     </div>
     <HomeGroups />
     <HomeVideos />

@@ -52,29 +52,48 @@ const videos = [
 </script>
 
 <template>
-  <div class="">
-    <UContainer class="py-16">
-      <ui-text
-        type="h2"
-        class="pb-8 text-center"
-      >
-        Mais vídeos
-      </ui-text>
+  <UPageSection
+    title="Mais vídeos"
+  >
+    <template #body>
       <UPageGrid class="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <UCard
+        <UPageCard
+          v-for="item in videos"
+          :key="item.title"
+          :title="item.title"
+          :to="item.url"
+          target="_blank"
+          orientation="vertical"
+          variant="soft"
+          reverse
+          :ui="{
+            title: 'w-full m-auto text-center',
+            wrapper: 'items-center'
+          }"
+        >
+          <NuxtImg
+            :src="item.image"
+            :alt="item.alt"
+            width="150"
+            height="150"
+            class="rounded-md m-auto"
+            loading="lazy"
+          />
+        </UPageCard>
+        <!-- <UCard
           v-for="item in videos"
           :key="item.title"
           variant="soft"
           :ui="{
-            body: 'h-full grid grid-rows-[200px_auto_32px] gap-4'
+            body: 'h-full grid grid-rows-[100px_auto_32px] gap-4'
           }"
         >
           <div class="flex justify-center w-full">
             <NuxtImg
               :src="item.image"
               :alt="item.alt"
-              width="200"
-              height="200"
+              width="100"
+              height="100"
               class="rounded-md"
               loading="lazy"
             />
@@ -95,8 +114,8 @@ const videos = [
           >
             Ver Playlist
           </UButton>
-        </UCard>
+        </UCard> -->
       </UPageGrid>
-    </UContainer>
-  </div>
+    </template>
+  </UPageSection>
 </template>
