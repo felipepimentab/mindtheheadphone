@@ -7,7 +7,7 @@ const links: ButtonProps[] = [
     to: 'https://old.mindtheheadphone.com.br/',
     target: '_blank',
     color: 'primary',
-    variant: 'link',
+    variant: 'soft',
     size: 'xl',
     trailingIcon: 'i-lucide-external-link'
   }
@@ -17,7 +17,7 @@ const links: ButtonProps[] = [
 <template>
   <UPageSection
     title="Como tudo começou..."
-    description="O blog Mind the Headphone foi o início de tudo – e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
+    description="O blog Mind the Headphone foi o início de tudo &mdash; e ainda é possível acessá-lo, pra quem quer uma seção de nostalgia!"
     orientation="vertical"
     :links="links"
     :ui="{
@@ -26,10 +26,10 @@ const links: ButtonProps[] = [
   >
     <NuxtImg
       src="/image/blog-screenshot.png"
-      width="1216"
-      height="800"
+      width="896"
+      height="590"
       alt="Captura de tela do blog antigo"
-      class="w-full h-fit rounded-lg"
+      class="w-full max-w-4xl mx-auto h-fit rounded-lg"
       loading="lazy"
     />
   </UPageSection>

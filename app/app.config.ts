@@ -146,13 +146,13 @@ export default defineAppConfig({
     colors: {
       'primary': 'mth',
       'neutral': 'neutral',
-      'ss-energetico': 'yellow',
-      'ss-natural': 'emerald',
-      'ss-neutro-quente': 'orange',
-      'ss-neutro-frio': 'cyan',
-      'ss-musical': 'fuchsia',
-      'ss-basshead': 'indigo',
-      'ss-v-shaped': 'rose'
+      'ss-energetico': 'apple-yellow',
+      'ss-natural': 'apple-green',
+      'ss-neutro-quente': 'apple-orange',
+      'ss-neutro-frio': 'apple-cyan',
+      'ss-musical': 'apple-purple',
+      'ss-basshead': 'apple-indigo',
+      'ss-v-shaped': 'apple-pink'
     },
     button: {
       slots: {
@@ -162,7 +162,7 @@ export default defineAppConfig({
         variant: {
           subtle: 'backdrop-blur-2xl text-shadow-lg',
           soft: 'backdrop-blur-2xl text-shadow-lg',
-          link: 'text-shadow-lg text-shadow-lg'
+          link: 'text-shadow-lg shadow-lg'
         }
       },
       compoundVariants: [

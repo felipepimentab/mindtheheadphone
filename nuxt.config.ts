@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://www.mindtheheadphone.com.br',
-    name: 'Mind the Headphone | Site oficial e Listas de Recomendações',
+    name: 'Mind the Headphone | Reviews e Recomendações de Fones de Ouvido',
     description: 'Bem-vindo ao site oficial do Mind the Headphone, o maior canal de fones de ouvido do mundo. Acesse as listas de recomendações e encontre o seu fone de ouvido ideal.',
     defaultLocale: 'pt-BR'
   },

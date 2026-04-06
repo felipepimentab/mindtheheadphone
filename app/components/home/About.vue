@@ -55,14 +55,14 @@ const features = [
               />
             </template>
             <template #title>
-              <span class="lg:text-lg xl:text-xl">
+              <h3 class="lg:text-lg xl:text-xl">
                 {{ feature.title }}
-              </span>
+              </h3>
             </template>
             <template #description>
-              <span class="text-toned lg:text-base/6 xl:text-lg/6">
+              <p class="text-toned lg:text-base/6 xl:text-lg/6">
                 {{ feature.description }}
-              </span>
+              </p>
             </template>
           </UPageFeature>
         </div>

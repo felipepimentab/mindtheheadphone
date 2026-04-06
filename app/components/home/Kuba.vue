@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui';
+
 const items = [
   '/image/kuba/disco-2-bt.jpg',
   '/image/kuba/disco-2-classico.jpg',
@@ -15,6 +17,17 @@ const alt = [
   'Headphone Kuba Uni',
   'Headphone Kuba Mali 2'
 ];
+const links: ButtonProps[] = [
+  {
+    label: 'Conhecer a Kuba',
+    variant: 'soft',
+    color: 'primary',
+    size: 'xl',
+    to: 'https://kuba.audio',
+    target: '_blank',
+    trailingIcon: 'i-lucide-external-link'
+  }
+];
 
 const carousel = useTemplateRef('carousel');
 const activeIndex = ref(0);
@@ -28,87 +41,70 @@ function select(index: number) {
 
   carousel.value?.emblaApi?.scrollTo(index);
 }
+
+const THUMBNAIL_SIZE = 64 as const;
+const IMAGE_SIZE = 448 as const;
 </script>
 
 <template>
   <UPageSection
     title="Kuba Audio: Minha marca de fones"
     orientation="horizontal"
+    :links="links"
   >
-    <div>
-      <UCarousel
-        ref="carousel"
-        v-slot="{ item }"
-        :items="items"
-        class="w-full mx-auto"
-        @select="onSelect"
-      >
-        <NuxtImg
-          :src="item"
-          width="640"
-          height="640"
-          class="rounded-lg"
-          loading="lazy"
-        />
-      </UCarousel>
-      <UButton
-        to="https://kuba.audio"
-        color="success"
-        variant="soft"
-        target="_blank"
-        size="xl"
-        class="w-fit lg:hidden mt-8"
-        trailing-icon="i-lucide-external-link"
-      >
-        Conheça
-      </UButton>
-    </div>
-
     <template #description>
-      <h4 class="my-3 text-muted text-2xl font-bold">
+      <h4 class="my-3 text-primary text-xl lg:text-2xl font-bold">
         A Primeira Marca Brasileira de Headphones
       </h4>
-      <p class="my-3 text-default">
+      <p class="my-3">
         A Kuba Audio é uma marca criada por mim e pela minha sócia, a Eduarda, em 2016.
-        <span class="font-black">
+        <span class="font-black text-default">
           Desenvolvemos fones de ouvido de alta fidelidade, totalmente modulares e feitos para durar.
         </span>
       </p>
-      <p class="my-3 text-default">
+      <p class="my-3">
         Até hoje, já ultrapassamos 40.000 unidades vendidas, conquistando não só o público geral como o profissional e o entusiasta.
       </p>
     </template>
 
-    <template #body>
-      <div class="flex justify-start gap-2 pt-4">
-        <div
-          v-for="(item, index) in items"
-          :key="index"
-          class="size-16 opacity-25 hover:opacity-100 transition-opacity rounded"
-          :class="{ 'opacity-100': activeIndex === index }"
-          @click="select(index)"
+    <template #default>
+      <div class="flex-1 w-full">
+        <UCarousel
+          ref="carousel"
+          v-slot="{ item }"
+          :items="items"
+          class="w-full max-w-md mx-auto"
+          @select="onSelect"
         >
-          <NuxtImg
+          <img
             :src="item"
-            :alt="alt[index]"
-            width="64"
-            height="64"
-            class="cursor-pointer rounded"
+            :alt="alt[activeIndex]"
+            :width="IMAGE_SIZE"
+            :height="IMAGE_SIZE"
+            class="rounded-lg"
             loading="lazy"
-          />
+          >
+        </UCarousel>
+
+        <div class="flex gap-1 justify-between pt-4 max-w-md mx-auto">
+          <div
+            v-for="(item, index) in items"
+            :key="index"
+            class="size-16 opacity-25 hover:opacity-100 transition-opacity cursor-pointer"
+            :class="{ 'opacity-100': activeIndex === index }"
+            @click="select(index)"
+          >
+            <img
+              :src="item"
+              :alt="alt[index]"
+              :width="THUMBNAIL_SIZE"
+              :height="THUMBNAIL_SIZE"
+              class="rounded-lg"
+              loading="lazy"
+            >
+          </div>
         </div>
       </div>
-      <UButton
-        to="https://kuba.audio"
-        color="success"
-        variant="soft"
-        target="_blank"
-        size="xl"
-        class="max-lg:hidden mt-8"
-        trailing-icon="i-lucide-external-link"
-      >
-        Conheça
-      </UButton>
     </template>
   </UPageSection>
 </template>
