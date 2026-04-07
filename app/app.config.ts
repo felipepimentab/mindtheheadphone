@@ -162,7 +162,7 @@ export default defineAppConfig({
         variant: {
           subtle: 'backdrop-blur-2xl text-shadow-lg',
           soft: 'backdrop-blur-2xl text-shadow-lg',
-          link: 'text-shadow-lg shadow-lg'
+          link: 'text-shadow-lg'
         }
       },
       compoundVariants: [
