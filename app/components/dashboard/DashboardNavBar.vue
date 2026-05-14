@@ -4,17 +4,9 @@ import type { NavigationMenuItem } from '@nuxt/ui';
 // const route = useRoute();
 
 const items: NavigationMenuItem[][] = [[{
-  label: 'Headphones',
+  label: 'Ver todos',
   icon: 'i-lucide-headphones',
-  to: '/admin/headphones'
-}, {
-  label: 'Earphones',
-  icon: 'i-lucide-ear',
-  to: '/admin/earphones'
-}, {
-  label: 'Eletrônicos',
-  icon: 'i-lucide-circuit-board',
-  to: '/admin/eletronicos'
+  to: '/admin'
 }, {
   label: 'Adicionar novo',
   icon: 'i-lucide-circle-plus',

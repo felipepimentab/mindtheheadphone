@@ -1,13 +1,18 @@
 <script lang="ts" setup>
 import type { Device, DeviceType } from '~~/shared/types/device';
 import type { SoundSignature } from '~~/shared/types/soundSignatures';
-import { createSlug } from '~~/shared/utils/createSlug';
 
 definePageMeta({
   layout: 'dashboard'
 });
 
-type DeviceCreateState = {
+type AdminDevice = Device & {
+  _id?: string
+  createdAt?: string
+  updatedAt?: string
+};
+
+type DeviceEditState = {
   type: DeviceType
   name: string
   price: number
@@ -21,9 +26,14 @@ type DeviceCreateState = {
   signature: string
 };
 
+const route = useRoute();
 const router = useRouter();
 const toast = useToast();
-const state = reactive<DeviceCreateState>({
+const deviceId = computed(() => String(route.params.id));
+
+const { data: device, error, pending } = await useFetch<AdminDevice>(() => `/api/devices/${encodeURIComponent(deviceId.value)}`);
+
+const state = reactive<DeviceEditState>({
   type: 'Earphone',
   name: '',
   price: 0,
@@ -37,15 +47,34 @@ const state = reactive<DeviceCreateState>({
   signature: ''
 });
 const saving = ref(false);
+const deleting = ref(false);
 const imagePreview = computed(() => {
   if (state.image) return URL.createObjectURL(state.image);
-  return '/image/headphones.png';
+  return device.value?.img || '/image/headphones.png';
 });
 const categories = computed<string[]>(() => {
   return availableCategories[state.type] || [];
 });
+
+watch(device, (value) => {
+  if (!value) return;
+
+  state.type = value.type;
+  state.name = value.name || '';
+  state.price = value.price || 0;
+  state.imported = value.imported || false;
+  state.overview = value.overview || '';
+  state.review = value.review || '';
+  state.buy = value.buy || '';
+  state.tagsText = value.tags?.join(', ') || '';
+  state.image = undefined;
+  state.category = value.category || '';
+  state.signature = value.signature || '';
+}, { immediate: true });
+
 const previewDevice = computed<Partial<Device>>(() => {
   return {
+    ...device.value,
     name: state.name || 'Nome do dispositivo',
     imported: state.imported,
     price: state.price,
@@ -56,7 +85,6 @@ const previewDevice = computed<Partial<Device>>(() => {
     buy: state.buy,
     review: state.review,
     img: imagePreview.value,
-    slug: state.name ? createSlug(state.name) : 'slug',
     type: state.type
   };
 });
@@ -97,49 +125,52 @@ function buildFormData() {
   return formData;
 }
 
-function validateDevice() {
-  if (!state.name.trim()) return 'Informe o nome do dispositivo.';
-  if (!state.category) return 'Selecione uma categoria.';
-  if (!state.overview.trim()) return 'Informe a descrição do dispositivo.';
-  if (!state.image) return 'Selecione uma imagem.';
-  if ((state.type === 'Earphone' || state.type === 'Headphone') && !state.signature) {
-    return 'Headphones e Earphones precisam ter uma assinatura sonora.';
-  }
-
-  return '';
-}
-
-async function createDevice() {
-  const validationError = validateDevice();
-  if (validationError) {
-    toast.add({
-      title: 'Revise o cadastro',
-      description: validationError,
-      color: 'error'
-    });
-    return;
-  }
-
+async function saveDevice() {
   saving.value = true;
 
   try {
-    await $fetch('/api/devices', {
-      method: 'POST',
+    await $fetch(`/api/devices/${encodeURIComponent(deviceId.value)}`, {
+      method: 'PUT',
       body: buildFormData()
     });
     toast.add({
-      title: 'Dispositivo criado',
+      title: 'Dispositivo atualizado',
       color: 'success'
     });
     await router.push('/admin');
-  } catch (createError) {
+  } catch (saveError) {
     toast.add({
-      title: 'Erro ao criar',
-      description: createError instanceof Error ? createError.message : 'Não foi possível criar o dispositivo.',
+      title: 'Erro ao atualizar',
+      description: saveError instanceof Error ? saveError.message : 'Não foi possível salvar o dispositivo.',
       color: 'error'
     });
   } finally {
     saving.value = false;
+  }
+}
+
+async function deleteDevice() {
+  if (!confirm(`Excluir "${state.name}"? Esta ação não pode ser desfeita.`)) return;
+
+  deleting.value = true;
+
+  try {
+    await $fetch(`/api/devices/${encodeURIComponent(deviceId.value)}`, {
+      method: 'DELETE'
+    });
+    toast.add({
+      title: 'Dispositivo excluído',
+      color: 'success'
+    });
+    await router.push('/admin');
+  } catch (deleteError) {
+    toast.add({
+      title: 'Erro ao excluir',
+      description: deleteError instanceof Error ? deleteError.message : 'Não foi possível excluir o dispositivo.',
+      color: 'error'
+    });
+  } finally {
+    deleting.value = false;
   }
 }
 </script>
@@ -148,8 +179,8 @@ async function createDevice() {
   <UDashboardPanel resizable>
     <template #header>
       <UDashboardNavbar
-        title="Adicionar novo dispositivo"
-        icon="i-lucide-plus-circle"
+        :title="device?.name || 'Editar dispositivo'"
+        icon="i-lucide-pencil"
       >
         <template #left>
           <UButton
@@ -164,11 +195,31 @@ async function createDevice() {
     </template>
 
     <template #body>
-      <div class="grid gap-6 lg:grid-cols-[minmax(0,560px)_minmax(320px,1fr)]">
+      <UAlert
+        v-if="error"
+        color="error"
+        variant="soft"
+        icon="i-lucide-circle-alert"
+        title="Não foi possível carregar o dispositivo"
+        :description="error.message"
+      />
+
+      <div
+        v-else-if="pending"
+        class="grid gap-6 lg:grid-cols-[minmax(0,560px)_minmax(320px,1fr)]"
+      >
+        <USkeleton class="h-[720px] rounded-lg" />
+        <USkeleton class="h-[520px] rounded-lg" />
+      </div>
+
+      <div
+        v-else
+        class="grid gap-6 lg:grid-cols-[minmax(0,560px)_minmax(320px,1fr)]"
+      >
         <UForm
           :state="state"
           class="space-y-4"
-          @submit.prevent="createDevice"
+          @submit.prevent="saveDevice"
         >
           <div class="grid gap-4 sm:grid-cols-2">
             <UFormField
@@ -288,13 +339,12 @@ async function createDevice() {
           <UFormField
             label="Imagem"
             name="image"
-            description="A imagem será salva com um identificador único para permitir cache agressivo."
-            required
+            description="Envie uma nova imagem apenas se quiser substituir a atual."
           >
             <UFileUpload
               v-model="state.image"
               icon="i-lucide-image"
-              label="Arraste a imagem aqui"
+              label="Arraste a nova imagem aqui"
               description="PNG e JPG"
               class="h-48"
             />
@@ -302,22 +352,33 @@ async function createDevice() {
 
           <div class="flex flex-wrap items-center justify-between gap-3 border-t border-default pt-4">
             <UButton
-              to="/admin"
-              color="neutral"
-              variant="ghost"
+              color="error"
+              variant="soft"
+              icon="i-lucide-trash-2"
+              :loading="deleting"
+              @click="deleteDevice"
             >
-              Cancelar
+              Excluir
             </UButton>
 
-            <UButton
-              type="submit"
-              color="success"
-              variant="soft"
-              icon="i-lucide-circle-plus"
-              :loading="saving"
-            >
-              Criar dispositivo
-            </UButton>
+            <div class="flex gap-2">
+              <UButton
+                to="/admin"
+                color="neutral"
+                variant="ghost"
+              >
+                Cancelar
+              </UButton>
+              <UButton
+                type="submit"
+                color="success"
+                variant="soft"
+                icon="i-lucide-save"
+                :loading="saving"
+              >
+                Salvar alterações
+              </UButton>
+            </div>
           </div>
         </UForm>
 
@@ -336,26 +397,26 @@ async function createDevice() {
             <dl class="grid gap-3">
               <div>
                 <dt class="text-muted">
-                  Status
+                  Criado em
                 </dt>
                 <dd class="font-medium text-highlighted">
-                  Ainda não salvo
+                  {{ device?.createdAt ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(device.createdAt)) : '-' }}
                 </dd>
               </div>
               <div>
                 <dt class="text-muted">
-                  Slug previsto
+                  Atualizado em
                 </dt>
-                <dd class="break-all font-medium text-highlighted">
-                  {{ previewDevice.slug }}
+                <dd class="font-medium text-highlighted">
+                  {{ device?.updatedAt ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(device.updatedAt)) : '-' }}
                 </dd>
               </div>
               <div>
                 <dt class="text-muted">
-                  Imagem
+                  URL da imagem
                 </dt>
                 <dd class="break-all text-muted">
-                  {{ state.image?.name || 'Nenhum arquivo selecionado' }}
+                  {{ device?.img }}
                 </dd>
               </div>
             </dl>

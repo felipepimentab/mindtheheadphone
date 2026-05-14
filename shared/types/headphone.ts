@@ -25,6 +25,6 @@ export const headphonesList: RecommendationsList<typeof headphoneCategories> = {
   description: 'Os headphones e headsets que mais recomendo, organizados por tipo, faixa de preço e assinatura sonora.',
   path: '/recomendacoes/headphones',
   inverted: true,
-  apiUrl: '/api/devices/headphones',
+  apiUrl: '/api/devices?type=headphones',
   categories: headphoneCategories
 };
