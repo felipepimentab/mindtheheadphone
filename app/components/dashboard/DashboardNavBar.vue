@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui';
+import type { DropdownMenuItem, NavigationMenuItem } from '@nuxt/ui';
 
 // const route = useRoute();
+
+type AdminSessionResponse = {
+  user: {
+    email: string
+    name?: string
+    picture?: string
+  } | null
+};
 
 const items: NavigationMenuItem[][] = [[{
   label: 'Ver todos',
@@ -16,6 +24,39 @@ const items: NavigationMenuItem[][] = [[{
   icon: 'i-lucide-arrow-left-from-line',
   to: '/'
 }]];
+const { data: session } = await useFetch<AdminSessionResponse>('/api/auth/session', {
+  default: () => ({ user: null })
+});
+const userLabel = computed(() => session.value.user?.name || session.value.user?.email || 'Admin');
+const userDescription = computed(() => {
+  if (!session.value.user?.email || session.value.user.email === userLabel.value) return undefined;
+
+  return session.value.user.email;
+});
+const userAvatar = computed(() => {
+  const user = session.value.user;
+
+  return {
+    src: user?.picture,
+    alt: user?.name || user?.email || 'Admin'
+  };
+});
+const userMenuItems = computed<DropdownMenuItem[][]>(() => [[{
+  label: userLabel.value,
+  avatar: userAvatar.value,
+  type: 'label'
+}], [{
+  label: 'Sair',
+  icon: 'i-lucide-log-out',
+  onSelect: logout
+}]]);
+
+async function logout() {
+  await $fetch('/api/auth/logout', {
+    method: 'POST'
+  });
+  await navigateTo('/admin/login');
+}
 </script>
 
 <template>
@@ -80,17 +121,21 @@ const items: NavigationMenuItem[][] = [[{
       />
     </template>
 
-    <!-- <template #footer="{ collapsed }">
-      <UButton
-        :avatar="{
-          src: 'https://github.com/benjamincanac.png'
-        }"
-        :label="collapsed ? undefined : 'Benjamin'"
-        color="neutral"
-        variant="soft"
-        class="w-full"
-        :block="collapsed"
-      />
-    </template> -->
+    <template #footer="{ collapsed }">
+      <UDropdownMenu
+        :items="userMenuItems"
+        :content="{ align: 'start', side: 'right' }"
+      >
+        <UButton
+          :avatar="userAvatar"
+          :label="collapsed ? undefined : userLabel"
+          :description="collapsed ? undefined : userDescription"
+          color="neutral"
+          variant="ghost"
+          class="w-full justify-start"
+          :block="collapsed"
+        />
+      </UDropdownMenu>
+    </template>
   </UDashboardSidebar>
 </template>

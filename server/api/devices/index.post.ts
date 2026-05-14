@@ -1,8 +1,11 @@
 import { createError } from 'h3';
 import { DeviceSchema } from '~~/server/models/device.schema';
+import { requireAdmin } from '~~/server/utils/auth';
 import { parseDeviceForm, uploadDeviceImage } from '~~/server/utils/devices';
 
 export default defineEventHandler(async (event) => {
+  await requireAdmin(event);
+
   const form = await readMultipartFormData(event);
   if (!form) {
     throw createError({
