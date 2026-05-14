@@ -171,9 +171,4 @@
     sans-serif;
   --font-lato: "Lato", var(--font-sans);
   --ui-header-height: --spacing(14);
-
-  --ui-border: var(--color-bgc);
-  --ui-border-muted: var(--color-bgc);
-  --ui-border-accented: var(--color-bgc);
-  --ui-border-inverted: var(--color-bgc);
 }
