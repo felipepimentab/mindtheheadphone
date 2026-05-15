@@ -61,7 +61,7 @@ function formatDate(date?: string) {
         <div class="flex items-center justify-between gap-3">
           <div>
             <h1 class="text-xl font-semibold text-highlighted">
-              Dispositivos cadastrados
+              Dispositivos Cadastrados
             </h1>
             <p class="text-sm text-muted">
               {{ devices.length }} dispositivo{{ devices.length === 1 ? '' : 's' }} no banco de dados
