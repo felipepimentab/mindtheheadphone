@@ -1,4 +1,4 @@
-import type { Receiver } from '~~/shared/types/receiver';
+import type { Device } from '~~/shared/types/device';
 
 export async function useGetDevices(url: link) {
   const filterChain: FilterChain = [
@@ -9,16 +9,16 @@ export async function useGetDevices(url: link) {
     filterBySearch,
     orderBy
   ];
-  let devices: Receiver[] = [];
+  let devices: Device[] = [];
 
   try {
     const response = await useFetch(url);
-    devices = (response.data.value as Receiver[]) || [];
+    devices = (response.data.value as Device[]) || [];
   } catch (error) {
     console.error(error);
   }
 
-  function getDevices(params: FilterParams): Receiver[] {
+  function getDevices(params: FilterParams): Device[] {
     let devicesList = devices;
 
     filterChain.forEach((filter) => {

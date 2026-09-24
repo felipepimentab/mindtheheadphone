@@ -1,6 +1,6 @@
-import type { Receiver } from '~~/shared/types/receiver';
+import type { Device } from '~~/shared/types/device';
 
-export type FilterStrategy = (params: FilterParams, devices: Receiver[]) => Receiver[];
+export type FilterStrategy = (params: FilterParams, devices: Device[]) => Device[];
 export type FilterChain = FilterStrategy[];
 
 export const filterByMin: FilterStrategy = (params, devices) => {
@@ -24,7 +24,7 @@ export const filterBySignature: FilterStrategy = (params, devices) => {
   const { signature = [] } = params;
   if (!signature.length) return devices;
 
-  return devices.filter(d => signature.includes(d.signature));
+  return devices.filter(d => d.signature !== undefined && signature.includes(d.signature));
 };
 
 export const filterBySearch: FilterStrategy = (params, devices) => {

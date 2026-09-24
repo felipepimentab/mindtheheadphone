@@ -2,8 +2,10 @@ import { del, put } from '@vercel/blob';
 import type { MultiPartData } from 'h3';
 import { createError } from 'h3';
 import mongoose from 'mongoose';
-import { DeviceFormKeys, DEVICES_FOLDER } from '~~/shared/types/device';
+import { DeviceFormKeys, DEVICES_FOLDER, deviceTypes } from '~~/shared/types/device';
 import type { DeviceType } from '~~/shared/types/device';
+import { soundSignatures } from '~~/shared/types/soundSignatures';
+import type { SoundSignature } from '~~/shared/types/soundSignatures';
 import { createSlugWithLimit } from '~~/shared/utils/createSlug';
 import { DeviceSchema } from '~~/server/models/device.schema';
 
@@ -28,9 +30,9 @@ type DevicePayload = {
   category?: string
   imported?: boolean
   tags?: string[]
-  signature?: string
+  signature?: SoundSignature
   slug?: string
-  type?: string
+  type?: DeviceType
 };
 
 function getString(form: MultiPartData[], name: string) {
@@ -81,6 +83,22 @@ export function parseDeviceForm(form: MultiPartData[], options: { requireImage: 
 
   const tags = getArray(form, DeviceFormKeys.TAGS);
   const imported = getBoolean(form, DeviceFormKeys.IMPORTED);
+  const rawType = getString(form, DeviceFormKeys.TYPE);
+  const type = deviceTypes.find(value => value === rawType);
+  if (rawType !== undefined && !type) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Invalid device type'
+    });
+  }
+  const rawSignature = getString(form, DeviceFormKeys.SIGNATURE);
+  const signature = soundSignatures.find(value => value === rawSignature);
+  if (rawSignature && !signature) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Invalid sound signature'
+    });
+  }
   const rawDeviceData: DevicePayload = {
     name,
     price: getNumber(form, DeviceFormKeys.PRICE),
@@ -90,9 +108,9 @@ export function parseDeviceForm(form: MultiPartData[], options: { requireImage: 
     category: getString(form, DeviceFormKeys.CATEGORY),
     imported,
     tags: tags.length ? tags : undefined,
-    signature: getString(form, DeviceFormKeys.SIGNATURE),
+    signature,
     slug,
-    type: getString(form, DeviceFormKeys.TYPE)
+    type
   };
   const deviceData = Object.fromEntries(
     Object.entries(rawDeviceData).filter(([, value]) => value !== undefined)
