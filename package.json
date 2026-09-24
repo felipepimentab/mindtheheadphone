@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "eslint": "^10.11.0",
     "nuxt-mongoose": "^1.1.2",
     "sharp": "^0.35.4",
