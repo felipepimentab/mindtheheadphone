@@ -5,17 +5,11 @@ definePageMeta({
   layout: 'dashboard'
 });
 
-type AdminDevice = Device & {
-  _id?: string
-  createdAt?: string
-  updatedAt?: string
-};
-
-const { data: devices, error, pending, refresh } = await useFetch<AdminDevice[]>('/api/devices', {
+const { data: devices, error, pending, refresh } = await useFetch<Device[]>('/api/devices', {
   default: () => []
 });
 
-function getDeviceEditPath(device: AdminDevice) {
+function getDeviceEditPath(device: Device) {
   return `/admin/${encodeURIComponent(String(device._id || device.slug))}`;
 }
 
@@ -26,7 +20,7 @@ function formatBRL(amount: number) {
   }).format(amount || 0);
 }
 
-function formatDate(date?: string) {
+function formatDate(date?: Date | string) {
   if (!date) return '-';
 
   return new Intl.DateTimeFormat('pt-BR', {

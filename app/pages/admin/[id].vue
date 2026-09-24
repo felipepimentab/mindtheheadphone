@@ -6,12 +6,6 @@ definePageMeta({
   layout: 'dashboard'
 });
 
-type AdminDevice = Device & {
-  _id?: string
-  createdAt?: string
-  updatedAt?: string
-};
-
 type DeviceEditState = {
   type: DeviceType
   name: string
@@ -31,7 +25,7 @@ const router = useRouter();
 const toast = useToast();
 const deviceId = computed(() => String(route.params.id));
 
-const { data: device, error, pending } = await useFetch<AdminDevice>(() => `/api/devices/${encodeURIComponent(deviceId.value)}`);
+const { data: device, error, pending } = await useFetch<Device>(() => `/api/devices/${encodeURIComponent(deviceId.value)}`);
 
 const state = reactive<DeviceEditState>({
   type: 'Earphone',
