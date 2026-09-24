@@ -35,7 +35,7 @@
     "eslint": "^10.11.0",
     "nuxt-mongoose": "^1.1.2",
     "sharp": "^0.35.4",
-    "typescript": "^7.0.2",
+    "typescript": "6.0.3",
     "vue-tsc": "^3.3.11"
   },
   "resolutions": {
