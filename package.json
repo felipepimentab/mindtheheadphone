@@ -38,5 +38,5 @@
   "resolutions": {
     "unimport": "4.1.1"
   },
-  "packageManager": "pnpm@10.18.0"
+  "packageManager": "bun@1.4.2"
 }
