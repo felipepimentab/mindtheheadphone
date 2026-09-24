@@ -61,6 +61,9 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
+    '/faq': { prerender: true },
+    '/politica-de-privacidade': { prerender: true },
+    '/termos-de-uso': { prerender: true },
     '/recomendacoes': { prerender: true },
     '/recomendacoes/eletronicos': { prerender: true },
     '/recomendacoes/earphones': { prerender: true },
