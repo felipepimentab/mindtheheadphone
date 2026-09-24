@@ -4,6 +4,7 @@
 .nuxt
 .nitro
 .cache
+.agents
 dist
 
 # Node dependencies
