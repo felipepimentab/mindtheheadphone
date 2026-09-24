@@ -18,8 +18,7 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: 'theme-color', content: '#0b0b0b' },
-        { name: 'color-scheme', content: 'dark' },
-        {}
+        { name: 'color-scheme', content: 'dark' }
       ]
     }
   },
