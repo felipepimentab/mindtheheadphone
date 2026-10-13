@@ -1,7 +1,8 @@
 import { createError } from 'h3';
 import { DeviceSchema } from '~~/server/models/device.schema';
 import { requireAdmin } from '~~/server/utils/auth';
-import { parseDeviceForm, uploadDeviceImage } from '~~/server/utils/devices';
+import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceValidation';
+import { uploadDeviceImage } from '~~/server/utils/devices';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -23,10 +24,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const { url } = await uploadDeviceImage(image, deviceData.slug);
-  const device = await DeviceSchema.create({
-    ...deviceData,
-    img: url
-  });
-
-  return device;
+  try {
+    return await DeviceSchema.create({
+      ...deviceData,
+      img: url
+    });
+  } catch (error) {
+    throwDeviceWriteError(error);
+  }
 });

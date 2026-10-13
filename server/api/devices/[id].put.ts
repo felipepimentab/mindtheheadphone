@@ -1,6 +1,7 @@
 import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
-import { deleteDeviceImage, findDeviceOrThrow, parseDeviceForm, uploadDeviceImage } from '~~/server/utils/devices';
+import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceValidation';
+import { deleteDeviceImage, findDeviceOrThrow, uploadDeviceImage } from '~~/server/utils/devices';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -23,7 +24,7 @@ export default defineEventHandler(async (event) => {
 
   const device = await findDeviceOrThrow(id);
   const oldImageUrl = device.img;
-  const { deviceData, image } = parseDeviceForm(form, { requireImage: false });
+  const { deviceData, image } = parseDeviceForm(form, { requireImage: false, existing: device });
 
   if (image) {
     const imageSlug = deviceData.slug || device.slug;
@@ -32,7 +33,12 @@ export default defineEventHandler(async (event) => {
   }
 
   device.set(deviceData);
-  const updatedDevice = await device.save();
+  let updatedDevice;
+  try {
+    updatedDevice = await device.save();
+  } catch (error) {
+    throwDeviceWriteError(error);
+  }
 
   if (image && oldImageUrl && oldImageUrl !== updatedDevice.img) {
     await deleteDeviceImage(oldImageUrl);
