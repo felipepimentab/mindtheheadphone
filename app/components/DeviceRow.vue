@@ -31,6 +31,9 @@ function formatBRL(amount: number): string {
       <NuxtImg
         :src="device.img"
         :alt="device.name"
+        width="64"
+        densities="x1 x2"
+        quality="80"
         class="object-cover h-full w-16 shrink-0"
         loading="lazy"
       />

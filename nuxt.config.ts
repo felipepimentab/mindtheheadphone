@@ -93,9 +93,27 @@ export default defineNuxtConfig({
 
   image: {
     format: ['webp'],
-    domains: ['https://3owp1lqte78l9dxq.public.blob.vercel-storage.com'],
+    domains: [
+      '3owp1lqte78l9dxq.public.blob.vercel-storage.com',
+      'ltkzl4ol5mtrfprc.public.blob.vercel-storage.com'
+    ],
     vercel: {
-      formats: ['image/webp', 'image/avif']
+      formats: ['image/webp']
+    },
+    screens: {
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      '2xl': 1536,
+      'admin': 48,
+      'admin2x': 96,
+      'row': 64,
+      'row2x': 128,
+      'card': 208,
+      'card2x': 416,
+      'cardLarge': 256,
+      'cardLarge2x': 512
     }
   },
 

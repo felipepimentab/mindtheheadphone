@@ -156,6 +156,10 @@ function formatDate(date?: Date | string) {
                       <NuxtImg
                         :src="device.img"
                         :alt="device.name"
+                        width="48"
+                        height="48"
+                        densities="x1 x2"
+                        quality="80"
                         class="size-12 rounded-md bg-white object-cover"
                         loading="lazy"
                       />
