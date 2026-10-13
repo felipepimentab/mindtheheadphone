@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { DEVICES_FOLDER } from '~~/shared/types/device';
 import type { DeviceType } from '~~/shared/types/device';
 import { DeviceSchema } from '~~/server/models/device.schema';
+import { normalizeDeviceImage } from './deviceImage';
 
 const IMAGE_CACHE_MAX_AGE = 60 * 60 * 24 * 365;
 const DEVICE_TYPE_ALIASES: Record<string, DeviceType> = {
@@ -19,15 +20,15 @@ const DEVICE_TYPE_ALIASES: Record<string, DeviceType> = {
 };
 
 export async function uploadDeviceImage(image: MultiPartData, slug: string) {
-  const imageType = image.type?.split('/')[1] || 'bin';
+  const data = await normalizeDeviceImage(image);
   const salt = crypto.randomUUID();
-  const imagePath = `${DEVICES_FOLDER}/${slug}-${salt}.${imageType}`;
+  const imagePath = `${DEVICES_FOLDER}/${slug}-${salt}.webp`;
 
-  return await put(imagePath, image.data, {
+  return await put(imagePath, data, {
     access: 'public',
     addRandomSuffix: false,
     cacheControlMaxAge: IMAGE_CACHE_MAX_AGE,
-    contentType: image.type
+    contentType: 'image/webp'
   });
 }
 

@@ -2,6 +2,7 @@
 import type { Device, DeviceType } from '~~/shared/types/device';
 import type { SoundSignature } from '~~/shared/types/soundSignatures';
 import { createSlug } from '~~/shared/utils/createSlug';
+import { DEVICE_IMAGE_MIME_TYPES } from '~~/shared/utils/deviceImage';
 
 definePageMeta({
   layout: 'dashboard'
@@ -295,7 +296,8 @@ async function createDevice() {
               v-model="state.image"
               icon="i-lucide-image"
               label="Arraste a imagem aqui"
-              description="PNG e JPG"
+              :accept="DEVICE_IMAGE_MIME_TYPES.join(',')"
+              description="PNG, JPEG e WebP · até 3 MiB"
               class="h-48"
             />
           </UFormField>

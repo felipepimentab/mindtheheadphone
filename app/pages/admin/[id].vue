@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { Device, DeviceType } from '~~/shared/types/device';
 import type { SoundSignature } from '~~/shared/types/soundSignatures';
+import { DEVICE_IMAGE_MIME_TYPES } from '~~/shared/utils/deviceImage';
 
 definePageMeta({
   layout: 'dashboard'
@@ -339,7 +340,8 @@ async function deleteDevice() {
               v-model="state.image"
               icon="i-lucide-image"
               label="Arraste a nova imagem aqui"
-              description="PNG e JPG"
+              :accept="DEVICE_IMAGE_MIME_TYPES.join(',')"
+              description="PNG, JPEG e WebP · até 3 MiB"
               class="h-48"
             />
           </UFormField>

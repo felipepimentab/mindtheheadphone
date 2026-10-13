@@ -2,6 +2,7 @@ import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
 import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceValidation';
 import { deleteDeviceImage, findDeviceOrThrow, uploadDeviceImage } from '~~/server/utils/devices';
+import { readDeviceMultipart } from '~~/server/utils/deviceMultipart';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -14,13 +15,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const form = await readMultipartFormData(event);
-  if (!form) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Multipart form data is required'
-    });
-  }
+  const form = await readDeviceMultipart(event);
 
   const device = await findDeviceOrThrow(id);
   const oldImageUrl = device.img;

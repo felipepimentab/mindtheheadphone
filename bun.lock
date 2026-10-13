@@ -21,6 +21,7 @@
         "nuxt-site-config": "4.2.3",
         "pinia": "^4.0.3",
         "satori": "^0.33.5",
+        "sharp": "^0.35.4",
         "zod": "^4.6.5",
       },
       "devDependencies": {
@@ -28,7 +29,6 @@
         "@stylistic/eslint-plugin": "^5.10.0",
         "eslint": "^10.11.0",
         "nuxt-mongoose": "^1.1.2",
-        "sharp": "^0.35.4",
         "typescript": "6.0.3",
         "vue-tsc": "^3.3.11",
       },
