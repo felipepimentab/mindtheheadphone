@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
 import { semanticColor } from '~~/shared/types/soundSignatures';
+import { safeExternalUrl } from '~~/shared/utils/externalUrl';
 
 defineProps<{
   device: Partial<Device>
@@ -11,16 +12,6 @@ function priceColor(price: number): string {
   if (price < 1500) return 'text-warning';
   return 'text-error';
 }
-
-const isValidUrl = (url: string) => {
-  if (!url || url === '#' || url.trim() === '') return false;
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-};
 
 function formatBRL(amount: number): string {
   return new Intl.NumberFormat('pt-BR', {
@@ -90,13 +81,13 @@ function formatBRL(amount: number): string {
           <UButton
             variant="link"
             color="neutral"
-            :to="device.buy"
+            :to="safeExternalUrl(device.buy)"
             target="_blank"
             size="xs"
             class="justify-center"
             aria-label="Comprar"
             icon="i-lucide-shopping-cart"
-            :disabled="!isValidUrl(device.buy || '')"
+            :disabled="!safeExternalUrl(device.buy)"
           />
         </UTooltip>
         <UTooltip
@@ -106,13 +97,13 @@ function formatBRL(amount: number): string {
           <UButton
             variant="link"
             color="neutral"
-            :to="device.review"
+            :to="safeExternalUrl(device.review)"
             target="_blank"
             size="xs"
             class="justify-center"
             aria-label="Review"
             icon="i-lucide-youtube"
-            :disabled="!isValidUrl(device.review || '')"
+            :disabled="!safeExternalUrl(device.review)"
           />
         </UTooltip>
       </div>
