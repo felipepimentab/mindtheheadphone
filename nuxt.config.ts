@@ -38,6 +38,11 @@ export default defineNuxtConfig({
     classSuffix: ''
   },
 
+  mdc: {
+    // The legal pages use Markdown without code blocks; omit Shiki from the bundle.
+    highlight: false
+  },
+
   ui: {
     fonts: false,
     theme: {
