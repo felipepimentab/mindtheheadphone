@@ -120,10 +120,17 @@ export function parseDeviceForm(form: MultiPartData[], options: { requireImage: 
       continue;
     }
 
+    // Explicit empty tags clears the list; omission still preserves it on updates.
+    if (field.name === DeviceFormKeys.TAGS) {
+      if (Object.hasOwn(raw, 'tags') || tags.size || field.data.toString() !== '[]') badRequest('Invalid tags');
+      raw.tags = [];
+      continue;
+    }
+
     const tagMatch = field.name?.match(/^tags\[(0|[1-9]\d*)\]$/);
     if (tagMatch) {
       const index = Number(tagMatch[1]);
-      if (index >= MAX_TAGS || tags.has(index)) badRequest('Invalid tags');
+      if (Object.hasOwn(raw, 'tags') || index >= MAX_TAGS || tags.has(index)) badRequest('Invalid tags');
       tags.set(index, field.data.toString());
       continue;
     }

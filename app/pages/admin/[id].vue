@@ -113,7 +113,9 @@ function buildFormData() {
   if (state.image) {
     formData.append(DeviceFormKeys.IMAGE, state.image);
   }
-  getTags().forEach((tag, index) => {
+  const tags = getTags();
+  if (!tags.length) formData.append(DeviceFormKeys.TAGS, '[]');
+  tags.forEach((tag, index) => {
     formData.append(`${DeviceFormKeys.TAGS}[${index}]`, tag);
   });
 

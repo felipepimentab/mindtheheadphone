@@ -93,6 +93,9 @@ describe('device write contract', () => {
       review: ''
     };
     expect(parseDeviceForm([field('price', '250')], { requireImage: false, existing }).deviceData).toEqual({ price: 250 });
+    const cleared = parseDeviceForm([field('tags', '[]')], { requireImage: false, existing }).deviceData;
+    expect(cleared).toEqual({ tags: [] });
+    expect({ ...existing, ...cleared }.tags).toEqual([]);
     expect(statusCode(() => parseDeviceForm([field('type', 'Headphone')], { requireImage: false, existing }))).toBe(400);
     expect(parseDeviceForm([
       field('type', 'Eletrônico'),
@@ -102,6 +105,20 @@ describe('device write contract', () => {
       category: 'Player portátil',
       signature: undefined
     });
+  });
+
+  test('rejects malformed, duplicate, or mixed empty-tag fields', () => {
+    const formWithoutTags = validForm().filter(item => !item.name?.startsWith('tags['));
+    expect(parseDeviceForm([...formWithoutTags, field('tags', '[]')], { requireImage: true }).deviceData.tags).toEqual([]);
+    for (const fields of [
+      [field('tags', '')],
+      [field('tags', '["unexpected"]')],
+      [field('tags', '[]'), field('tags', '[]')],
+      [field('tags', '[]'), field('tags[0]', 'Conflicting')],
+      [field('tags[0]', 'Conflicting'), field('tags', '[]')]
+    ]) {
+      expect(statusCode(() => parseDeviceForm([...formWithoutTags, ...fields], { requireImage: true }))).toBe(400);
+    }
   });
 
   test('rejects duplicated, sparse, unknown, and excessive fields', () => {
