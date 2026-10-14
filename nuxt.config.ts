@@ -141,6 +141,17 @@ export default defineNuxtConfig({
     excludeLinks: ['/recomendacoes/earphones', '/recomendacoes/headphones', '/recomendacoes/eletronicos']
   },
 
+  ogImage: {
+    defaults: {
+      extension: 'png'
+    },
+    compatibility: {
+      dev: { sharp: false },
+      runtime: { sharp: false },
+      prerender: { sharp: false }
+    }
+  },
+
   robots: {
     disallow: ['/admin/**', '/faq', '/sobre']
   },
