@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
+import { deviceTypes } from '~~/shared/types/device';
+import { soundSignatures } from '~~/shared/types/soundSignatures';
+import { adminDeviceCategories, adminPriceRanges, createAdminDeviceFilters, filterAdminDevices } from '~/utils/adminDeviceFilters';
 
 definePageMeta({
   layout: 'dashboard'
@@ -8,6 +11,61 @@ definePageMeta({
 const { data: devices, error, pending, refresh } = await useFetch<Device[]>('/api/devices', {
   default: () => []
 });
+
+const filters = reactive(createAdminDeviceFilters());
+const filteredDevices = computed(() => filterAdminDevices(devices.value, filters));
+const hasActiveFilters = computed(() => filters.search.trim() !== '' || Object.entries(filters).some(([key, value]) => key !== 'search' && value !== 'all'));
+
+function options(values: string[]) {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b, 'pt-BR')).map(value => ({ label: value, value }));
+}
+
+const typeOptions = computed(() => [
+  { label: 'Todos os tipos', value: 'all' },
+  ...options([...deviceTypes, ...devices.value.map(device => device.type)])
+]);
+const categoryOptions = computed(() => [
+  { label: 'Todas as categorias', value: 'all' },
+  ...options([
+    ...deviceTypes.flatMap(type => filters.type === 'all' || filters.type === type ? adminDeviceCategories[type] : []),
+    ...devices.value.filter(device => filters.type === 'all' || device.type === filters.type).map(device => device.category).filter(Boolean)
+  ]),
+  { label: 'Sem categoria', value: '__missing__' }
+]);
+const signatureOptions = computed(() => [
+  { label: 'Todas as assinaturas', value: 'all' },
+  ...options([...soundSignatures, ...devices.value.flatMap(device => device.signature ? [device.signature] : [])]),
+  { label: 'Sem assinatura', value: '__missing__' }
+]);
+const tagOptions = computed(() => [
+  { label: 'Todas as tags', value: 'all' },
+  ...options(devices.value.flatMap(device => device.tags || [])),
+  { label: 'Sem tags', value: '__missing__' }
+]);
+const reviewOptions = [
+  { label: 'Todos os dispositivos', value: 'all' },
+  { label: 'Com review', value: 'with' },
+  { label: 'Sem review', value: 'without' }
+];
+const buyOptions = [
+  { label: 'Todos os dispositivos', value: 'all' },
+  { label: 'Com link de compra', value: 'with' },
+  { label: 'Sem link de compra', value: 'without' }
+];
+const originOptions = [
+  { label: 'Todas as origens', value: 'all' },
+  { label: 'Importado', value: 'imported' },
+  { label: 'Nacional', value: 'domestic' },
+  { label: 'Não informado', value: 'unknown' }
+];
+
+watch(() => filters.type, () => {
+  if (!categoryOptions.value.some(option => option.value === filters.category)) filters.category = 'all';
+});
+
+function resetFilters() {
+  Object.assign(filters, createAdminDeviceFilters());
+}
 
 function getDeviceEditPath(device: Device) {
   return `/admin/${encodeURIComponent(String(device._id || device.slug))}`;
@@ -72,6 +130,113 @@ function formatDate(date?: Date | string) {
           />
         </div>
 
+        <div
+          v-if="devices.length"
+          class="flex flex-col gap-3"
+        >
+          <UFormField
+            label="Buscar dispositivos"
+            class="w-full"
+          >
+            <UInput
+              v-model="filters.search"
+              icon="i-lucide-search"
+              placeholder="Nome, slug, descrição ou tag..."
+              class="w-full"
+            >
+              <template #trailing>
+                <UButton
+                  v-if="filters.search"
+                  icon="i-lucide-x"
+                  color="neutral"
+                  variant="link"
+                  size="xs"
+                  aria-label="Limpar busca"
+                  @click="filters.search = ''"
+                />
+              </template>
+            </UInput>
+          </UFormField>
+
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <UFormField label="Tipo">
+              <USelect
+                v-model="filters.type"
+                :items="typeOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Categoria">
+              <USelect
+                v-model="filters.category"
+                :items="categoryOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Assinatura sonora">
+              <USelect
+                v-model="filters.signature"
+                :items="signatureOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Faixa de preço">
+              <USelect
+                v-model="filters.price"
+                :items="[...adminPriceRanges]"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Tag">
+              <USelect
+                v-model="filters.tag"
+                :items="tagOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Review">
+              <USelect
+                v-model="filters.review"
+                :items="reviewOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Origem">
+              <USelect
+                v-model="filters.origin"
+                :items="originOptions"
+                class="w-full"
+              />
+            </UFormField>
+            <UFormField label="Link de compra">
+              <USelect
+                v-model="filters.buy"
+                :items="buyOptions"
+                class="w-full"
+              />
+            </UFormField>
+          </div>
+
+          <div class="flex items-center justify-between gap-3">
+            <p
+              class="text-sm text-muted"
+              role="status"
+              aria-live="polite"
+            >
+              {{ filteredDevices.length }} de {{ devices.length }} dispositivo{{ devices.length === 1 ? '' : 's' }}
+            </p>
+            <UButton
+              color="neutral"
+              variant="ghost"
+              icon="i-lucide-filter-x"
+              :disabled="!hasActiveFilters"
+              @click="resetFilters"
+            >
+              Limpar filtros
+            </UButton>
+          </div>
+        </div>
+
         <UAlert
           v-if="error"
           color="error"
@@ -111,6 +276,25 @@ function formatDate(date?: Date | string) {
           </template>
         </UEmpty>
 
+        <UEmpty
+          v-else-if="!filteredDevices.length"
+          variant="soft"
+          icon="i-lucide-search"
+          title="Nenhum dispositivo encontrado"
+          description="Tente outra busca ou ajuste os filtros."
+          size="xl"
+        >
+          <template #actions>
+            <UButton
+              color="neutral"
+              variant="soft"
+              @click="resetFilters"
+            >
+              Limpar filtros
+            </UButton>
+          </template>
+        </UEmpty>
+
         <div
           v-else
           class="overflow-hidden rounded-lg border border-default"
@@ -144,7 +328,7 @@ function formatDate(date?: Date | string) {
               </thead>
               <tbody class="divide-y divide-default">
                 <tr
-                  v-for="device in devices"
+                  v-for="device in filteredDevices"
                   :key="device._id || device.slug || device.name"
                   class="hover:bg-muted/30"
                 >
@@ -188,7 +372,7 @@ function formatDate(date?: Date | string) {
                     {{ formatBRL(device.price) }}
                   </td>
                   <td class="px-4 py-3 text-muted">
-                    {{ device.imported ? 'Importado' : 'Nacional' }}
+                    {{ device.imported === true ? 'Importado' : device.imported === false ? 'Nacional' : 'Não informado' }}
                   </td>
                   <td class="px-4 py-3 text-muted">
                     {{ formatDate(device.updatedAt) }}
