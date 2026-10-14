@@ -23,6 +23,7 @@
     "@vercel/blob": "^2.8.0",
     "google-auth-library": "^11.3.0",
     "ipx": "^4.0.0-beta.1",
+    "mongoose": "^9.10.2",
     "nuxt": "^4.5.2",
     "nuxt-gtag": "^5.0.0",
     "nuxt-site-config": "4.2.3",
@@ -35,7 +36,6 @@
     "@nuxt/eslint": "^1.17.0",
     "@stylistic/eslint-plugin": "^5.10.0",
     "eslint": "^10.11.0",
-    "nuxt-mongoose": "^1.1.2",
     "typescript": "6.0.3",
     "vue-tsc": "^3.3.11"
   },

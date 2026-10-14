@@ -1,12 +1,13 @@
 import { afterAll, beforeEach, describe, expect, mock, spyOn, test } from 'bun:test';
 import { createHmac } from 'node:crypto';
-import { createApp, defineEventHandler, getMethod, getRequestURL, toWebHandler } from 'h3';
+import { createApp, defineEventHandler, getMethod, getQuery, getRequestURL, toWebHandler } from 'h3';
 import type { H3Event, MultiPartData } from 'h3';
 import mongoose from 'mongoose';
 import { cleanupDeviceImage } from '../server/utils/deviceImageCleanup';
 import { parseDeviceForm, throwDeviceWriteError } from '../server/utils/deviceValidation';
 import { requireAdmin, clearAdminSession } from '../server/utils/auth';
 import csrf from '../server/middleware/csrf';
+import { createMongoConnectionManager } from '../server/utils/mongoConnection';
 
 const authenticate = requireAdmin;
 const clearSession = clearAdminSession;
@@ -30,6 +31,26 @@ let createFailure: unknown;
 let saveFailure: unknown;
 let cleanupFails: boolean;
 let transientFailures: number;
+let databaseFailure: unknown;
+
+function makeDatabase() {
+  const connection = { readyState: 0, on: () => {} };
+  return createMongoConnectionManager({
+    client: {
+      connection,
+      connect: async () => {
+        if (databaseFailure) throw databaseFailure;
+        connection.readyState = 1;
+      },
+      disconnect: async () => { connection.readyState = 0; },
+      probe: async () => { if (databaseFailure) throw databaseFailure; }
+    },
+    getUri: () => 'mongodb://example.com/test',
+    log: () => {},
+    pause: async () => {}
+  });
+}
+let database = makeDatabase();
 
 function field(name: string, value: string, type?: string): MultiPartData {
   return { name, data: Buffer.from(value), type };
@@ -66,25 +87,34 @@ const removeImage = mock(async (_url: string, _options: { abortSignal: AbortSign
 });
 const cleanup = mock((url?: string) => cleanupDeviceImage(url, removeImage));
 const revalidate = mock(async () => {});
+const listDevices = mock(() => ({ sort: async () => [device] }));
 const logError = spyOn(console, 'error').mockImplementation(() => {});
 
 // Supply Nuxt aliases and auto-imports while exercising the real route handlers.
-const runtime = globalThis as typeof globalThis & { defineEventHandler: typeof defineEventHandler };
+const runtime = globalThis as typeof globalThis & { defineEventHandler: typeof defineEventHandler, getQuery: typeof getQuery };
 const originalHandler = runtime.defineEventHandler;
+const originalQuery = runtime.getQuery;
 runtime.defineEventHandler = defineEventHandler;
+runtime.getQuery = getQuery;
+mock.module('~~/server/utils/database', () => ({
+  runDatabaseOperation: (...args: Parameters<typeof database.run>) => database.run(...args)
+}));
 mock.module('~~/server/utils/auth', () => ({ requireAdmin: async () => {}, clearAdminSession: clearSession }));
-mock.module('~~/server/models/device.schema', () => ({ DeviceSchema: { create: createRecord } }));
+mock.module('~~/server/models/device.schema', () => ({ DeviceSchema: { create: createRecord, find: listDevices } }));
 mock.module('~~/server/utils/deviceMultipart', () => ({ readDeviceMultipart: readMultipart }));
 mock.module('~~/server/utils/deviceValidation', () => ({ parseDeviceForm, throwDeviceWriteError }));
 mock.module('~~/server/utils/deviceImageCleanup', () => ({ cleanupDeviceImage: cleanup }));
 mock.module('~~/server/utils/revalidateRecommendations', () => ({ revalidateRecommendations: revalidate }));
 mock.module('~~/server/utils/devices', () => ({
   findDeviceOrThrow: findDevice,
-  uploadDeviceImage: uploadImage
+  uploadDeviceImage: uploadImage,
+  resolveDeviceType: () => undefined
 }));
 const { default: createDevice } = await import('../server/api/devices/index.post');
 const { default: updateDevice } = await import('../server/api/devices/[id].put');
 const { default: deleteDevice } = await import('../server/api/devices/[id].delete');
+const { default: listDevice } = await import('../server/api/devices/index.get');
+const { default: getDevice } = await import('../server/api/devices/[id].get');
 const { default: logout } = await import('../server/api/auth/logout.post');
 
 // Mount the real CSRF and authentication checks ahead of the real mutation handlers.
@@ -118,17 +148,20 @@ beforeEach(() => {
   saveFailure = undefined;
   cleanupFails = false;
   transientFailures = 0;
+  databaseFailure = undefined;
+  database = makeDatabase();
   device = makeDevice();
   form = [
     field('name', 'Test'), field('type', 'Earphone'), field('category', 'Earbud'),
     field('signature', 'Natural'), field('price', '100'), field('imported', '0'),
     field('overview', 'Description'), field('image', 'placeholder', 'image/png')
   ];
-  for (const fn of [createRecord, saveRecord, deleteRecord, readMultipart, findDevice, uploadImage, removeImage, cleanup, revalidate, logError]) fn.mockClear();
+  for (const fn of [createRecord, saveRecord, deleteRecord, readMultipart, findDevice, uploadImage, removeImage, cleanup, revalidate, logError, listDevices]) fn.mockClear();
 });
 
 afterAll(() => {
   runtime.defineEventHandler = originalHandler;
+  runtime.getQuery = originalQuery;
   logError.mockRestore();
   mock.restore();
   for (const key of environmentKeys) {
@@ -136,6 +169,37 @@ afterAll(() => {
     if (value === undefined) Reflect.deleteProperty(process.env, key);
     else process.env[key] = value;
   }
+});
+
+describe('database availability before device operations', () => {
+  test('returns 503 for every mutation before parsing, uploading, or modifying records', async () => {
+    databaseFailure = Object.assign(new Error('Connection refused'), { name: 'MongooseServerSelectionError' });
+    for (const [method, path] of [
+      ['POST', '/api/devices'], ['PUT', '/api/devices/test'], ['DELETE', '/api/devices/test']
+    ]) {
+      const response = await writeRequest(method!, path!, { origin: trustedOrigin });
+      expect(response.status).toBe(503);
+      expect(response.headers.get('retry-after')).toBe('5');
+    }
+    for (const fn of [readMultipart, findDevice, uploadImage, createRecord, saveRecord, deleteRecord, removeImage, revalidate]) {
+      expect(fn).not.toHaveBeenCalled();
+    }
+    databaseFailure = undefined;
+    expect((await writeRequest('POST', '/api/devices', { origin: trustedOrigin })).status).toBe(200);
+  });
+
+  test('returns 503 for list and individual reads without querying an unavailable database', async () => {
+    databaseFailure = Object.assign(new Error('Connection refused'), { name: 'MongooseServerSelectionError' });
+    for (const handler of [listDevice, getDevice]) {
+      const handle = toWebHandler(createApp().use(defineEventHandler((event) => {
+        event.context.params = { id: 'test' };
+        return handler(event);
+      })));
+      expect((await handle(new Request('https://example.com/api/devices'))).status).toBe(503);
+    }
+    expect(listDevices).not.toHaveBeenCalled();
+    expect(findDevice).not.toHaveBeenCalled();
+  });
 });
 
 describe('CSRF enforcement before device writes and logout', () => {
