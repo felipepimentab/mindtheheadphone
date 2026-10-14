@@ -1,3 +1,4 @@
+import { runDatabaseOperation } from '~~/server/utils/database';
 import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
 import { findDeviceOrThrow } from '~~/server/utils/devices';
@@ -15,14 +16,16 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const device = await findDeviceOrThrow(id);
-  const imageUrl = device.img;
-  await device.deleteOne();
-  await revalidateRecommendations();
-  await cleanupDeviceImage(imageUrl);
+  return await runDatabaseOperation(event, 'devices.delete', async () => {
+    const device = await findDeviceOrThrow(id);
+    const imageUrl = device.img;
+    await device.deleteOne();
+    await revalidateRecommendations();
+    await cleanupDeviceImage(imageUrl);
 
-  return {
-    deleted: true,
-    id
-  };
+    return {
+      deleted: true,
+      id
+    };
+  });
 });

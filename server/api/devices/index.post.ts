@@ -1,3 +1,4 @@
+import { runDatabaseOperation } from '~~/server/utils/database';
 import { createError } from 'h3';
 import { DeviceSchema } from '~~/server/models/device.schema';
 import { requireAdmin } from '~~/server/utils/auth';
@@ -10,28 +11,30 @@ import { revalidateRecommendations } from '~~/server/utils/revalidateRecommendat
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
 
-  const form = await readDeviceMultipart(event);
+  return await runDatabaseOperation(event, 'devices.create', async () => {
+    const form = await readDeviceMultipart(event);
 
-  const { deviceData, image } = parseDeviceForm(form, { requireImage: true });
-  if (!deviceData.slug || !image) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Device name and image are required'
-    });
-  }
+    const { deviceData, image } = parseDeviceForm(form, { requireImage: true });
+    if (!deviceData.slug || !image) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Device name and image are required'
+      });
+    }
 
-  const { url } = await uploadDeviceImage(image, deviceData.slug);
-  let createdDevice;
-  try {
-    createdDevice = await DeviceSchema.create({
-      ...deviceData,
-      img: url
-    });
-  } catch (error) {
-    await cleanupDeviceImage(url);
-    throwDeviceWriteError(error);
-  }
+    const { url } = await uploadDeviceImage(image, deviceData.slug);
+    let createdDevice;
+    try {
+      createdDevice = await DeviceSchema.create({
+        ...deviceData,
+        img: url
+      });
+    } catch (error) {
+      await cleanupDeviceImage(url);
+      throwDeviceWriteError(error);
+    }
 
-  await revalidateRecommendations();
-  return createdDevice;
+    await revalidateRecommendations();
+    return createdDevice;
+  });
 });

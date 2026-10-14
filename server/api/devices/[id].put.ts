@@ -1,3 +1,4 @@
+import { runDatabaseOperation } from '~~/server/utils/database';
 import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
 import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceValidation';
@@ -17,34 +18,36 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const form = await readDeviceMultipart(event);
+  return await runDatabaseOperation(event, 'devices.update', async () => {
+    const form = await readDeviceMultipart(event);
 
-  const device = await findDeviceOrThrow(id);
-  const oldImageUrl = device.img;
-  const { deviceData, image } = parseDeviceForm(form, { requireImage: false, existing: device });
+    const device = await findDeviceOrThrow(id);
+    const oldImageUrl = device.img;
+    const { deviceData, image } = parseDeviceForm(form, { requireImage: false, existing: device });
 
-  let uploadedImageUrl: string | undefined;
-  if (image) {
-    const imageSlug = deviceData.slug || device.slug;
-    const { url } = await uploadDeviceImage(image, imageSlug);
-    uploadedImageUrl = url;
-    device.set('img', url);
-  }
+    let uploadedImageUrl: string | undefined;
+    if (image) {
+      const imageSlug = deviceData.slug || device.slug;
+      const { url } = await uploadDeviceImage(image, imageSlug);
+      uploadedImageUrl = url;
+      device.set('img', url);
+    }
 
-  device.set(deviceData);
-  let updatedDevice;
-  try {
-    updatedDevice = await device.save();
-  } catch (error) {
-    await cleanupDeviceImage(uploadedImageUrl);
-    throwDeviceWriteError(error);
-  }
+    device.set(deviceData);
+    let updatedDevice;
+    try {
+      updatedDevice = await device.save();
+    } catch (error) {
+      await cleanupDeviceImage(uploadedImageUrl);
+      throwDeviceWriteError(error);
+    }
 
-  await revalidateRecommendations();
+    await revalidateRecommendations();
 
-  if (image && oldImageUrl && oldImageUrl !== updatedDevice.img) {
-    await cleanupDeviceImage(oldImageUrl);
-  }
+    if (image && oldImageUrl && oldImageUrl !== updatedDevice.img) {
+      await cleanupDeviceImage(oldImageUrl);
+    }
 
-  return updatedDevice;
+    return updatedDevice;
+  });
 });
