@@ -1,7 +1,7 @@
 export const privacidade = `
 # Política de Privacidade – Mind the Headphone
 
-A sua privacidade é importante para nós. É política do **Mind the Headphone** respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Mind the Headphone](https://www.mindtheheadphone.com.br) e outros sites que possuímos e operamos.
+A sua privacidade é importante para nós. É política do **Mind the Headphone** respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Mind the Headphone](/) e outros sites que possuímos e operamos.
 
 ### 1. Coleta e Uso de Informações
 

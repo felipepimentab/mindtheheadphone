@@ -18,6 +18,11 @@ export const DeviceSchema = defineMongooseModel<Device>({
       type: 'string',
       required: true
     },
+    imported: {
+      type: 'boolean',
+      required: true,
+      default: false
+    },
     tags: {
       type: ['string'],
       required: false
@@ -50,5 +55,8 @@ export const DeviceSchema = defineMongooseModel<Device>({
       type: 'string',
       required: false
     }
+  },
+  options: {
+    timestamps: true
   }
 });

@@ -26,6 +26,6 @@ export const earphonesList: RecommendationsList<typeof earphoneCategories> = {
   description: 'Os fones de ouvido intra-auriculares e earbuds que mais recomendo, organizados por tipo, faixa de preço e assinatura sonora.',
   path: '/recomendacoes/earphones',
   inverted: false,
-  apiUrl: '/api/devices/earphones',
+  apiUrl: '/api/devices?type=earphones',
   categories: earphoneCategories
 };

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { Device } from '~~/shared/types/device';
 import { semanticColor } from '~~/shared/types/soundSignatures';
+import { safeExternalUrl } from '~~/shared/utils/externalUrl';
 
 defineProps<{
   device: Partial<Device>
@@ -11,16 +12,6 @@ function priceColor(price: number): string {
   if (price < 1500) return 'text-warning';
   return 'text-error';
 }
-
-const isValidUrl = (url: string) => {
-  if (!url || url === '#' || url.trim() === '') return false;
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-};
 
 function formatBRL(amount: number): string {
   return new Intl.NumberFormat('pt-BR', {
@@ -38,6 +29,11 @@ function formatBRL(amount: number): string {
       <NuxtImg
         :src="device.img"
         :alt="device.name"
+        width="256"
+        height="256"
+        sizes="208px lg:256px"
+        densities="x1 x2"
+        quality="80"
         class="object-cover h-52 w-52 lg:w-64 lg:h-64"
         loading="lazy"
       />
@@ -87,10 +83,10 @@ function formatBRL(amount: number): string {
     </div>
     <div class="w-full grid grid-cols-2 gap-2 p-2">
       <UButton
-        v-if="isValidUrl(device.buy || '')"
+        v-if="safeExternalUrl(device.buy)"
         variant="link"
         color="neutral"
-        :to="device.buy"
+        :to="safeExternalUrl(device.buy)"
         target="_blank"
         size="sm"
         class="justify-center"
@@ -98,10 +94,10 @@ function formatBRL(amount: number): string {
         icon="i-lucide-shopping-cart"
       />
       <UButton
-        v-if="isValidUrl(device.review || '')"
+        v-if="safeExternalUrl(device.review)"
         variant="link"
         color="neutral"
-        :to="device.review"
+        :to="safeExternalUrl(device.review)"
         target="_blank"
         size="sm"
         class="justify-center"

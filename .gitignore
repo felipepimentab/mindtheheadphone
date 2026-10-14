@@ -3,7 +3,9 @@
 .data
 .nuxt
 .nitro
+.vercel/
 .cache
+.agents
 dist
 
 # Node dependencies
@@ -17,6 +19,7 @@ logs
 .DS_Store
 .fleet
 .idea
+notes/
 
 # Local env files
 .env

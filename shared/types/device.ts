@@ -12,6 +12,13 @@ export type DeviceType = typeof deviceTypes[number];
  * Concrete devices (headphones, microphones, etc.) extend this class.
  */
 export abstract class Device<T extends string = string> {
+  /** Database identifier, present after the device is stored. */
+  readonly _id?: string;
+
+  /** Database-generated timestamps, serialized as strings in API responses. */
+  readonly createdAt?: Date | string;
+  readonly updatedAt?: Date | string;
+
   constructor(
     /**
      * Human-readable product name.

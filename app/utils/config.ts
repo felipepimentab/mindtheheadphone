@@ -1,10 +1,11 @@
 import type { SelectItem } from '@nuxt/ui';
+import { MAX_DEVICE_PRICE } from '~~/shared/utils/devicePrice';
 
 export const DEFAULT_ORDER = 'ascending';
 export const MIN_RANGE = 0;
 export const MAX_RANGE = 150;
 export const MIN_PRICE = sliderToPrice(MIN_RANGE);
-export const MAX_PRICE = sliderToPrice(MAX_RANGE);
+export const MAX_PRICE = MAX_DEVICE_PRICE;
 
 export function sliderToPrice(v: number) {
   return Math.floor(Math.pow((v / 10), 4));

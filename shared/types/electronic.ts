@@ -25,6 +25,6 @@ export const electronicsList: RecommendationsList<typeof electronicCategories> =
   description: 'Eletrônicos diversos relacionados a áudio, como amplificadores e DACs, organizados por tipo e faixa de preço.',
   path: '/recomendacoes/eletronicos',
   inverted: false,
-  apiUrl: '/api/devices/electronics',
+  apiUrl: '/api/devices?type=electronics',
   categories: electronicCategories
 };

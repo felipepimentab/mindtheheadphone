@@ -1,7 +1,11 @@
-import { Headphone, type HeadphoneCategory } from '~~/shared/types/headphone';
-import type { SoundSignature } from '../types/soundSignatures';
+import type { Device } from '~~/shared/types/device';
 
-export const headphones: Headphone[] = [
+type LegacyRecommendation = Pick<Device, 'img' | 'tags' | 'name' | 'price' | 'overview' | 'buy' | 'review'> & {
+  category: string
+  signature: string
+};
+
+export const headphones: LegacyRecommendation[] = [
   {
     img: 'https://3owp1lqte78l9dxq.public.blob.vercel-storage.com/headphones/ry4s.png',
     tags: [],
@@ -1344,17 +1348,4 @@ export const headphones: Headphone[] = [
     review: 'https://youtu.be/7du9oDkHdSA',
     category: 'Headphone Cabeado'
   }
-].map((hp) => {
-  return new Headphone(
-    hp.name,
-    hp.img,
-    false,
-    hp.price,
-    hp.overview,
-    hp.signature as SoundSignature,
-    hp.category as HeadphoneCategory,
-    hp.tags,
-    hp.buy,
-    hp.review
-  );
-});
+];

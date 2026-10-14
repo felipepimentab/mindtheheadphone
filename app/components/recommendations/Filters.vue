@@ -238,6 +238,7 @@ const FIELD_STYLE = 'soft' as const;
             </div>
           </div>
 
+          <!-- Ordenar -->
           <UFormField
             orientation="vertical"
             label="Ordenar por"
@@ -284,7 +285,6 @@ const FIELD_STYLE = 'soft' as const;
         </template>
       </UCollapsible>
 
-      <!-- Ordenar -->
       <div class="grid grid-cols-2 gap-x-2 lg:flex items-center justify-between">
         <!-- Filtros -->
         <UButton
