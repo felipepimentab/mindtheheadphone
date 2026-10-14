@@ -109,7 +109,7 @@ function formatDate(date?: Date | string) {
     </template>
 
     <template #body>
-      <div class="flex h-full flex-col gap-4">
+      <div class="flex flex-col gap-4">
         <div class="flex items-center justify-between gap-3">
           <div>
             <h1 class="text-xl font-semibold text-highlighted">
@@ -297,9 +297,9 @@ function formatDate(date?: Date | string) {
 
         <div
           v-else
-          class="overflow-hidden rounded-lg border border-default"
+          class="shrink-0 overflow-hidden rounded-lg border border-default"
         >
-          <div class="overflow-x-auto">
+          <div class="max-h-[60dvh] overflow-auto">
             <table class="w-full min-w-[960px] divide-y divide-default text-sm">
               <thead class="bg-muted/40">
                 <tr class="text-left text-xs font-semibold uppercase tracking-wide text-muted">
