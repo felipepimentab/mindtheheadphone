@@ -3,6 +3,7 @@
 .data
 .nuxt
 .nitro
+.vercel/
 .cache
 .agents
 dist
