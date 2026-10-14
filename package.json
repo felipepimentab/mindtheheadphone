@@ -28,7 +28,7 @@
     "nuxt-site-config": "4.2.3",
     "pinia": "^4.0.3",
     "satori": "^0.33.5",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "zod": "^4.6.5"
   },
   "devDependencies": {
