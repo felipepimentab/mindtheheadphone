@@ -21,6 +21,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.8.0",
+    "google-auth-library": "^11.3.0",
     "ipx": "^4.0.0-beta.1",
     "nuxt": "^4.5.2",
     "nuxt-gtag": "^5.0.0",

@@ -1,6 +1,6 @@
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import type { H3Event } from 'h3';
-import { createError, deleteCookie, getCookie, setCookie } from 'h3';
+import { createError, deleteCookie, getCookie, getRequestURL, setCookie } from 'h3';
 
 const SESSION_COOKIE = 'mth_admin_session';
 export const OAUTH_STATE_COOKIE = 'mth_oauth_state';

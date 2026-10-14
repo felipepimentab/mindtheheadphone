@@ -1,16 +1,13 @@
-import { createError, getCookie, sendRedirect } from 'h3';
-import { clearOAuthCookies, getGoogleOAuthConfig, isAdminEmail, OAUTH_REDIRECT_COOKIE, OAUTH_STATE_COOKIE, setAdminSession } from '~~/server/utils/auth';
+import { OAuth2Client } from 'google-auth-library';
+import type { TokenPayload } from 'google-auth-library';
+import { createError, defineEventHandler, getCookie, getQuery, sendRedirect } from 'h3';
+import { clearOAuthCookies, getGoogleOAuthConfig, isAdminEmail, OAUTH_REDIRECT_COOKIE, OAUTH_STATE_COOKIE, setAdminSession } from '../../../utils/auth';
+
+// Reuse the client so Google's signing certificates can be cached between logins.
+const googleOAuthClient = new OAuth2Client();
 
 type GoogleTokenResponse = {
   id_token?: string
-};
-
-type GoogleTokenInfo = {
-  aud?: string
-  email?: string
-  email_verified?: string
-  name?: string
-  picture?: string
 };
 
 export default defineEventHandler(async (event) => {
@@ -51,15 +48,24 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const tokenInfo = await $fetch<GoogleTokenInfo>('https://oauth2.googleapis.com/tokeninfo', {
-    query: {
-      id_token: tokenResponse.id_token
-    }
-  });
+  let tokenInfo: TokenPayload | undefined;
+  try {
+    const ticket = await googleOAuthClient.verifyIdToken({
+      idToken: tokenResponse.id_token,
+      audience: clientId
+    });
+    tokenInfo = ticket.getPayload();
+  } catch {
+    clearOAuthCookies(event);
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Invalid Google identity token'
+    });
+  }
 
   if (
-    tokenInfo.aud !== clientId
-    || tokenInfo.email_verified !== 'true'
+    !tokenInfo
+    || tokenInfo.email_verified !== true
     || !isAdminEmail(tokenInfo.email)
   ) {
     clearOAuthCookies(event);
