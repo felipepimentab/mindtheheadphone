@@ -1,4 +1,4 @@
-import { del, put } from '@vercel/blob';
+import { put } from '@vercel/blob';
 import type { MultiPartData } from 'h3';
 import { createError } from 'h3';
 import mongoose from 'mongoose';
@@ -30,11 +30,6 @@ export async function uploadDeviceImage(image: MultiPartData, slug: string) {
     cacheControlMaxAge: IMAGE_CACHE_MAX_AGE,
     contentType: 'image/webp'
   });
-}
-
-export async function deleteDeviceImage(url?: string) {
-  if (!url) return;
-  await del(url);
 }
 
 export function getDeviceLookup(identifier: string) {

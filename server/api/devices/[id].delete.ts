@@ -1,6 +1,7 @@
 import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
-import { deleteDeviceImage, findDeviceOrThrow } from '~~/server/utils/devices';
+import { findDeviceOrThrow } from '~~/server/utils/devices';
+import { cleanupDeviceImage } from '~~/server/utils/deviceImageCleanup';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const device = await findDeviceOrThrow(id);
   const imageUrl = device.img;
   await device.deleteOne();
-  await deleteDeviceImage(imageUrl);
+  await cleanupDeviceImage(imageUrl);
 
   return {
     deleted: true,

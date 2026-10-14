@@ -4,6 +4,7 @@ import { requireAdmin } from '~~/server/utils/auth';
 import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceValidation';
 import { uploadDeviceImage } from '~~/server/utils/devices';
 import { readDeviceMultipart } from '~~/server/utils/deviceMultipart';
+import { cleanupDeviceImage } from '~~/server/utils/deviceImageCleanup';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -25,6 +26,7 @@ export default defineEventHandler(async (event) => {
       img: url
     });
   } catch (error) {
+    await cleanupDeviceImage(url);
     throwDeviceWriteError(error);
   }
 });
