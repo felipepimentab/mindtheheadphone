@@ -29,6 +29,18 @@ describe('catalog read failures', () => {
     expect(legacy).toMatchObject({ overview: null, signature: null, buy: null, review: null, tags: null });
   });
 
+  test('defaults missing legacy imported flags without changing existing values or records', () => {
+    const { imported: _imported, ...legacy } = device;
+    const imported = { ...device, imported: true };
+    const normalized = getCatalogDevices([legacy, imported, device]);
+
+    expect(normalized[0]).toEqual({ ...legacy, imported: false });
+    expect(normalized[1]).toBe(imported);
+    expect(normalized[2]).toBe(device);
+    expect(Object.hasOwn(legacy, 'imported')).toBe(false);
+    expect(getCatalogDevices([{ ...legacy, imported: undefined }])[0]?.imported).toBe(false);
+  });
+
   test('fails on fetch errors even when a previous array or an empty default is present', () => {
     for (const data of [[], [device], null]) {
       expect(() => getCatalogDevices(data, new Error('private database connection error'))).toThrow();
@@ -45,7 +57,7 @@ describe('catalog read failures', () => {
     for (const data of [
       null, undefined, { devices: [] }, { error: 'database unavailable' }, '[]',
       [null], [42], [{}], [{ ...device, price: '100' }], [{ ...device, price: Infinity }],
-      [{ ...device, imported: 'false' }], [{ ...device, type: 'Unknown' }],
+      [{ ...device, imported: 'false' }], [{ ...device, imported: null }], [{ ...device, type: 'Unknown' }],
       [{ ...device, tags: 'Test' }], [{ ...device, tags: [null] }],
       [{ ...device, overview: 42 }], [{ ...device, signature: false }],
       [{ ...device, buy: {} }], [{ ...device, review: [] }],

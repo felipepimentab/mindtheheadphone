@@ -20,7 +20,8 @@ export const DeviceSchema = defineMongooseModel<Device>({
     },
     imported: {
       type: 'boolean',
-      required: true
+      required: true,
+      default: false
     },
     tags: {
       type: ['string'],

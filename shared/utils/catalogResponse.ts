@@ -8,10 +8,12 @@ function normalizeCatalogDevice(value: unknown): unknown {
   if (!value || typeof value !== 'object') return value;
   const device = value as Record<string, unknown>;
   const nullFields = nullableCatalogFields.filter(key => device[key] === null);
-  if (!nullFields.length) return value;
+  const missingImported = device.imported === undefined;
+  if (!nullFields.length && !missingImported) return value;
 
   const normalized = { ...device };
   for (const key of nullFields) normalized[key] = undefined;
+  if (missingImported) normalized.imported = false;
   return normalized;
 }
 
@@ -37,6 +39,6 @@ export function getCatalogDevices(data: unknown, fetchError?: unknown): Device[]
       message: 'O catálogo está temporariamente indisponível. Tente novamente mais tarde.'
     });
   }
-  // Preserve the original array when no legacy null values needed normalization.
+  // Preserve the original array when no legacy values needed normalization.
   return normalized.every((device, index) => device === data[index]) ? data : normalized;
 }
