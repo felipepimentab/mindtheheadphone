@@ -4,6 +4,7 @@ import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceVa
 import { findDeviceOrThrow, uploadDeviceImage } from '~~/server/utils/devices';
 import { readDeviceMultipart } from '~~/server/utils/deviceMultipart';
 import { cleanupDeviceImage } from '~~/server/utils/deviceImageCleanup';
+import { revalidateRecommendations } from '~~/server/utils/revalidateRecommendations';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -38,6 +39,8 @@ export default defineEventHandler(async (event) => {
     await cleanupDeviceImage(uploadedImageUrl);
     throwDeviceWriteError(error);
   }
+
+  await revalidateRecommendations();
 
   if (image && oldImageUrl && oldImageUrl !== updatedDevice.img) {
     await cleanupDeviceImage(oldImageUrl);

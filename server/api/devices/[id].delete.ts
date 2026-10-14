@@ -2,6 +2,7 @@ import { createError } from 'h3';
 import { requireAdmin } from '~~/server/utils/auth';
 import { findDeviceOrThrow } from '~~/server/utils/devices';
 import { cleanupDeviceImage } from '~~/server/utils/deviceImageCleanup';
+import { revalidateRecommendations } from '~~/server/utils/revalidateRecommendations';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -17,6 +18,7 @@ export default defineEventHandler(async (event) => {
   const device = await findDeviceOrThrow(id);
   const imageUrl = device.img;
   await device.deleteOne();
+  await revalidateRecommendations();
   await cleanupDeviceImage(imageUrl);
 
   return {

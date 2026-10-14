@@ -45,6 +45,7 @@ const removeImage = mock(async (_url: string, _options: { abortSignal: AbortSign
   if (cleanupFails || transientFailures-- > 0) throw new Error('Blob unavailable');
 });
 const cleanup = mock((url?: string) => cleanupDeviceImage(url, removeImage));
+const revalidate = mock(async () => {});
 const logError = spyOn(console, 'error').mockImplementation(() => {});
 
 // Supply Nuxt aliases and auto-imports while exercising the real route handlers.
@@ -56,6 +57,7 @@ mock.module('~~/server/models/device.schema', () => ({ DeviceSchema: { create: c
 mock.module('~~/server/utils/deviceMultipart', () => ({ readDeviceMultipart: async () => form }));
 mock.module('~~/server/utils/deviceValidation', () => ({ parseDeviceForm, throwDeviceWriteError }));
 mock.module('~~/server/utils/deviceImageCleanup', () => ({ cleanupDeviceImage: cleanup }));
+mock.module('~~/server/utils/revalidateRecommendations', () => ({ revalidateRecommendations: revalidate }));
 mock.module('~~/server/utils/devices', () => ({
   findDeviceOrThrow: async () => device,
   uploadDeviceImage: uploadImage
@@ -79,7 +81,7 @@ beforeEach(() => {
     field('signature', 'Natural'), field('price', '100'), field('imported', '0'),
     field('overview', 'Description'), field('image', 'placeholder', 'image/png')
   ];
-  for (const fn of [createRecord, saveRecord, deleteRecord, uploadImage, removeImage, cleanup, logError]) fn.mockClear();
+  for (const fn of [createRecord, saveRecord, deleteRecord, uploadImage, removeImage, cleanup, revalidate, logError]) fn.mockClear();
 });
 
 afterAll(() => {
@@ -92,12 +94,14 @@ describe('device write image lifecycle', () => {
   test('keeps the uploaded image after successful creation', async () => {
     expect(await createDevice(event())).toMatchObject({ _id: 'created-id', img: newImage });
     expect(cleanup).not.toHaveBeenCalled();
+    expect(revalidate).toHaveBeenCalledTimes(1);
   });
 
   test('removes an uploaded image when creation fails with a duplicate key', async () => {
     createFailure = { code: 11000 };
     await expect(createDevice(event())).rejects.toMatchObject({ statusCode: 409 });
     expect(removeImage.mock.calls.map(([url]) => url)).toEqual([newImage]);
+    expect(revalidate).not.toHaveBeenCalled();
   });
 
   test('preserves the database error if rollback cleanup also fails', async () => {
@@ -111,11 +115,13 @@ describe('device write image lifecycle', () => {
   test('rolls back a failed replacement without deleting the stored image', async () => {
     saveFailure = new mongoose.Error.ValidationError();
     await expect(updateDevice(event())).rejects.toMatchObject({ statusCode: 400 });
+    expect(revalidate).not.toHaveBeenCalled();
     expect(removeImage.mock.calls.map(([url]) => url)).toEqual([newImage]);
   });
 
   test('removes the previous image after a successful replacement', async () => {
     expect(await updateDevice(event())).toMatchObject({ img: newImage });
+    expect(revalidate).toHaveBeenCalledTimes(1);
     expect(removeImage.mock.calls.map(([url]) => url)).toEqual([oldImage]);
   });
 
@@ -131,6 +137,7 @@ describe('device write image lifecycle', () => {
     cleanupFails = true;
     expect(await deleteDevice(event())).toEqual({ deleted: true, id: 'test' });
     expect(deleteRecord).toHaveBeenCalledTimes(1);
+    expect(revalidate).toHaveBeenCalledTimes(1);
     expect(removeImage).toHaveBeenCalledTimes(3);
     expect(logError).toHaveBeenCalledTimes(1);
   });
@@ -140,6 +147,15 @@ describe('device write image lifecycle', () => {
     expect(await deleteDevice(event())).toEqual({ deleted: true, id: 'test' });
     expect(removeImage).toHaveBeenCalledTimes(3);
     expect(logError).not.toHaveBeenCalled();
+  });
+
+  test('does not revalidate when deletion fails', async () => {
+    deleteRecord.mockImplementationOnce(async () => {
+      throw new Error('Database unavailable');
+    });
+    await expect(deleteDevice(event())).rejects.toThrow('Database unavailable');
+    expect(revalidate).not.toHaveBeenCalled();
+    expect(cleanup).not.toHaveBeenCalled();
   });
 
   test('persists an explicitly cleared tag list without replacing the image', async () => {

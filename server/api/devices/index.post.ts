@@ -5,6 +5,7 @@ import { parseDeviceForm, throwDeviceWriteError } from '~~/server/utils/deviceVa
 import { uploadDeviceImage } from '~~/server/utils/devices';
 import { readDeviceMultipart } from '~~/server/utils/deviceMultipart';
 import { cleanupDeviceImage } from '~~/server/utils/deviceImageCleanup';
+import { revalidateRecommendations } from '~~/server/utils/revalidateRecommendations';
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event);
@@ -20,8 +21,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const { url } = await uploadDeviceImage(image, deviceData.slug);
+  let createdDevice;
   try {
-    return await DeviceSchema.create({
+    createdDevice = await DeviceSchema.create({
       ...deviceData,
       img: url
     });
@@ -29,4 +31,7 @@ export default defineEventHandler(async (event) => {
     await cleanupDeviceImage(url);
     throwDeviceWriteError(error);
   }
+
+  await revalidateRecommendations();
+  return createdDevice;
 });

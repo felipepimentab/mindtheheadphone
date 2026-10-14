@@ -70,9 +70,9 @@ export default defineNuxtConfig({
     '/politica-de-privacidade': { prerender: true },
     '/termos-de-uso': { prerender: true },
     '/recomendacoes': { prerender: true },
-    '/recomendacoes/eletronicos': { prerender: false, isr: { expiration: 86400, allowQuery: [] } },
-    '/recomendacoes/earphones': { prerender: false, isr: { expiration: 86400, allowQuery: [] } },
-    '/recomendacoes/headphones': { prerender: false, isr: { expiration: 86400, allowQuery: [] } }
+    '/recomendacoes/eletronicos': { prerender: false, isr: { expiration: false, allowQuery: [] } },
+    '/recomendacoes/earphones': { prerender: false, isr: { expiration: false, allowQuery: [] } },
+    '/recomendacoes/headphones': { prerender: false, isr: { expiration: false, allowQuery: [] } }
   },
 
   sourcemap: false,
@@ -82,6 +82,14 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-01-15',
+
+  nitro: {
+    vercel: {
+      config: {
+        bypassToken: process.env.BYPASS_TOKEN
+      }
+    }
+  },
 
   eslint: {
     config: {
