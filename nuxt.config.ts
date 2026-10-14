@@ -70,9 +70,10 @@ export default defineNuxtConfig({
     '/politica-de-privacidade': { prerender: true },
     '/termos-de-uso': { prerender: true },
     '/recomendacoes': { prerender: true },
-    '/recomendacoes/eletronicos': { prerender: false, isr: { expiration: false, allowQuery: [] } },
-    '/recomendacoes/earphones': { prerender: false, isr: { expiration: false, allowQuery: [] } },
-    '/recomendacoes/headphones': { prerender: false, isr: { expiration: false, allowQuery: [] } }
+    // Two-day fallback alongside on-demand revalidation after catalog writes.
+    '/recomendacoes/eletronicos': { prerender: false, isr: { expiration: 172800, allowQuery: [] } },
+    '/recomendacoes/earphones': { prerender: false, isr: { expiration: 172800, allowQuery: [] } },
+    '/recomendacoes/headphones': { prerender: false, isr: { expiration: 172800, allowQuery: [] } }
   },
 
   sourcemap: false,
